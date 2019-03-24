@@ -1,0 +1,18 @@
+body { 
+	font-family: Verdana, "Lucida Sans Unicode", sans-serif; 
+	font-size: 150%;
+}
+input { width: 7.5vw; }
+input {
+	text-align: center;
+	font-size: 100%;
+}
+h1 {
+	font-family: "Palatino Linotype", "Book Antiqua", serif;
+}
+.button {
+	line-height: 3vw;
+	width: 20vw;
+	background-color: #aaaaaa;
+	margin: 1vw auto;
+}
