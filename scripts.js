@@ -17,10 +17,16 @@ function main() {
 	displayChoice();
 }
 function displayChoice() {
-	document.getElementById("question").innerHTML = "Как правильно - " + choices[currentChoice].correct + " или " + choices[currentChoice].incorrect + "?";
-	document.getElementById("button1").innerHTML = choices[currentChoice].correct;
-	document.getElementById("button2").innerHTML = choices[currentChoice].incorrect;
-	correctButton = 0;
+	correctButton = Math.round(Math.random());
+	if (correctButton == 0) {
+		document.getElementById("question").innerHTML = "Как правильно - " + choices[currentChoice].correct + " или " + choices[currentChoice].incorrect + "?";
+		document.getElementById("button0").innerHTML = choices[currentChoice].correct;
+		document.getElementById("button1").innerHTML = choices[currentChoice].incorrect;
+	} else {
+		document.getElementById("question").innerHTML = "Как правильно - " + choices[currentChoice].incorrect + " или " + choices[currentChoice].correct + "?";
+		document.getElementById("button0").innerHTML = choices[currentChoice].incorrect;
+		document.getElementById("button1").innerHTML = choices[currentChoice].correct;
+	}
 }
 function check(clickedButton) {
 	if (clickedButton == correctButton) {
@@ -32,12 +38,24 @@ function check(clickedButton) {
 	nextQuestion();
 }
 function updateStats(selectedChoice) {
-	document.getElementById("choice" + selectedChoice + "name").innerHTML = 
-	choices[selectedChoice].ambiguous;
-	document.getElementById("choice" + selectedChoice + "right").innerHTML = 
-	"Правильных ответов: " + choices[selectedChoice].rightanswers;
-	document.getElementById("choice" + selectedChoice + "wrong").innerHTML = 
-	"Неправильных ответов: " + choices[selectedChoice].wronganswers;
+	if (choices[selectedChoice].rightanswers + choices[selectedChoice].wronganswers == 0) {
+		var rightWidth = 50;
+		var leftWidth = 50;
+	} else {
+		var rightWidth = Math.round(100 * choices[selectedChoice].rightanswers / (choices[selectedChoice].rightanswers + choices[selectedChoice].wronganswers))
+		var leftWidth = 100 - rightWidth;
+	}
+	
+	document.getElementById("choice" + selectedChoice + "stats").innerHTML = 
+	"<div class=\"choicename\" id=\"choice" + selectedChoice + "name\">"
+	+ choices[selectedChoice].ambiguous 
+	+ "</div>" 
+	+ "<div style=\"width: "+ rightWidth + "%\" class=\"choiceright\" id=\"choice" + selectedChoice + "right\">" 
+	+ choices[selectedChoice].rightanswers 
+	+ "</div>" 
+	+ "<div style=\"width: "+ leftWidth + "%\" class=\"choicewrong\" id=\"choice" + selectedChoice + "wrong\">" 
+	+ choices[selectedChoice].wronganswers 
+	+ "</div></div>";
 }
 function generateChoices() {
 	choices[0] = new Choice("щаве́ль", "ща́вель", "щавель");

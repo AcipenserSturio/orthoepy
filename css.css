@@ -16,3 +16,27 @@ h1 {
 	background-color: #aaaaaa;
 	margin: 1vw auto;
 }
+.choicestats {
+	height: 6vw;
+	width: 40vw;
+	margin: 1vw auto;
+}
+.choicename {
+	line-height: 3vw;
+	width: 100%;
+	background-color: #bbbbbb;
+}
+.choiceright {
+	line-height: 3vw;
+	width: 50%;
+	background-color: #00ff00;
+	float: right;
+	overflow: hidden;
+}
+.choicewrong {
+	line-height: 3vw;
+	width: 50%;
+	background-color: #ff0000;
+	float: left;
+	overflow: hidden;
+}
