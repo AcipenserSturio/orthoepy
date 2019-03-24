@@ -1,20 +1,24 @@
 body { 
 	font-family: Verdana, "Lucida Sans Unicode", sans-serif; 
-	font-size: 150%;
-}
-input { width: 7.5vw; }
-input {
-	text-align: center;
-	font-size: 100%;
+	font-size: 2vw;
+	line-height: 3vw;
+	margin: auto;
+	width: fit-content;
 }
 h1 {
 	font-family: "Palatino Linotype", "Book Antiqua", serif;
+	margin: 2vw;
+}
+.choicename, .choiceright, .choicewrong, .button {
+	line-height: 3vw;
+	overflow: hidden;
+	white-space: nowrap;
 }
 .button {
-	line-height: 3vw;
-	width: 20vw;
+	display: inline-block;
 	background-color: #aaaaaa;
-	margin: 1vw auto;
+	width: 19.5vw;
+	margin: 1vw 0.5vw 0vw 0.5vw;
 }
 .choicestats {
 	height: 6vw;
@@ -22,21 +26,14 @@ h1 {
 	margin: 1vw auto;
 }
 .choicename {
-	line-height: 3vw;
-	width: 100%;
 	background-color: #bbbbbb;
+	width: 100%;
 }
 .choiceright {
-	line-height: 3vw;
-	width: 50%;
 	background-color: #00ff00;
 	float: right;
-	overflow: hidden;
 }
 .choicewrong {
-	line-height: 3vw;
-	width: 50%;
 	background-color: #ff0000;
 	float: left;
-	overflow: hidden;
 }

@@ -21,13 +21,13 @@ function main() {
 function displayChoice() {
 	correctButton = Math.round(Math.random());
 	if (correctButton == 0) {
-		document.getElementById("question").innerHTML = "Как правильно - " + choices[currentChoice].correct + " или " + choices[currentChoice].incorrect + "?";
-		document.getElementById("button0").innerHTML = choices[currentChoice].correct;
-		document.getElementById("button1").innerHTML = choices[currentChoice].incorrect;
+		document.getElementById("question").children[0].innerHTML = "Как правильно - " + choices[currentChoice].correct + " или " + choices[currentChoice].incorrect + "?";
+		document.getElementById("button0").children[0].innerHTML = choices[currentChoice].correct;
+		document.getElementById("button1").children[0].innerHTML = choices[currentChoice].incorrect;
 	} else {
-		document.getElementById("question").innerHTML = "Как правильно - " + choices[currentChoice].incorrect + " или " + choices[currentChoice].correct + "?";
-		document.getElementById("button0").innerHTML = choices[currentChoice].incorrect;
-		document.getElementById("button1").innerHTML = choices[currentChoice].correct;
+		document.getElementById("question").children[0].innerHTML = "Как правильно - " + choices[currentChoice].incorrect + " или " + choices[currentChoice].correct + "?";
+		document.getElementById("button0").children[0].innerHTML = choices[currentChoice].incorrect;
+		document.getElementById("button1").children[0].innerHTML = choices[currentChoice].correct;
 	}
 }
 function check(clickedButton) {
@@ -47,9 +47,11 @@ function updateStats(selectedChoice) {
 		var rightWidth = 100 * choices[selectedChoice].rightanswers / (choices[selectedChoice].rightanswers + choices[selectedChoice].wronganswers);
 		var leftWidth = 100 - rightWidth;
 	}
-	document.getElementById("choice" + selectedChoice + "name").innerHTML = choices[selectedChoice].ambiguous;
-	document.getElementById("choice" + selectedChoice + "right").innerHTML = choices[selectedChoice].rightanswers;
-	document.getElementById("choice" + selectedChoice + "wrong").innerHTML = choices[selectedChoice].wronganswers;
+	var rightWidthRounded = Math.round(rightWidth);
+	var leftWidthRounded = 100 - rightWidthRounded;
+	document.getElementById("choice" + selectedChoice + "name").children[0].innerHTML = choices[selectedChoice].ambiguous;
+	document.getElementById("choice" + selectedChoice + "right").children[0].innerHTML = choices[selectedChoice].rightanswers + " (" + rightWidthRounded + "%)";
+	document.getElementById("choice" + selectedChoice + "wrong").children[0].innerHTML = choices[selectedChoice].wronganswers + " (" + leftWidthRounded + "%)";
 	document.getElementById("choice" + selectedChoice + "right").style.width = rightWidth + "%";
 	document.getElementById("choice" + selectedChoice + "wrong").style.width = leftWidth + "%";
 }
@@ -90,11 +92,17 @@ function generateDisplays() {
 		choiceName.id = "choice" + i + "name";
 		choiceRight.id = "choice" + i + "right";
 		choiceWrong.id = "choice" + i + "wrong";
+		var spanName = document.createElement('span');
+		var spanRight = document.createElement('span');
+		var spanWrong = document.createElement('span');
+		spanName.innerHTML = choices[i].ambiguous;
+		spanRight.innerHTML = choices[i].rightanswers;
+		spanWrong.innerHTML = choices[i].wronganswers;
 		document.getElementById("choice" + i + "stats").appendChild(choiceName);
 		document.getElementById("choice" + i + "stats").appendChild(choiceRight);
 		document.getElementById("choice" + i + "stats").appendChild(choiceWrong);
-		document.getElementById("choice" + i + "name").innerHTML = choices[i].ambiguous;
-		document.getElementById("choice" + i + "right").innerHTML = choices[i].rightanswers;
-		document.getElementById("choice" + i + "wrong").innerHTML = choices[i].wronganswers;
+		document.getElementById("choice" + i + "name").appendChild(spanName);
+		document.getElementById("choice" + i + "right").appendChild(spanRight);
+		document.getElementById("choice" + i + "wrong").appendChild(spanWrong);
 	}
 }
