@@ -55,6 +55,7 @@ function main() {
 		spanName.innerHTML = choices[i].ambiguous;
 		spanRight.innerHTML = choices[i].rightanswers;
 		spanWrong.innerHTML = choices[i].wronganswers;
+		spanName.title = "Правильно - " + choices[i].correct;
 		document.getElementById("choice" + i + "stats").appendChild(choiceName);
 		document.getElementById("choice" + i + "stats").appendChild(choiceRight);
 		document.getElementById("choice" + i + "stats").appendChild(choiceWrong);
