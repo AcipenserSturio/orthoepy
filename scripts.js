@@ -43,27 +43,33 @@ function main() {
 		document.getElementById("stats").appendChild(choiceStats);
 		
 		var choiceName = document.createElement('div');
-		var choiceRight = document.createElement('div');
 		var choiceWrong = document.createElement('div');
+		var choiceRight = document.createElement('div');
 		choiceName.className = "choicename"
-		choiceRight.className = "choiceright"
 		choiceWrong.className = "choicewrong"
+		choiceRight.className = "choiceright"
 		choiceName.id = "choice" + i + "name";
-		choiceRight.id = "choice" + i + "right";
 		choiceWrong.id = "choice" + i + "wrong";
+		choiceRight.id = "choice" + i + "right";
 		var spanName = document.createElement('span');
-		var spanRight = document.createElement('span');
 		var spanWrong = document.createElement('span');
+		var spanRight = document.createElement('span');
 		spanName.innerHTML = choices[i].ambiguous;
-		spanRight.innerHTML = choices[i].rightanswers;
 		spanWrong.innerHTML = choices[i].wronganswers;
-		spanName.title = "Правильно - " + choices[i].correct;
+		spanRight.innerHTML = choices[i].rightanswers;
 		document.getElementById("choice" + i + "stats").appendChild(choiceName);
-		document.getElementById("choice" + i + "stats").appendChild(choiceRight);
 		document.getElementById("choice" + i + "stats").appendChild(choiceWrong);
+		document.getElementById("choice" + i + "stats").appendChild(choiceRight);
 		document.getElementById("choice" + i + "name").appendChild(spanName);
-		document.getElementById("choice" + i + "right").appendChild(spanRight);
 		document.getElementById("choice" + i + "wrong").appendChild(spanWrong);
+		document.getElementById("choice" + i + "right").appendChild(spanRight);
+		
+		document.getElementById("choice" + i + "name").onmouseover = function() {
+			this.children[0].innerHTML = choices[Number(this.id.substring(6, this.id.length-4))].correct;
+		};
+		document.getElementById("choice" + i + "name").onmouseout = function() {
+			this.children[0].innerHTML = choices[Number(this.id.substring(6, this.id.length-4))].ambiguous;
+		};
 	}
 	
 	// Update all stats
@@ -109,12 +115,14 @@ function check(clickedButton) {
 
 // Selects the next choice based on an algorithm
 function pickNewChoice() {
-	// Placeholder algorithm: "proceed to the next choice in the list"
+	
+	return Math.floor(Math.random() * choices.length);
+	/*// Placeholder algorithm: "proceed to the next choice in the list"
 	if (currentChoice < choices.length-1) {
 		return currentChoice + 1;
 	} else {
 		return 0;
-	}
+	}*/
 }
 
 // Changes the values shown in the stats div for one specific choice

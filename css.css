@@ -4,6 +4,7 @@ body {
 	line-height: 4.5vw;
 	text-align: center;
 	margin: 0;
+	
 }
 #interactivearea {
 	position: fixed;
@@ -44,7 +45,10 @@ h1 {
 	margin: 1vw auto;
 }
 .choicename {
-	background-color: #bbbbbb;
+	background-color: #aaaaaa;
+}
+.choicename:hover {
+	background-color: #cccccc;
 }
 .choiceright {
 	background-color: #00ff00;
