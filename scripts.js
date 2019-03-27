@@ -8,6 +8,8 @@ var choices = [];
 var correctButton;
 // Stores which choice object is currently active
 var currentChoice = 0;
+// Stores how many turns there had been until now.
+var currentTurn = 0;
 
 // Choice object class
 // Stores strings with correct/incorrect/ambiguous pronunciation
@@ -77,11 +79,11 @@ function main() {
 function displayChoice() {
 	correctButton = Math.round(Math.random());
 	if (correctButton == 0) {
-		document.getElementById("question").children[0].innerHTML = "Как правильно - " + choices[currentChoice].correct + " или " + choices[currentChoice].incorrect + "?";
+		document.getElementById("question").children[0].innerHTML = "Как правильно?";
 		document.getElementById("button0").children[0].innerHTML = choices[currentChoice].correct;
 		document.getElementById("button1").children[0].innerHTML = choices[currentChoice].incorrect;
 	} else {
-		document.getElementById("question").children[0].innerHTML = "Как правильно - " + choices[currentChoice].incorrect + " или " + choices[currentChoice].correct + "?";
+		document.getElementById("question").children[0].innerHTML = "Как правильно?";
 		document.getElementById("button0").children[0].innerHTML = choices[currentChoice].incorrect;
 		document.getElementById("button1").children[0].innerHTML = choices[currentChoice].correct;
 	}
@@ -101,6 +103,7 @@ function check(clickedButton) {
 	updateStats(currentChoice);
 	currentChoice = pickNewChoice();
 	scrollToStat(currentChoice);
+	currentTurn++;
 	displayChoice();
 }
 
