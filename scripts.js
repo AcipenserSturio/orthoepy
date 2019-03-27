@@ -1,7 +1,7 @@
 ﻿// Global variables
 
 // Stores all choices as an easily modifiable input array
-var dictionary = [,];
+var dictionary = [];
 // Stores all choices objects
 var choices = [];
 // Stores which button references the correct answer
@@ -10,6 +10,17 @@ var correctButton;
 var currentChoice = 0;
 // Stores how many turns there had been until now.
 var currentTurn = 0;
+
+// Arrays of probabilities, for choice picking
+// Currently available
+var deck = [];
+// Stored for next time
+var stockpile = [];
+
+// Stores how many full rounds a person has gone through without failing a single answer
+// winStreak == 2 triggers win conditions
+var winStreak;
+
 
 // Choice object class
 // Stores strings with correct/incorrect/ambiguous pronunciation
@@ -77,7 +88,13 @@ function main() {
 		updateStats(i);
 	}
 	
+	// Fill the deck with equal probabilities for each object
+	for (var i = 0; i < choices.length; i++) {
+		deck[i] = i;
+	}
+	
 	// Start the game
+	pickNewChoice();
 	displayChoice();
 }
 
@@ -102,27 +119,75 @@ function check(clickedButton) {
 	if (clickedButton == correctButton) {
 		document.getElementById("previousanswer").children[0].innerHTML = "Правильно, " + choices[currentChoice].correct + "!";
 		choices[currentChoice].rightanswers++;
+		
+		// Remove all copies from deck. Don't question it again in this round
+		var temp = 0;
+		while (temp < deck.length) {
+			if (deck[temp] == currentChoice) {
+				deck.splice(temp, 1);
+			} else {
+				temp++;
+			}
+		}
+		temp = 0;
+		while (temp < stockpile.length) {
+			if (stockpile[temp] == currentChoice) {
+				stockpile.splice(temp, 1);
+			} else {
+				temp++;
+			}
+		}
+		
+		// Only push one copy into stockpile
+		stockpile.push(currentChoice);
+		
 	} else {
 		document.getElementById("previousanswer").children[0].innerHTML = "Неверно! Правильно - " + choices[currentChoice].correct + ".";
 		choices[currentChoice].wronganswers++;
+		
+		// Push multiple copies into stockpile
+		stockpile.push(currentChoice);
+		for (var i = 0; i < choices.length / 5; i++) {
+			stockpile.push(currentChoice);
+		}
 	}
 	updateStats(currentChoice);
-	currentChoice = pickNewChoice();
-	scrollToStat(currentChoice);
 	currentTurn++;
+	
+	// Next turn
+	pickNewChoice();
+	scrollToStat(currentChoice);
 	displayChoice();
 }
 
 // Selects the next choice based on an algorithm
 function pickNewChoice() {
 	
-	return Math.floor(Math.random() * choices.length);
-	/*// Placeholder algorithm: "proceed to the next choice in the list"
-	if (currentChoice < choices.length-1) {
-		return currentChoice + 1;
-	} else {
-		return 0;
-	}*/
+	// Check whether one round has passed
+	// currentTurn % choices.length == 0
+	// Then reshuffle stockpile back into deck
+	if (currentTurn % choices.length == 0) {
+		deck = deck.concat(stockpile);
+		stockpile = [];
+		
+		// Also check for winning conditions
+		if (currentTurn != 0 && deck.length == choices.length) {
+			winStreak++;
+		} else {
+			winStreak = 0;
+		}
+		if (winStreak == 2) {
+			win();
+		}
+	}
+	
+	// Pick random value from deck
+	var newChoiceIndex = Math.floor(Math.random()*deck.length)
+	currentChoice = deck[newChoiceIndex];
+	
+	// Remove that value from the deck, just once.
+	deck.splice(newChoiceIndex, 1);
+	
 }
 
 // Changes the values shown in the stats div for one specific choice
@@ -144,8 +209,11 @@ function updateStats(selectedChoice) {
 }
 
 function scrollToStat(selectedChoice) {
-	document.getElementById("choice" + selectedChoice + "stats").scrollIntoView();
-	window.scrollBy(0, -window.innerHeight/2);
+	document.getElementById("choice" + selectedChoice + "stats").scrollIntoView({block: "center"});
+}
+
+function win() {
+	document.getElementById("answer").innerHTML = "Поздравляю, вы закрепили материал!<br /><br /><br />";
 }
 
 // This is essentially storage for the questions

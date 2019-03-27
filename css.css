@@ -34,7 +34,6 @@ h1 {
 }
 .button {
 	width: 55vw;
-	background-color: #aaaaaa;
 	line-height: 15vh;
 	margin: 0.5vw 0vw 0.5vw 0vw;
 	border-radius: 10vw;
@@ -44,10 +43,10 @@ h1 {
 	width: 40vw;
 	margin: 1vw auto;
 }
-.choicename {
+.choicename, .button {
 	background-color: #aaaaaa;
 }
-.choicename:hover {
+.choicename:hover, .button:hover {
 	background-color: #cccccc;
 }
 .choiceright {
