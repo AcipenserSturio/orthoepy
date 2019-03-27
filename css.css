@@ -9,8 +9,8 @@ body {
 	position: fixed;
 	width: 55vw;
 	margin-left: 42vw;
-	height: calc(65vh + 12.25vw);
-	padding-top: calc(35vh - 12.25vw);
+	height: calc(65vh + 15vw);
+	padding-top: calc(35vh - 15vw);
 	border-left: thin solid black;
 }
 #stats {
@@ -55,7 +55,7 @@ h1 {
 	float: left;
 }
 
-@media only screen and (max-height: 50vw) {
+@media only screen and (max-height: 40vw) {
 	.hide-if-doesnt-fit {
 		display: none;
 	}
