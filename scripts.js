@@ -268,5 +268,5 @@ function scrollToStat(selectedChoice) {
 }
 
 function win() {
-	document.getElementById("answer").innerHTML = "Поздравляю, вы закрепили материал!<br /><br /><br />";
+	document.getElementById("answer").innerHTML = "Поздравляю, вы закрепили материал!<div class=\"button\" onclick=\"window.location = '';\">Обратно</div>";
 }
