@@ -24,9 +24,23 @@ body {
 	bottom: 2vw;
 	left: 1vw;
 }
-h1 {
+h1, h2 {
 	font-family: "Palatino Linotype", "Book Antiqua", serif;
 	margin: 2vw;
+	text-align: center;
+}
+.text {
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 1.8vw;
+	line-height: 2vw;
+	padding: 1.5vw 11.5vw;
+}
+.textblanket {
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 1.3vw;
+	line-height: 1.5vw;
+	padding: 1.5vw 11.5vw;
+	text-align: justify;
 }
 .choicename, .choiceright, .choicewrong, .button {
 	overflow: hidden;
