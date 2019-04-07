@@ -52,6 +52,11 @@ h1, h2 {
 	margin: 0.5vw 0vw 0.5vw 0vw;
 	border-radius: 10vw;
 }
+a {
+	display: block;
+	text-decoration: inherit;
+	color: inherit;
+}
 .choicestats {
 	height: 9vw;
 	width: 40vw;

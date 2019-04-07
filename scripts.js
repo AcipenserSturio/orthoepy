@@ -18,8 +18,6 @@ var deck = [];
 // Stored for next time
 var stockpile = [];
 
-var s;
-
 // Choice object class
 // Stores strings with correct/incorrect/ambiguous pronunciation
 // Also stores the player's stats on this choice
