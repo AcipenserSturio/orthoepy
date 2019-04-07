@@ -1,0 +1,24 @@
+﻿<html>
+	<head>
+		<title>Орфоэпия</title>
+		<base href="..">
+		<link rel="stylesheet" type="text/css" href="css.css" />
+		<link rel="shortcut icon" href="icon.png">
+		<script type="text/javascript" src="scripts.js"></script>
+		<script type="text/javascript" src="dictionarylists.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body onload="main()">
+		<div id="interactivearea">
+			<h1 class="hide-if-doesnt-fit">ОРФОЭПИЯ</h1>
+			<div id="answer">
+				<div id="previousanswer"><span></span></div>
+				<div id="question"><span></span></div>
+				<div class="button" id="button0" onclick="check(0)"><span></span></div>
+				<div id="or">или</div>
+				<div class="button" id="button1" onclick="check(1)"><span></span></div>
+			</div>
+		</div>
+		<div id="stats"></div>
+	</body>
+</html>

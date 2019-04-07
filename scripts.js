@@ -18,6 +18,8 @@ var deck = [];
 // Stored for next time
 var stockpile = [];
 
+var s;
+
 // Choice object class
 // Stores strings with correct/incorrect/ambiguous pronunciation
 // Also stores the player's stats on this choice
@@ -31,75 +33,21 @@ class Choice {
 	}
 }
 
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+
 // This function is called on page load
-function main(dictionaryOption) {
+function main() {
 	
-	dictionary = dictionaryOption;
-	
-	// Gets input text
-	
-	// Generate page layout
-	document.body.innerHTML = "";
-	var interactiveAreaDiv = document.createElement('div');
-	var statsDiv = document.createElement('div');
-	interactiveAreaDiv.id = "interactiveArea";
-	statsDiv.id = "stats";
-	document.body.appendChild(interactiveAreaDiv);
-	document.body.appendChild(statsDiv);
-	
-	var h1 = document.createElement('h1');
-	h1.innerText = "ОРФОЭПИЯ";
-	h1.className = "hide-if-doesnt-fit";
-	document.getElementById("interactiveArea").appendChild(h1);
-	
-	var answerDiv = document.createElement('div');
-	answerDiv.id = "answer";
-	document.getElementById("interactiveArea").appendChild(answerDiv);
-	
-	var previousAnswerDiv = document.createElement('div');
-	previousAnswerDiv.id = "previousanswer";
-	document.getElementById("answer").appendChild(previousAnswerDiv);
-	
-	var previousAnswerSpan = document.createElement('span');
-	document.getElementById("previousanswer").appendChild(previousAnswerSpan);
-	
-	var questionDiv = document.createElement('div');
-	questionDiv.id = "question";
-	document.getElementById("answer").appendChild(questionDiv);
-	
-	var questionSpan = document.createElement('span');
-	document.getElementById("question").appendChild(questionSpan);
-	
-	var button0Div = document.createElement('div');
-	button0Div.id = "button0";
-	button0Div.className = "button";
-	document.getElementById("answer").appendChild(button0Div);
-	document.getElementById("button0").onclick = function() {
-		check(0);
-	};
-	
-	var button0Span = document.createElement('span');
-	document.getElementById("button0").appendChild(button0Span);
-	
-	var orDiv = document.createElement('div');
-	orDiv.id = "or";
-	orDiv.innerText = "или"
-	document.getElementById("answer").appendChild(orDiv);
-	
-	var questionSpan = document.createElement('span');
-	document.getElementById("question").appendChild(questionSpan);
-	
-	var button1Div = document.createElement('div');
-	button1Div.id = "button1";
-	button1Div.className = "button";
-	document.getElementById("answer").appendChild(button1Div);
-	document.getElementById("button1").onclick = function() {
-		check(1);
-	};
-	
-	var button1Span = document.createElement('span');
-	document.getElementById("button1").appendChild(button1Span);
-	
+	dictionary = dictionaryArray[getQueryVariable("q")];
 	
 	// Generate choice objects
 	for (var i = 0; i < dictionary.length; i++) {
