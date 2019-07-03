@@ -1,0 +1,12 @@
+# Ignore system files.
+.*
+*~
+
+# Ignore JavaScript packages.
+node_packages/
+
+# Keep git files.
+!.gitignore
+!.gitattributes
+!.gitmodules
+!.gitkeep
