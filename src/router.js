@@ -12,5 +12,10 @@ export default new Router({
       name: 'home',
       component: () => import(/* webpackChunkName: "home" */ './views/Home.vue'),
     },
+    {
+      path: '/orthoepy',
+      name: 'orthoepy',
+      component: () => import(/* webpackChunkName: "orthoepy" */ './views/Orthoepy.vue'),
+    },
   ],
 });
