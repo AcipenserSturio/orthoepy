@@ -22,5 +22,10 @@ export default new Router({
       name: 'orthoepy-article',
       component: () => import(/* webpackChunkName: "orthoepy-article" */ './views/OrthoepyArticle.vue'),
     },
+    {
+      path: '/nn',
+      name: 'single-or-double-n',
+      component: () => import(/* webpackChunkName: "single-or-double-n" */ './views/SingleOrDoubleN.vue'),
+    },
   ],
 });
