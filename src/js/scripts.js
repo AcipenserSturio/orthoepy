@@ -1,4 +1,6 @@
-﻿// Global variables
+﻿import dictionaryArray from './dictionarylists';
+
+// Global variables
 
 // Stores all choices as an easily modifiable input array
 var dictionary = [];
@@ -44,21 +46,21 @@ function getQueryVariable(variable)
 
 // This function is called on page load
 function main() {
-	
+
 	dictionary = dictionaryArray[getQueryVariable("q")];
-	
+
 	// Generate choice objects
 	for (var i = 0; i < dictionary.length; i++) {
 		choices[i] = new Choice(dictionary[i][0], dictionary[i][1], dictionary[i][2]);
 	}
-	
+
 	// Generate stats displays for each choice object
 	for (var i = 0; i < choices.length; i++) {
 		var choiceStats = document.createElement('div');
-		choiceStats.className = "choicestats"
+		choiceStats.className = "choicestats";
 		choiceStats.id = "choice" + i + "stats";
 		document.getElementById("stats").appendChild(choiceStats);
-		
+
 		var choiceName = document.createElement('div');
 		var choiceWrong = document.createElement('div');
 		var choiceRight = document.createElement('div');
@@ -80,7 +82,7 @@ function main() {
 		document.getElementById("choice" + i + "name").appendChild(spanName);
 		document.getElementById("choice" + i + "wrong").appendChild(spanWrong);
 		document.getElementById("choice" + i + "right").appendChild(spanRight);
-		
+
 		document.getElementById("choice" + i + "name").onmouseover = function() {
 			this.children[0].innerHTML = choices[Number(this.id.substring(6, this.id.length-4))].correct;
 		};
@@ -88,17 +90,17 @@ function main() {
 			this.children[0].innerHTML = choices[Number(this.id.substring(6, this.id.length-4))].ambiguous;
 		};
 	}
-	
+
 	// Update all stats
 	for (var i = 0; i < choices.length; i++) {
 		updateStats(i);
 	}
-	
+
 	// Fill the deck with equal probabilities for each object
 	for (var i = 0; i < choices.length; i++) {
 		deck[i] = i;
 	}
-	
+
 	// Start the game
 	pickNewChoice();
 	displayChoice();
@@ -125,7 +127,7 @@ function check(clickedButton) {
 	if (clickedButton == correctButton) {
 		document.getElementById("previousanswer").children[0].innerHTML = "Правильно, " + choices[currentChoice].correct + "!";
 		choices[currentChoice].rightanswers++;
-		
+
 		// Remove all copies from deck. Don't question it again in this round
 		var temp = 0;
 		while (temp < deck.length) {
@@ -143,14 +145,14 @@ function check(clickedButton) {
 				temp++;
 			}
 		}
-		
+
 		// Only push one copy into stockpile
 		stockpile.push(currentChoice);
-		
+
 	} else {
 		document.getElementById("previousanswer").children[0].innerHTML = "Неверно! Правильно - " + choices[currentChoice].correct + ".";
 		choices[currentChoice].wronganswers++;
-		
+
 		// Push multiple copies into stockpile
 		stockpile.push(currentChoice);
 		for (var i = 0; i < choices.length / 5; i++) {
@@ -159,7 +161,7 @@ function check(clickedButton) {
 	}
 	updateStats(currentChoice);
 	currentTurn++;
-	
+
 	// Next turn
 	pickNewChoice();
 	scrollToStat(currentChoice);
@@ -168,27 +170,27 @@ function check(clickedButton) {
 
 // Selects the next choice based on an algorithm
 function pickNewChoice() {
-	
+
 	// Check whether one round has passed
 	// currentTurn % choices.length == 0
 	// Then reshuffle stockpile back into deck
 	if (currentTurn % choices.length == 0) {
 		deck = deck.concat(stockpile);
 		stockpile = [];
-		
+
 		// Also check for winning conditions
 		if (currentTurn != 0 && deck.length == choices.length) {
 			win();
 		}
 	}
-	
+
 	// Pick random value from deck
 	var newChoiceIndex = Math.floor(Math.random()*deck.length)
 	currentChoice = deck[newChoiceIndex];
-	
+
 	// Remove that value from the deck, just once.
 	deck.splice(newChoiceIndex, 1);
-	
+
 }
 
 // Changes the values shown in the stats div for one specific choice
@@ -216,3 +218,5 @@ function scrollToStat(selectedChoice) {
 function win() {
 	document.getElementById("answer").innerHTML = "Поздравляю, вы закрепили материал!<div class=\"button\" onclick=\"window.location = '';\">Обратно</div>";
 }
+
+export default { main, check };
