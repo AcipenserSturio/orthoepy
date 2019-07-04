@@ -24,7 +24,7 @@
     <div class="text">
       <p>Вернуться к темам:</p>
     </div>
-    <div class="button"><a href="">Обратно</a></div>
+    <div class="button"><a href="javascript:history.back()">Обратно</a></div>
   </div>
 </template>
 
