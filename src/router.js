@@ -27,5 +27,10 @@ export default new Router({
       name: 'single-or-double-n',
       component: () => import(/* webpackChunkName: "single-or-double-n" */ './views/SingleOrDoubleN.vue'),
     },
+    {
+      path: '/training',
+      name: 'training',
+      component: () => import(/* webpackChunkName: "training" */ './views/Training.vue'),
+    },
   ],
 });
