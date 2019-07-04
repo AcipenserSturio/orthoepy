@@ -2,8 +2,19 @@
 .*
 *~
 
+# Ignore builds.
+dist/
+
 # Ignore JavaScript packages.
-node_packages/
+node_modules/
+
+# Ignore Yarn logs.
+yarn-debug.log*
+yarn-error.log*
+
+# Keep configuration.
+!.browserslistrc
+!.eslintrc.js
 
 # Keep git files.
 !.gitignore

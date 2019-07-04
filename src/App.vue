@@ -1,0 +1,91 @@
+<template>
+  <div id="app">
+    <router-view/>
+  </div>
+</template>
+
+<style>
+body {
+  font-family: Verdana, "Lucida Sans Unicode", sans-serif;
+  font-size: 3vw;
+  line-height: 4.5vw;
+  text-align: center;
+  margin: 0;
+}
+#interactivearea {
+  position: fixed;
+  width: 55vw;
+  margin-left: 42vw;
+  height: calc(65vh + 15vw);
+  padding-top: calc(35vh - 15vw);
+  border-left: thin solid black;
+}
+#stats {
+  width: 40vw;
+  float: left;
+  padding-left: 1vw;
+}
+#answer {
+  position: absolute;
+  bottom: 2vw;
+  left: 1vw;
+}
+h1, h2 {
+  font-family: "Palatino Linotype", "Book Antiqua", serif;
+  margin: 2vw;
+  text-align: center;
+}
+.text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.8vw;
+  line-height: 2vw;
+  padding: 1.5vw 11.5vw;
+}
+.textblanket {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.3vw;
+  line-height: 1.5vw;
+  padding: 1.5vw 11.5vw;
+  text-align: justify;
+}
+.choicename, .choiceright, .choicewrong, .button {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.button {
+  width: 55vw;
+  line-height: 15vh;
+  margin: 0.5vw 0vw 0.5vw 0vw;
+  border-radius: 10vw;
+}
+a {
+  display: block;
+  text-decoration: inherit;
+  color: inherit;
+}
+.choicestats {
+  height: 9vw;
+  width: 40vw;
+  margin: 1vw auto;
+}
+.choicename, .button {
+  background-color: #aaaaaa;
+}
+.choicename:hover, .button:hover {
+  background-color: #cccccc;
+}
+.choiceright {
+  background-color: #00ff00;
+  float: right;
+}
+.choicewrong {
+  background-color: #ff0000;
+  float: left;
+}
+
+@media only screen and (max-height: 40vw) {
+  .hide-if-doesnt-fit {
+    display: none;
+  }
+}
+</style>
