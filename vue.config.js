@@ -1,4 +1,4 @@
 module.exports = {
   lintOnSave: false,
-  publicPath: 'https://acipensersturio.github.io/russian/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/russian/' : '/',
 };
