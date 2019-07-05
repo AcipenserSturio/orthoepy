@@ -5,8 +5,8 @@
       <p>Добро пожаловать в тренажёр для закрепления правил русского языка.</p>
       <p>Выберите тему, которую вы будете закреплять:</p>
     </div>
-    <div class="button"><router-link to="/orthoepy">Орфоэпия</router-link></div>
-    <div class="button"><router-link to="/nn">Н/НН</router-link></div>
+    <div class="button"><router-link :to="{ name: 'orthoepy' }">Орфоэпия</router-link></div>
+    <div class="button"><router-link :to="{ name: 'single-or-double-n' }">Н/НН</router-link></div>
   </div>
 </template>
 

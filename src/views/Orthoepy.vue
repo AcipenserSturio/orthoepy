@@ -9,18 +9,18 @@
       <p>Тренажёр заканчивает предлагать вопросы, если последний ваш ответ на каждое слово был правильным.</p>
       <p>Выберите список слов, которые вы будете закреплять:</p>
     </div>
-    <div class="button"><router-link to="/training?q=0">Версия-прототип: всего 4 слова</router-link></div>
-    <div class="button"><router-link to="/training?q=1">Имена существительные</router-link></div>
-    <div class="button"><router-link to="/training?q=2">Имена прилагательные</router-link></div>
-    <div class="button"><router-link to="/training?q=3">Глаголы</router-link></div>
-    <div class="button"><router-link to="/training?q=4">Причастия</router-link></div>
-    <div class="button"><router-link to="/training?q=5">Деепричастия</router-link></div>
-    <div class="button"><router-link to="/training?q=6">Наречия</router-link></div>
-    <div class="button"><router-link to="/training?q=7">Все части речи</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 0 } }">Версия-прототип: всего 4 слова</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 1 } }">Имена существительные</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 2 } }">Имена прилагательные</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 3 } }">Глаголы</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 4 } }">Причастия</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 5 } }">Деепричастия</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 6 } }">Наречия</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 7 } }">Все части речи</router-link></div>
     <div class="text">
       <p>Если вы не уверены в своих знаниях, вы можете почитать теоретическую часть:</p>
     </div>
-    <div class="button"><router-link to="/orthoepy/article">Статья по орфоэпии</router-link></div>
+    <div class="button"><router-link :to="{ name: 'orthoepy-article' }">Статья по орфоэпии</router-link></div>
     <div class="text">
       <p>Вернуться к темам:</p>
     </div>

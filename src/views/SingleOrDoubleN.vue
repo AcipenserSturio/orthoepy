@@ -9,7 +9,7 @@
       <p>Тренажёр заканчивает предлагать вопросы, если последний ваш ответ на каждое слово был правильным.</p>
       <p>Выберите список слов, которые вы будете закреплять:</p>
     </div>
-    <div class="button"><router-link to="/training?q=8">Исключения</router-link></div>
+    <div class="button"><router-link :to="{ name: 'training', query: { q: 8 } }">Исключения</router-link></div>
     <div class="text">
       <p>Вернуться к темам:</p>
     </div>
