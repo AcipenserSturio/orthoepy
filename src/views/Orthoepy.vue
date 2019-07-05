@@ -9,22 +9,22 @@
       <p>Тренажёр заканчивает предлагать вопросы, если последний ваш ответ на каждое слово был правильным.</p>
       <p>Выберите список слов, которые вы будете закреплять:</p>
     </div>
-    <div class="button"><a href="training?q=0">Версия-прототип: всего 4 слова</a></div>
-    <div class="button"><a href="training?q=1">Имена существительные</a></div>
-    <div class="button"><a href="training?q=2">Имена прилагательные</a></div>
-    <div class="button"><a href="training?q=3">Глаголы</a></div>
-    <div class="button"><a href="training?q=4">Причастия</a></div>
-    <div class="button"><a href="training?q=5">Деепричастия</a></div>
-    <div class="button"><a href="training?q=6">Наречия</a></div>
-    <div class="button"><a href="training?q=7">Все части речи</a></div>
+    <div class="button"><router-link to="/training?q=0">Версия-прототип: всего 4 слова</router-link></div>
+    <div class="button"><router-link to="/training?q=1">Имена существительные</router-link></div>
+    <div class="button"><router-link to="/training?q=2">Имена прилагательные</router-link></div>
+    <div class="button"><router-link to="/training?q=3">Глаголы</router-link></div>
+    <div class="button"><router-link to="/training?q=4">Причастия</router-link></div>
+    <div class="button"><router-link to="/training?q=5">Деепричастия</router-link></div>
+    <div class="button"><router-link to="/training?q=6">Наречия</router-link></div>
+    <div class="button"><router-link to="/training?q=7">Все части речи</router-link></div>
     <div class="text">
       <p>Если вы не уверены в своих знаниях, вы можете почитать теоретическую часть:</p>
     </div>
-    <div class="button"><a href="orthoepy/article">Статья по орфоэпии</a></div>
+    <div class="button"><router-link to="/orthoepy/article">Статья по орфоэпии</router-link></div>
     <div class="text">
       <p>Вернуться к темам:</p>
     </div>
-    <div class="button"><a href="javascript:history.back()">Обратно</a></div>
+    <div class="button"><a @click="$router.go(-1)">Обратно</a></div>
   </div>
 </template>
 
