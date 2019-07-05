@@ -17,16 +17,15 @@
 <script>
 import scripts from '@/js/scripts';
 
-window.addEventListener('load', () => {
-  scripts.main();
-});
-
 export default {
   name: 'Training',
   methods: {
     check: (buttonNumber) => {
       scripts.check(buttonNumber);
     },
+  },
+  mounted() {
+    scripts.main();
   },
 };
 </script>
