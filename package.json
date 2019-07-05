@@ -2,10 +2,12 @@
   "name": "russian",
   "version": "0.1.0",
   "private": true,
+  "homepage": "git@github.com:AcipenserSturio/russian.git",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js -b gh-pages -m 'Deploy'"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -21,6 +23,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "vue-gh-pages": "^1.19.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
