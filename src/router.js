@@ -32,5 +32,10 @@ export default new Router({
       name: 'training',
       component: () => import(/* webpackChunkName: "training" */ './views/Training.vue'),
     },
+    {
+      path: '*',
+      name: 'not-found',
+      component: () => import(/* webpackChunkName: "not-found" */ './views/NotFound.vue'),
+    },
   ],
 });
