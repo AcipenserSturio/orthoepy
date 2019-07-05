@@ -1,4 +1,4 @@
 module.exports = {
   lintOnSave: false,
-  publicPath: '/russian/',
+  publicPath: 'https://acipensersturio.github.io/russian/',
 };
