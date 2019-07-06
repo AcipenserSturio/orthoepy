@@ -1,9 +1,36 @@
 <template>
-  <h4>404. Страница не найдена</h4>
+  <div>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            404
+          </h1>
+          <h2 class="subtitle">
+            Страница не найдена.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container has-text-centered">
+        <p>
+          <b-icon
+            icon="emoticon-sad"
+            size="is-large">
+          </b-icon>
+        </p>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
+import BIcon from 'buefy/src/components/icon/Icon.vue';
+
 export default {
   name: 'NotFound',
+  components: { BIcon },
 };
 </script>
