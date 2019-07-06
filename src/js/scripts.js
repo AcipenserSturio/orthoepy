@@ -216,7 +216,7 @@ function scrollToStat(selectedChoice) {
 }
 
 function win() {
-	document.getElementById("answer").innerHTML = "Поздравляю, вы закрепили материал!<div class=\"button\" onclick=\"window.location = '';\">Начать заново</div>";
+	document.getElementById("answer").innerHTML = "<div class=\"has-text-centered\"><p>Поздравляю, вы закрепили материал!</p><br><div class=\"button\" onclick=\"window.location = '';\">Начать заново</div>";
 }
 
 export default { main, check };
