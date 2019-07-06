@@ -1,35 +1,94 @@
 <template>
-  <div align="center">
-    <h1>ОРФОЭПИЯ</h1>
-    <div class="text">
-      <p>Добро пожаловать в тренажёр для закрепления орфоэпических норм.</p>
-      <p>Данный тренажёр предлагает в случайном порядке проблемные слова из одного из нижеприведённых списков, ваша цель - правильно назвать у слов ударение.</p>
-      <p>После того, как вы один раз ответили на каждое слово в списке, тренажёр будет предлагать слова вновь, в этот раз приоритизируя те, в которых у вас были ошибки.</p>
-      <p>Если вы хотите проверить произношение некоторого слова, не дожидаясь вопроса, вы можете навести курсор на это слово в столбце слева, и правильное произношение будет вам показано.</p>
-      <p>Тренажёр заканчивает предлагать вопросы, если последний ваш ответ на каждое слово был правильным.</p>
-      <p>Выберите список слов, которые вы будете закреплять:</p>
-    </div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 0 } }">Версия-прототип: всего 4 слова</router-link></div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 1 } }">Имена существительные</router-link></div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 2 } }">Имена прилагательные</router-link></div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 3 } }">Глаголы</router-link></div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 4 } }">Причастия</router-link></div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 5 } }">Деепричастия</router-link></div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 6 } }">Наречия</router-link></div>
-    <div class="button"><router-link :to="{ name: 'training', query: { q: 7 } }">Все части речи</router-link></div>
-    <div class="text">
-      <p>Если вы не уверены в своих знаниях, вы можете почитать теоретическую часть:</p>
-    </div>
-    <div class="button"><router-link :to="{ name: 'orthoepy-article' }">Статья по орфоэпии</router-link></div>
-    <div class="text">
-      <p>Вернуться к темам:</p>
-    </div>
-    <div class="button"><a @click="$router.go(-1)">Обратно</a></div>
+  <div>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Орфоэпия
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="container">
+            <div class="has-text-centered">
+              <b-button @click="$router.push({ name: 'orthoepy-article' })">
+                Прочитать теорию
+              </b-button>
+            </div>
+            <hr>
+            <p class="title is-5">
+              Как пользоваться
+            </p>
+            <div class="content has-text-justified">
+              <p>
+                Данный тренажёр предлагает в случайном порядке проблемные слова
+                из одного из нижеприведённых списков, ваша цель - правильно
+                назвать у слов ударение.
+              </p>
+              <p>
+                После того, как вы один раз ответили на каждое слово в списке,
+                тренажёр будет предлагать слова вновь, в этот раз приоритизируя
+                те, в которых у вас были ошибки.
+              </p>
+              <p>
+                Если вы хотите проверить произношение некоторого слова, не
+                дожидаясь вопроса, вы можете навести курсор на это слово в
+                столбце слева, и правильное произношение будет вам показано.
+              </p>
+              <p>
+                Тренажёр заканчивает предлагать вопросы, если последний ваш
+                ответ на каждое слово был правильным.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="container">
+            <p class="title is-5">
+              Списки слов для закрепления
+            </p>
+            <div class="list is-hoverable">
+              <router-link :to="{ name: 'training', query: { q: 0 } }" class="list-item">
+                Версия-прототип: всего 4 слова
+              </router-link>
+              <router-link :to="{ name: 'training', query: { q: 1 } }" class="list-item">
+                Имена существительные
+              </router-link>
+              <router-link :to="{ name: 'training', query: { q: 2 } }" class="list-item">
+                Имена прилагательные
+              </router-link>
+              <router-link :to="{ name: 'training', query: { q: 3 } }" class="list-item">
+                Глаголы
+              </router-link>
+              <router-link :to="{ name: 'training', query: { q: 4 } }" class="list-item">
+                Причастия
+              </router-link>
+              <router-link :to="{ name: 'training', query: { q: 5 } }" class="list-item">
+                Деепричастия
+              </router-link>
+              <router-link :to="{ name: 'training', query: { q: 6 } }" class="list-item">
+                Наречия
+              </router-link>
+              <router-link :to="{ name: 'training', query: { q: 7 } }" class="list-item">
+                Все части речи
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import BButton from 'buefy/src/components/button/Button.vue';
+
 export default {
   name: 'Orthoepy',
+  components: { BButton },
 };
 </script>
