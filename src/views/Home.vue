@@ -19,13 +19,13 @@
           Выберите тему, которую будете закреплять:
         </p>
         <div class="list is-hoverable">
-          <router-link :to="{ name: 'orthoepy' }" class="list-item">
+          <router-link :to="{ name: 'orthoepy-home' }" class="list-item">
             Орфоэпия
           </router-link>
-          <router-link :to="{ name: 'single-or-double-n' }" class="list-item">
+          <router-link :to="{ name: 'nn-home' }" class="list-item">
             Н/НН
           </router-link>
-          <router-link :to="{ name: 'not-together-or-separate' }" class="list-item">
+          <router-link :to="{ name: 'not-home' }" class="list-item">
             Слитное и раздельное правописание НЕ
           </router-link>
         </div>

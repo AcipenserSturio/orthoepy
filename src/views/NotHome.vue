@@ -35,7 +35,7 @@
 import BButton from 'buefy/src/components/button/Button.vue';
 
 export default {
-  name: 'NotTogetherOrSeparate',
+  name: 'NotHome',
   components: { BButton },
 };
 </script>

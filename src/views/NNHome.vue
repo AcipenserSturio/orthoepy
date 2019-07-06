@@ -59,6 +59,6 @@
 
 <script>
 export default {
-  name: 'SingleOrDoubleN',
+  name: 'NNTopic',
 };
 </script>

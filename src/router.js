@@ -14,8 +14,8 @@ export default new Router({
     },
     {
       path: '/orthoepy',
-      name: 'orthoepy',
-      component: () => import(/* webpackChunkName: "orthoepy" */ './views/Orthoepy.vue'),
+      name: 'orthoepy-home',
+      component: () => import(/* webpackChunkName: "orthoepy-home" */ './views/OrthoepyHome.vue'),
     },
     {
       path: '/orthoepy/article',
@@ -24,13 +24,13 @@ export default new Router({
     },
     {
       path: '/nn',
-      name: 'single-or-double-n',
-      component: () => import(/* webpackChunkName: "single-or-double-n" */ './views/SingleOrDoubleN.vue'),
+      name: 'nn-home',
+      component: () => import(/* webpackChunkName: "nn-home" */ './views/NNHome.vue'),
     },
     {
       path: '/not',
-      name: 'not-together-or-separate',
-      component: () => import(/* webpackChunkName: "not-together-or-separate" */ './views/NotTogetherOrSeparate.vue'),
+      name: 'not-home',
+      component: () => import(/* webpackChunkName: "not-home" */ './views/NotHome.vue'),
     },
     {
       path: '/training',
