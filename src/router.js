@@ -28,6 +28,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "single-or-double-n" */ './views/SingleOrDoubleN.vue'),
     },
     {
+      path: '/not',
+      name: 'not-together-or-separate',
+      component: () => import(/* webpackChunkName: "not-together-or-separate" */ './views/NotTogetherOrSeparate.vue'),
+    },
+    {
       path: '/training',
       name: 'training',
       component: () => import(/* webpackChunkName: "training" */ './views/Training.vue'),

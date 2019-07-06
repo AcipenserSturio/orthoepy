@@ -25,6 +25,9 @@
           <router-link :to="{ name: 'single-or-double-n' }" class="list-item">
             Н/НН
           </router-link>
+          <router-link :to="{ name: 'not-together-or-separate' }" class="list-item">
+            Слитное и раздельное правописание НЕ
+          </router-link>
         </div>
       </div>
     </section>
