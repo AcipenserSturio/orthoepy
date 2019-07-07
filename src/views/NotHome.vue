@@ -13,7 +13,7 @@
     <section class="section">
       <div class="container">
         <div class="has-text-centered">
-          <b-button>
+          <b-button @click="openTraining">
             Открыть тренажер
           </b-button>
         </div>
@@ -37,5 +37,13 @@ import BButton from 'buefy/src/components/button/Button.vue';
 export default {
   name: 'NotHome',
   components: { BButton },
+  methods: {
+    openTraining() {
+      this.$router.push({
+        name: 'question-training',
+        params: { topic: 'not' },
+      });
+    },
+  },
 };
 </script>
