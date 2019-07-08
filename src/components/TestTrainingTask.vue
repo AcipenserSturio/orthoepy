@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <span class="task-number">{{ number }}.</span>
+  <div class="task-container">
+    <span class="task-number is-inline-flex">{{ number }}.</span>
     <div class="is-inline-flex">
       <b-field :label="`${text}`">
         <div class="block">
@@ -61,5 +61,9 @@ export default {
 .task-number {
   margin-right: 15px;
   font-weight: bold;
+}
+
+.task-container {
+  white-space: nowrap;
 }
 </style>
