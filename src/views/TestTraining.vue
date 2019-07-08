@@ -20,18 +20,36 @@
           v-for="(task, index) in tasks"
           :key="index"
           :number="index + 1"
-          :id="task.id"
           :text="task.text"
           :options="task.options"
           :answer="task.answer"
-          @newAnswer="onNewAnswer"
+          :selected.sync="answers[task.id]"
+          :checking="is_checking"
         />
+        <br>
+        <div>
+          <div v-if="is_checking">
+            <div class="has-text-centered">
+              <i>Результат: {{ correctCount }}/{{ totalCount }}</i>
+            </div>
+            <br>
+          </div>
+          <div class="buttons is-centered">
+            <b-button class="is-primary" @click="onCheck">
+              Проверить
+            </b-button>
+            <b-button @click="onAgain">
+              Заново
+            </b-button>
+          </div>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import BButton from 'buefy/src/components/button/Button.vue';
 import TestTrainingTask from '../components/TestTrainingTask.vue';
 
 function loadRawTasks(topic) {
@@ -84,11 +102,12 @@ function shuffledArray(array) {
 
 export default {
   name: 'TestTraining',
-  components: { TestTrainingTask },
+  components: { BButton, TestTrainingTask },
   data() {
     return {
       tasks: [],
       answers: {},
+      is_checking: false,
     };
   },
   computed: {
@@ -104,6 +123,16 @@ export default {
           return 'Ходьба по ссылкам, а не по адресам сайта';
       }
     },
+    correctCount() {
+      let count = 0;
+      this.tasks.forEach((task) => {
+        if (this.answers[task.id] === task.answer) count += 1;
+      });
+      return count;
+    },
+    totalCount() {
+      return this.tasks.length;
+    },
   },
   methods: {
     setTasks() {
@@ -114,8 +143,12 @@ export default {
       );
       this.tasks = shuffledArray(tasksArray);
     },
-    onNewAnswer(taskID, newAnswer) {
-      this.answers[taskID] = newAnswer;
+    onCheck() {
+      this.is_checking = true;
+    },
+    onAgain() {
+      this.is_checking = false;
+      this.answers = [];
     },
   },
   created() {

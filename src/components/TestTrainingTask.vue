@@ -7,9 +7,10 @@
           <b-radio
             v-for="option in options"
             :key="option"
-            v-model="input_answer"
-            :native-value="option"
-            @input="onAnswerChanged">
+            :type="radioType(option)"
+            :disabled="checking"
+            v-model="selectedValue"
+            :native-value="option">
             {{ option }}
           </b-radio>
         </div>
@@ -27,19 +28,30 @@ export default {
   components: { BField, BRadio },
   props: {
     number: Number,
-    id: String,
     text: String,
     options: Array,
     answer: String,
+    checking: Boolean,
+    selected: String,
   },
   data() {
-    return {
-      input_answer: null,
-    };
+    return {};
   },
   methods: {
-    onAnswerChanged() {
-      this.$emit('newAnswer', this.id, this.input_answer);
+    radioType(option) {
+      if (this.checking && option === this.answer) return 'is-success';
+      if (this.checking && option !== this.answer) return 'is-danger';
+      return '';
+    },
+  },
+  computed: {
+    selectedValue: {
+      get() {
+        return this.selected;
+      },
+      set(value) {
+        this.$emit('update:selected', value);
+      },
     },
   },
 };

@@ -132,8 +132,11 @@ export default {
       }
     },
     completeTraining() {
-      // FIXME: implement
-      alert('Completed!');
+      // FIXME: generate test
+      // FIXME: show model with results before pushing a new route
+      if (this.$route.params.topic === 'not') {
+        this.$router.push({ name: 'test-training', params: { topic: 'not' } });
+      }
     },
   },
   created() {
