@@ -35,7 +35,10 @@
             <br>
           </div>
           <div class="buttons is-centered">
-            <b-button class="is-primary" @click="onCheck">
+            <b-button
+              class="is-primary"
+              @click="onCheck"
+              :disabled="is_checking">
               Проверить
             </b-button>
             <b-button @click="onAgain">
