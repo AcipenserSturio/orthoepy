@@ -1,0 +1,206 @@
+{
+    "408769970": {
+        "wording": "Нельзя",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 311160651,
+                "is_exception": false
+            }
+        }
+    },
+    "640162949": {
+        "wording": "(Не)высокий, а низкий.",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Раздельно",
+        "explanation": {
+            "rule": {
+                "id": 830293829,
+                "is_exception": false
+            }
+        }
+    },
+    "800430807": {
+        "wording": "(Не)(с)кем пойти, был не в духе.",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Раздельно",
+        "explanation": {
+            "rule": {
+                "id": 205796853,
+                "is_exception": false
+            }
+        }
+    },
+    "837003902": {
+        "wording": "(Не)читая книг.",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Раздельно",
+        "explanation": {
+            "rule": {
+                "id": 980436843,
+                "is_exception": false
+            }
+        }
+    },
+    "282400752": {
+        "wording": "(Не)досчитал до десяти.",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 464219395,
+                "is_exception": false
+            }
+        }
+    },
+    "793893514": {
+        "wording": "Несмотря",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 173041852,
+                "is_exception": false
+            }
+        }
+    },
+    "967970550": {
+        "wording": "Не глядя на",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 173041852,
+                "is_exception": true
+            }
+        }
+    },
+    "693991220": {
+        "wording": "Не считая",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 173041852,
+                "is_exception": true
+            }
+        }
+    },
+    "182624849": {
+        "wording": "Не довольно ли",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 173041852,
+                "is_exception": true
+            }
+        }
+    },
+    "521518583": {
+        "wording": "Некто",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 105530930,
+                "is_exception": false
+            }
+        }
+    },
+    "313829489": {
+        "wording": "Нечто",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Слитно",
+        "explanation": {
+            "rule": {
+                "id": 105530930,
+                "is_exception": false
+            }
+        }
+    },
+    "914304382": {
+        "wording": "Их было (не)десять и даже (не)двадцать.",
+        "input": {
+            "type": "options",
+            "elements": [
+                "Слитно",
+                "Раздельно"
+            ]
+        },
+        "correct": "Раздельно",
+        "explanation": {
+            "rule": {
+                "id": 866245470,
+                "is_exception": false
+            }
+        }
+    }
+}
