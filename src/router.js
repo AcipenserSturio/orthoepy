@@ -46,6 +46,10 @@ export default new Router({
       path: '/:topic/training/test',
       name: 'test-training',
       component: () => import(/* webpackChunkName: "test-training" */ './views/TestTraining.vue'),
+      props: route => ({
+        correctRuleAsTaskIDs: new Set(JSON.parse(route.query.correct)),
+        wrongRuleAsTaskIDs: new Set(JSON.parse(route.query.wrong)),
+      }),
     },
     {
       path: '*',
