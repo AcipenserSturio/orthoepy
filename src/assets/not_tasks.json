@@ -1,5 +1,5 @@
 {
-    "408769970": {
+    "893477239": {
         "wording": "Нельзя",
         "input": {
             "type": "options",
@@ -11,12 +11,12 @@
         "correct": "Слитно",
         "explanation": {
             "rule": {
-                "id": 311160651,
+                "id": "213276875",
                 "is_exception": false
             }
         }
     },
-    "640162949": {
+    "696724184": {
         "wording": "(Не)высокий, а низкий.",
         "input": {
             "type": "options",
@@ -28,12 +28,12 @@
         "correct": "Раздельно",
         "explanation": {
             "rule": {
-                "id": 830293829,
+                "id": "285881701",
                 "is_exception": false
             }
         }
     },
-    "800430807": {
+    "217328750": {
         "wording": "(Не)(с)кем пойти, был не в духе.",
         "input": {
             "type": "options",
@@ -45,12 +45,12 @@
         "correct": "Раздельно",
         "explanation": {
             "rule": {
-                "id": 205796853,
+                "id": "837823585",
                 "is_exception": false
             }
         }
     },
-    "837003902": {
+    "114057241": {
         "wording": "(Не)читая книг.",
         "input": {
             "type": "options",
@@ -62,12 +62,12 @@
         "correct": "Раздельно",
         "explanation": {
             "rule": {
-                "id": 980436843,
+                "id": "480665887",
                 "is_exception": false
             }
         }
     },
-    "282400752": {
+    "489003996": {
         "wording": "(Не)досчитал до десяти.",
         "input": {
             "type": "options",
@@ -79,12 +79,12 @@
         "correct": "Слитно",
         "explanation": {
             "rule": {
-                "id": 464219395,
+                "id": "145648656",
                 "is_exception": false
             }
         }
     },
-    "793893514": {
+    "614678688": {
         "wording": "Несмотря",
         "input": {
             "type": "options",
@@ -96,12 +96,12 @@
         "correct": "Слитно",
         "explanation": {
             "rule": {
-                "id": 173041852,
+                "id": "438693388",
                 "is_exception": false
             }
         }
     },
-    "967970550": {
+    "565729733": {
         "wording": "Не глядя на",
         "input": {
             "type": "options",
@@ -110,15 +110,15 @@
                 "Раздельно"
             ]
         },
-        "correct": "Слитно",
+        "correct": "Раздельно",
         "explanation": {
             "rule": {
-                "id": 173041852,
+                "id": "438693388",
                 "is_exception": true
             }
         }
     },
-    "693991220": {
+    "293221293": {
         "wording": "Не считая",
         "input": {
             "type": "options",
@@ -127,15 +127,15 @@
                 "Раздельно"
             ]
         },
-        "correct": "Слитно",
+        "correct": "Раздельно",
         "explanation": {
             "rule": {
-                "id": 173041852,
+                "id": "438693388",
                 "is_exception": true
             }
         }
     },
-    "182624849": {
+    "933517361": {
         "wording": "Не довольно ли",
         "input": {
             "type": "options",
@@ -144,15 +144,15 @@
                 "Раздельно"
             ]
         },
-        "correct": "Слитно",
+        "correct": "Раздельно",
         "explanation": {
             "rule": {
-                "id": 173041852,
+                "id": "438693388",
                 "is_exception": true
             }
         }
     },
-    "521518583": {
+    "579186891": {
         "wording": "Некто",
         "input": {
             "type": "options",
@@ -164,12 +164,12 @@
         "correct": "Слитно",
         "explanation": {
             "rule": {
-                "id": 105530930,
+                "id": "836861978",
                 "is_exception": false
             }
         }
     },
-    "313829489": {
+    "900374128": {
         "wording": "Нечто",
         "input": {
             "type": "options",
@@ -181,12 +181,12 @@
         "correct": "Слитно",
         "explanation": {
             "rule": {
-                "id": 105530930,
+                "id": "836861978",
                 "is_exception": false
             }
         }
     },
-    "914304382": {
+    "316712338": {
         "wording": "Их было (не)десять и даже (не)двадцать.",
         "input": {
             "type": "options",
@@ -198,7 +198,7 @@
         "correct": "Раздельно",
         "explanation": {
             "rule": {
-                "id": 866245470,
+                "id": "425528641",
                 "is_exception": false
             }
         }
