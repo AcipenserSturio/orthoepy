@@ -29,7 +29,7 @@ export default {
   props: {
     number: Number,
     text: String,
-    options: Array,
+    input: Object,
     answer: String,
     checking: Boolean,
     selected: String,
@@ -52,6 +52,9 @@ export default {
       set(value) {
         this.$emit('update:selected', value);
       },
+    },
+    options() {
+      return this.input.elements;
     },
   },
 };

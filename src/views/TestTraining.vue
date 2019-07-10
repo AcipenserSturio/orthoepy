@@ -20,9 +20,9 @@
           v-for="(task, index) in tasks"
           :key="index"
           :number="index + 1"
-          :text="task.text"
-          :options="task.options"
-          :answer="task.answer"
+          :text="task.wording"
+          :input="task.input"
+          :answer="task.correct"
           :selected.sync="answers[task.id]"
           :checking="is_checking"
         />
@@ -54,37 +54,9 @@
 <script>
 import BButton from 'buefy/src/components/button/Button.vue';
 import TestTrainingTask from '../components/TestTrainingTask.vue';
+import notRules from '@/assets/not_rules.json';
+import notTasks from '@/assets/not_tasks.json';
 
-function loadRawTasks(topic) {
-  // FIXME: placeholder
-  return {
-    413: {
-      text: '(Не)высокий, а низкий.',
-      options: ['Слитно', 'Раздельно'],
-      answer: 'Раздельно',
-    },
-    213: {
-      text: '(Не)(с)кем пойти, был не в духе.',
-      options: ['Слитно', 'Раздельно'],
-      answer: 'Раздельно',
-    },
-    543: {
-      text: '(Не)читая книг.',
-      options: ['Слитно', 'Раздельно'],
-      answer: 'Раздельно',
-    },
-    664: {
-      text: '(Не)досчитал до десяти.',
-      options: ['Слитно', 'Раздельно'],
-      answer: 'Слитно',
-    },
-    778: {
-      text: 'Их было (не)десять и даже (не)двадцать.',
-      options: ['Слитно', 'Раздельно'],
-      answer: 'Раздельно',
-    },
-  };
-}
 function convertObjectWithObjectsToArrayOfObjects(objects, keyName) {
   const array = [];
   Object.keys(objects).forEach((key) => {
@@ -102,12 +74,25 @@ function shuffledArray(array) {
   }
   return shuffled;
 }
+function popRandomFromArray(array) {
+  const indexToPop = Math.floor(Math.random() * array.length);
+  const lastIndex = array.length - 1;
+  // eslint-disable-next-line no-param-reassign
+  [array[lastIndex], array[indexToPop]] = [array[indexToPop], array[lastIndex]];
+  return array.pop();
+}
 
 export default {
   name: 'TestTraining',
   components: { BButton, TestTrainingTask },
+  props: {
+    correctRuleAsTaskIDs: Set,
+    wrongRuleAsTaskIDs: Set,
+  },
   data() {
     return {
+      taskObjects: notTasks,
+      rules: notRules,
       tasks: [],
       answers: {},
       is_checking: false,
@@ -123,13 +108,13 @@ export default {
         case 'orthoepy':
           return 'Орфоэпия';
         default:
-          return 'Ходьба по ссылкам, а не по адресам сайта';
+          return 'Учимся ходить по ссылкам на сайте, а не по URL';
       }
     },
     correctCount() {
       let count = 0;
       this.tasks.forEach((task) => {
-        if (this.answers[task.id] === task.answer) count += 1;
+        if (this.answers[task.id] === task.correct) count += 1;
       });
       return count;
     },
@@ -138,24 +123,57 @@ export default {
     },
   },
   methods: {
-    setTasks() {
-      const rawTasks = loadRawTasks(this.$route.params.topic);
+    makeTasks() {
+      const selectedTaskIDs = [];
+      Object.keys(this.rules).forEach((ruleID) => {
+        const ruleAsTaskID = this.rules[ruleID].rule_as_task_id;
+        const taskIDsToSelect = this.rules[ruleID].task_ids.concat(
+          this.rules[ruleID].exception_task_ids,
+        );
+
+        let tasksToSelectCount;
+        if (this.correctRuleAsTaskIDs.has(ruleAsTaskID)) {
+          tasksToSelectCount = 1;
+        } else if (this.wrongRuleAsTaskIDs.has(ruleAsTaskID)) {
+          tasksToSelectCount = 2;
+        } else {
+          return;
+        }
+
+        for (let i = 0; i < tasksToSelectCount; i += 1) {
+          if (taskIDsToSelect.length === 0) break;
+          const taskID = popRandomFromArray(taskIDsToSelect);
+          selectedTaskIDs.push(taskID);
+        }
+      });
+      const selectedTaskObjects = {};
+      selectedTaskIDs.forEach((id) => {
+        selectedTaskObjects[id] = this.taskObjects[id];
+      });
       const tasksArray = convertObjectWithObjectsToArrayOfObjects(
-        rawTasks,
+        selectedTaskObjects,
         'id',
       );
-      this.tasks = shuffledArray(tasksArray);
+      return shuffledArray(tasksArray);
+    },
+    makeAnswers() {
+      const answers = {};
+      this.tasks.forEach((task) => {
+        answers[task.id] = null;
+      });
+      return answers;
     },
     onCheck() {
       this.is_checking = true;
     },
     onAgain() {
       this.is_checking = false;
-      this.answers = [];
+      this.answers = this.makeAnswers();
     },
   },
   created() {
-    this.setTasks();
+    this.tasks = this.makeTasks();
+    this.answers = this.makeAnswers();
   },
 };
 </script>
