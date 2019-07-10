@@ -125,7 +125,7 @@ def make_exception_task(wording, correct, rule_id):
     task = _make_task(
         wording=wording,
         input_elements=['Слитно', 'Раздельно'],
-        correct=correct
+        correct='Раздельно' if correct == 'Слитно' else 'Слитно'
     )
     task['explanation'].update({
         'rule': {
