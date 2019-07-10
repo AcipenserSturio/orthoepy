@@ -28,36 +28,8 @@
 </template>
 
 <script>
-function loadRawQuestions(topic) {
-  // FIXME: placeholder
-  return {
-    1: {
-      text: 'Не употребляется без НЕ',
-      options: ['Слитно', 'Раздельно', 'Не знаю'],
-      answer: 'Слитно',
-    },
-    2: {
-      text: 'Противопоставление с "а"',
-      options: ['Слитно', 'Раздельно', 'Не знаю'],
-      answer: 'Раздельно',
-    },
-    3: {
-      text: 'Есть предлог',
-      options: ['Слитно', 'Раздельно', 'Не знаю'],
-      answer: 'Раздельно',
-    },
-    4: {
-      text: 'Глагол, деепричастие, краткое причастие',
-      options: ['Слитно', 'Раздельно', 'Не знаю'],
-      answer: 'Раздельно',
-    },
-    5: {
-      text: 'Глагол, деепричастие, краткое причастие с приставкой "Недо" противоположной по значению приставке "Пере"',
-      options: ['Слитно', 'Раздельно', 'Не знаю'],
-      answer: 'Слитно',
-    },
-  };
-}
+import notRulesAsTasks from '@/assets/not_rules_as_tasks.json';
+
 function convertObjectWithObjectsToArrayOfObjects(objects, keyName) {
   const array = [];
   Object.keys(objects).forEach((key) => {
@@ -80,10 +52,12 @@ export default {
   name: 'QuestionTraining',
   data() {
     return {
+      rulesAsTasks: notRulesAsTasks,
       questions: [],
       answers: {},
       question_i: 0,
       is_last_answer_correct: null,
+      answersCorrectness: {},
     };
   },
   computed: {
@@ -94,13 +68,16 @@ export default {
       return this.question_i + 1;
     },
     questionText() {
-      return this.questions[this.question_i].text;
+      return this.questions[this.question_i].wording;
     },
     questionOptions() {
-      return this.questions[this.question_i].options;
+      return this.questions[this.question_i].input.elements;
     },
     questionAnswer() {
-      return this.questions[this.question_i].answer;
+      return this.questions[this.question_i].correct;
+    },
+    questionID() {
+      return this.questions[this.question_i].id;
     },
     isLastWrong() {
       return this.is_last_answer_correct === false;
@@ -113,18 +90,17 @@ export default {
     },
   },
   methods: {
-    setQuestions() {
-      const rawQuestions = loadRawQuestions(this.$route.params.topic);
+    makeQuestions() {
       const questionsArray = convertObjectWithObjectsToArrayOfObjects(
-        rawQuestions,
+        this.rulesAsTasks,
         'id',
       );
-      this.questions = shuffledArray(questionsArray);
+      return shuffledArray(questionsArray);
     },
     submitAnswer(answer) {
-      const questionID = this.questions[this.question_i].id;
-      this.answers[questionID] = answer;
+      this.answers[this.questionID] = answer;
       this.is_last_answer_correct = answer === this.questionAnswer;
+      this.answersCorrectness[this.questionID] = this.is_last_answer_correct;
       if (this.isLastQuestion) {
         this.completeTraining();
       } else {
@@ -132,15 +108,32 @@ export default {
       }
     },
     completeTraining() {
-      // FIXME: generate test
       // FIXME: show model with results before pushing a new route
+      const correctRuleAsTaskIDs = [];
+      const wrongRuleAsTaskIDs = [];
+      Object.keys(this.answersCorrectness).forEach((id) => {
+        if (this.answersCorrectness[id] === true) {
+          correctRuleAsTaskIDs.push(id);
+        } else {
+          wrongRuleAsTaskIDs.push(id);
+        }
+      });
       if (this.$route.params.topic === 'not') {
-        this.$router.push({ name: 'test-training', params: { topic: 'not' } });
+        this.$router.push({
+          name: 'test-training',
+          params: {
+            topic: 'not',
+          },
+          query: {
+            correct: JSON.stringify(correctRuleAsTaskIDs),
+            wrong: JSON.stringify(wrongRuleAsTaskIDs),
+          },
+        });
       }
     },
   },
   created() {
-    this.setQuestions();
+    this.questions = this.makeQuestions();
   },
 };
 </script>
