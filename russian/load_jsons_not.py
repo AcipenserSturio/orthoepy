@@ -155,7 +155,7 @@ class IDGenerator:
         self._used_identifiers = set()
 
     def new_id(self):
-        identifier = random.randint(100_000_000, 999_999_999)
+        identifier = str(random.randint(100_000_000, 999_999_999))
         if identifier in self._used_identifiers:
             return self.new_id()
         self._used_identifiers.add(identifier)
