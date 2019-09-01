@@ -13,6 +13,7 @@
 <script>
 import TaskExplanation from '@/components/TaskExplanation.vue';
 import { Explanation } from '@/models';
+
 export default {
   name: 'TrainingCardTaskExplanation',
   components: {
