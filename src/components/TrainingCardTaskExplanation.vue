@@ -1,15 +1,26 @@
 <template>
   <details>
-    <summary class="accordion-control has-text-weight-bold">
+    <summary
+      class="accordion-control has-text-weight-bold"
+      style="margin-bottom: 1rem"
+    >
       Пояснение
     </summary>
-    Здесь будет поянение.
+    <TaskExplanation :explanation="explanation"/>
   </details>
 </template>
 
 <script>
+import TaskExplanation from '@/components/TaskExplanation.vue';
+import { Explanation } from '@/models';
 export default {
   name: 'TrainingCardTaskExplanation',
+  components: {
+    TaskExplanation,
+  },
+  props: {
+    explanation: Explanation,
+  },
 };
 </script>
 

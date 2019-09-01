@@ -11,7 +11,7 @@
 
     <div class="card-content">
       <p style="margin-bottom: 1.5rem">{{ task.question }}</p>
-      <VPrompt
+      <TaskPrompt
         :disabled="isChecking"
         v-model="userAnswer"
         :prompt="task.prompt"
@@ -20,11 +20,14 @@
       <div v-if="isChecking">
         <hr>
         <TrainingCardTaskCheckingLabel
-          style="margin-bottom: 1.5rem"
           :is-correct="isCorrect"
           :display-answer="task.getDisplayAnswer()"
         />
-        <TrainingCardTaskExplanation/>
+        <TrainingCardTaskExplanation
+          v-if="task.explanation"
+          style="margin-top: 1.5rem"
+          :explanation="task.explanation"
+        />
       </div>
     </div>
 
@@ -36,7 +39,7 @@
 </template>
 
 <script>
-import VPrompt from '@/components/VPrompt.vue';
+import TaskPrompt from '@/components/TaskPrompt.vue';
 import { Test } from '@/models';
 import TrainingCardTaskCheckingLabel from '@/components/TrainingCardTaskCheckingLabel.vue';
 import TrainingCardTaskExplanation from '@/components/TrainingCardTaskExplanation.vue';
@@ -46,7 +49,7 @@ export default {
   components: {
     TrainingCardTaskExplanation,
     TrainingCardTaskCheckingLabel,
-    VPrompt,
+    TaskPrompt,
   },
   props: {
     test: Test,

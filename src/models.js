@@ -23,10 +23,30 @@ export class Prompt {
   }
 }
 
+export class Explanation {
+  constructor(raw) {
+    this.type = raw.type;
+    switch (this.type) {
+      case 'text':
+        this.text = raw.text;
+        break;
+      case 'rule-chain':
+        this.ruleChain = [...raw.rule_chain];
+        this.chainTail = raw.chain_tail;
+        break;
+      default:
+        break;
+    }
+  }
+}
+
 export class Task {
   constructor(raw) {
     this.question = raw.question;
     this.answer = raw.answer;
+    this.explanation = raw.explanation
+      ? new Explanation(raw.explanation)
+      : null;
     this.prompt = new Prompt(raw.prompt);
   }
 
