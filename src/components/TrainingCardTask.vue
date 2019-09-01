@@ -1,5 +1,8 @@
 <template>
-  <div class="card">
+  <div
+    class="card"
+    :class="{ [isCorrect ? 'card-correct' : 'card-incorrect']: isChecking }"
+  >
     <header class="card-header">
       <p class="card-header-title">
         {{ taskNumber }}/{{ tasksTotal }} — {{ test.topic }}
@@ -7,15 +10,45 @@
     </header>
 
     <div class="card-content">
-      <div class="content">
-        <p>{{ task.question }}</p>
-        <br>
-        <VPrompt v-model="userAnswer" :prompt="task.prompt"/>
+      <p style="margin-bottom: 1.5rem">{{ task.question }}</p>
+      <VPrompt
+        :disabled="isChecking"
+        v-model="userAnswer"
+        :prompt="task.prompt"
+      />
+
+      <div v-if="isChecking">
+        <hr>
+
+        <div style="margin-bottom: 1.5rem">
+          <div v-if="isCorrect" class="label-correct">
+            <p>
+              Правильно ✔
+            </p>
+          </div>
+
+          <div v-else class="label-incorrect">
+            <p>
+              Неправильно ✘
+            </p>
+            <p class="is-size-7">
+              <i>Ответ:</i> {{ task.answer }}
+            </p>
+          </div>
+        </div>
+
+        <details>
+          <summary class="accordion-control has-text-weight-bold">
+            Пояснение
+          </summary>
+          Здесь будет поянение.
+        </details>
       </div>
     </div>
 
     <footer class="card-footer">
-      <a class="card-footer-item">Ответить</a>
+      <a v-if="isChecking" class="card-footer-item">Продолжить</a>
+      <a v-else class="card-footer-item">Ответить</a>
     </footer>
   </div>
 </template>
@@ -33,6 +66,7 @@ export default {
     test: Test,
     taskIndex: Number,
     savedUserAnswer: [String, Array],
+    isChecking: Boolean,
   },
   data() {
     return {
@@ -51,9 +85,30 @@ export default {
     tasksTotal() {
       return this.test.tasks.length;
     },
+    isCorrect() {
+      return this.task.checkAnswer(this.userAnswer);
+    },
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.accordion-control {
+  cursor: pointer;
+  outline: none;
+}
+
+.card-correct {
+  box-shadow: 0 0 15px 1px rgba(hsl(141, 71%, 48%), 1);
+}
+.card-incorrect {
+  box-shadow: 0 0 15px 1px rgba(hsl(348, 100%, 61%), 1);
+}
+
+.label-correct {
+  color: green;
+}
+.label-incorrect {
+  color: darkred;
+}
 </style>

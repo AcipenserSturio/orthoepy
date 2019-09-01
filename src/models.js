@@ -1,9 +1,12 @@
+import { isArraysEqual } from '@/utils';
+
 export class Prompt {
   constructor(raw) {
     this.type = raw.type;
     switch (this.type) {
       case 'checkbox':
         this.checkboxes = [...raw.checkboxes];
+        this.checkboxes.sort();
         this.default = [];
         break;
       case 'radio':
@@ -25,6 +28,18 @@ export class Task {
     this.question = raw.question;
     this.answer = raw.answer;
     this.prompt = new Prompt(raw.prompt);
+  }
+
+  checkAnswer(userAnswer) {
+    switch (this.prompt.type) {
+      case 'checkbox': {
+        const answer = [...userAnswer];
+        answer.sort();
+        return isArraysEqual(this.answer, answer);
+      }
+      default:
+        return this.answer === userAnswer;
+    }
   }
 }
 
