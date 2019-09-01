@@ -14,7 +14,7 @@ import BInput from 'buefy/src/components/input/Input.vue';
 import BField from 'buefy/src/components/field/Field.vue';
 
 export default {
-  name: 'VPromptText',
+  name: 'TaskPromptText',
   components: {
     BInput,
     BField,

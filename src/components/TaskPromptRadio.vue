@@ -17,7 +17,7 @@
 import BRadio from 'buefy/src/components/radio/Radio.vue';
 
 export default {
-  name: 'VPromptRadio',
+  name: 'TaskPromptRadio',
   components: {
     BRadio,
   },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VPromptCheckbox
+    <TaskPromptCheckbox
       v-if="prompt.type === 'checkbox'"
       key="prompt-checkbox"
       :disabled="disabled"
@@ -8,7 +8,7 @@
       @input="updateValue"
       :checkboxes="prompt.checkboxes"
     />
-    <VPromptRadio
+    <TaskPromptRadio
       v-else-if="prompt.type === 'radio'"
       key="prompt-radio"
       :disabled="disabled"
@@ -16,7 +16,7 @@
       @input="updateValue"
       :radios="prompt.radios"
     />
-    <VPromptText
+    <TaskPromptText
       v-else-if="prompt.type === 'text'"
       key="prompt-text"
       :disabled="disabled"
@@ -35,17 +35,17 @@
 </template>
 
 <script>
-import VPromptCheckbox from '@/components/VPromptCheckbox.vue';
-import VPromptRadio from '@/components/VPromptRadio.vue';
-import VPromptText from '@/components/VPromptText.vue';
+import TaskPromptCheckbox from '@/components/TaskPromptCheckbox.vue';
+import TaskPromptRadio from '@/components/TaskPromptRadio.vue';
+import TaskPromptText from '@/components/TaskPromptText.vue';
 import { Prompt } from '@/models';
 
 export default {
-  name: 'VPrompt',
+  name: 'TaskPrompt',
   components: {
-    VPromptCheckbox,
-    VPromptRadio,
-    VPromptText,
+    TaskPromptCheckbox,
+    TaskPromptRadio,
+    TaskPromptText,
   },
   props: {
     value: [String, Array],
