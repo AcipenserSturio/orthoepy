@@ -10,7 +10,7 @@
       <div class="content">
         <p>{{ task.question }}</p>
         <br>
-        <VPrompt :prompt="task.prompt"/>
+        <VPrompt v-model="userAnswer" :prompt="task.prompt"/>
       </div>
     </div>
 
@@ -32,6 +32,11 @@ export default {
   props: {
     taskIndex: Number,
     test: Test,
+  },
+  data() {
+    return {
+      userAnswer: this.test.tasks[this.taskIndex].prompt.default,
+    };
   },
   computed: {
     task() {

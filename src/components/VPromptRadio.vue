@@ -2,8 +2,9 @@
   <div>
     <div class="field" v-for="radio in radios" :key="radio">
       <b-radio
-        v-model="givenAnswer"
         :native-value="radio"
+        :value="value"
+        @input="updateValue"
       >
         {{ radio }}
       </b-radio>
@@ -20,12 +21,13 @@ export default {
     BRadio,
   },
   props: {
+    value: String,
     radios: Array,
   },
-  data() {
-    return {
-      givenAnswer: String,
-    };
+  methods: {
+    updateValue(newValue) {
+      this.$emit('input', newValue);
+    },
   },
 };
 </script>

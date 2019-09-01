@@ -1,20 +1,30 @@
 <template>
   <div>
     <VPromptCheckbox
-      :checkboxes="prompt.checkboxes"
       v-if="prompt.type === 'checkbox'"
+      key="prompt-checkbox"
+      :value="value"
+      @input="updateValue"
+      :checkboxes="prompt.checkboxes"
     />
     <VPromptRadio
-      :radios="prompt.radios"
       v-else-if="prompt.type === 'radio'"
+      key="prompt-radio"
+      :value="value"
+      @input="updateValue"
+      :radios="prompt.radios"
     />
     <VPromptText
-      :placeholder="prompt.placeholder"
       v-else-if="prompt.type === 'text'"
+      key="prompt-text"
+      :value="value"
+      @input="updateValue"
+      :placeholder="prompt.placeholder"
     />
     <p
-      class="is-italic"
       v-else
+      key="prompt-error"
+      class="is-italic"
     >
       Не удалось отобразить поле ввода ответа.
     </p>
@@ -35,7 +45,13 @@ export default {
     VPromptText,
   },
   props: {
+    value: [String, Array],
     prompt: Prompt,
+  },
+  methods: {
+    updateValue(newValue) {
+      this.$emit('input', newValue);
+    },
   },
 };
 </script>

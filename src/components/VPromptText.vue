@@ -1,8 +1,9 @@
 <template>
   <b-field>
     <b-input
-      v-model="givenAnswer"
-      :placeholder="placeholder">
+      :placeholder="placeholder"
+      :value="value"
+      @input="updateValue">
     </b-input>
   </b-field>
 </template>
@@ -18,12 +19,13 @@ export default {
     BField,
   },
   props: {
+    value: String,
     placeholder: String,
   },
-  data() {
-    return {
-      givenAnswer: '',
-    };
+  methods: {
+    updateValue(newValue) {
+      this.$emit('input', newValue);
+    },
   },
 };
 </script>

@@ -2,8 +2,8 @@
   <div class="block">
     <div class="field" v-for="checkbox in checkboxes" :key="checkbox">
       <b-checkbox
-        v-model="givenAnswer"
         :native-value="checkbox"
+        v-model="newValue"
       >
         {{ checkbox }}
       </b-checkbox>
@@ -20,12 +20,23 @@ export default {
     BCheckbox,
   },
   props: {
+    value: Array,
     checkboxes: Array,
   },
   data() {
     return {
-      givenAnswer: [],
+      newValue: this.value,
     };
+  },
+  watch: {
+    // When v-model change, set internal value.
+    value(value) {
+      this.newValue = value;
+    },
+    // Emit input event to update the user v-model.
+    newValue(value) {
+      this.$emit('input', value);
+    },
   },
 };
 </script>
