@@ -3,6 +3,7 @@
     <VPromptCheckbox
       v-if="prompt.type === 'checkbox'"
       key="prompt-checkbox"
+      :disabled="disabled"
       :value="value"
       @input="updateValue"
       :checkboxes="prompt.checkboxes"
@@ -10,6 +11,7 @@
     <VPromptRadio
       v-else-if="prompt.type === 'radio'"
       key="prompt-radio"
+      :disabled="disabled"
       :value="value"
       @input="updateValue"
       :radios="prompt.radios"
@@ -17,6 +19,7 @@
     <VPromptText
       v-else-if="prompt.type === 'text'"
       key="prompt-text"
+      :disabled="disabled"
       :value="value"
       @input="updateValue"
       :placeholder="prompt.placeholder"
@@ -47,6 +50,7 @@ export default {
   props: {
     value: [String, Array],
     prompt: Prompt,
+    disabled: Boolean,
   },
   methods: {
     updateValue(newValue) {

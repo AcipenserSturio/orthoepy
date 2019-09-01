@@ -1,6 +1,7 @@
 <template>
   <b-field>
     <b-input
+      :disabled="disabled"
       :placeholder="placeholder"
       :value="value"
       @input="updateValue">
@@ -21,6 +22,7 @@ export default {
   props: {
     value: String,
     placeholder: String,
+    disabled: Boolean,
   },
   methods: {
     updateValue(newValue) {

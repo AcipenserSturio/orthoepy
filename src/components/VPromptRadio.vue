@@ -2,6 +2,7 @@
   <div>
     <div class="field" v-for="radio in radios" :key="radio">
       <b-radio
+        :disabled="disabled"
         :native-value="radio"
         :value="value"
         @input="updateValue"
@@ -23,6 +24,7 @@ export default {
   props: {
     value: String,
     radios: Array,
+    disabled: Boolean,
   },
   methods: {
     updateValue(newValue) {
