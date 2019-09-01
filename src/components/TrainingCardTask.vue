@@ -15,7 +15,7 @@
     </div>
 
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Ответить</a>
+      <a class="card-footer-item">Ответить</a>
     </footer>
   </div>
 </template>
@@ -30,12 +30,15 @@ export default {
     VPrompt,
   },
   props: {
-    taskIndex: Number,
     test: Test,
+    taskIndex: Number,
+    savedUserAnswer: [String, Array],
   },
   data() {
     return {
-      userAnswer: this.test.tasks[this.taskIndex].prompt.default,
+      userAnswer: this.savedUserAnswer
+        ? this.savedUserAnswer
+        : this.test.tasks[this.taskIndex].prompt.default,
     };
   },
   computed: {
