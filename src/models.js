@@ -41,6 +41,16 @@ export class Task {
         return this.answer === userAnswer;
     }
   }
+
+  getDisplayAnswer() {
+    switch (this.prompt.type) {
+      case 'checkbox': {
+        return this.answer.join(', ');
+      }
+      default:
+        return this.answer;
+    }
+  }
 }
 
 export class Test {

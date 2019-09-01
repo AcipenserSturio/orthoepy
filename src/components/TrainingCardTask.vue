@@ -19,30 +19,12 @@
 
       <div v-if="isChecking">
         <hr>
-
-        <div style="margin-bottom: 1.5rem">
-          <div v-if="isCorrect" class="label-correct">
-            <p>
-              Правильно ✔
-            </p>
-          </div>
-
-          <div v-else class="label-incorrect">
-            <p>
-              Неправильно ✘
-            </p>
-            <p class="is-size-7">
-              <i>Ответ:</i> {{ task.answer }}
-            </p>
-          </div>
-        </div>
-
-        <details>
-          <summary class="accordion-control has-text-weight-bold">
-            Пояснение
-          </summary>
-          Здесь будет поянение.
-        </details>
+        <TrainingCardTaskCheckingLabel
+          style="margin-bottom: 1.5rem"
+          :is-correct="isCorrect"
+          :display-answer="task.getDisplayAnswer()"
+        />
+        <TrainingCardTaskExplanation/>
       </div>
     </div>
 
@@ -56,10 +38,14 @@
 <script>
 import VPrompt from '@/components/VPrompt.vue';
 import { Test } from '@/models';
+import TrainingCardTaskCheckingLabel from '@/components/TrainingCardTaskCheckingLabel.vue';
+import TrainingCardTaskExplanation from '@/components/TrainingCardTaskExplanation.vue';
 
 export default {
   name: 'TrainingCardTask',
   components: {
+    TrainingCardTaskExplanation,
+    TrainingCardTaskCheckingLabel,
     VPrompt,
   },
   props: {
@@ -93,22 +79,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.accordion-control {
-  cursor: pointer;
-  outline: none;
-}
-
 .card-correct {
   box-shadow: 0 0 15px 1px rgba(hsl(141, 71%, 48%), 1);
 }
 .card-incorrect {
   box-shadow: 0 0 15px 1px rgba(hsl(348, 100%, 61%), 1);
-}
-
-.label-correct {
-  color: green;
-}
-.label-incorrect {
-  color: darkred;
 }
 </style>
