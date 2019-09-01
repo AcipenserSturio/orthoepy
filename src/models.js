@@ -1,9 +1,22 @@
 export class Prompt {
   constructor(raw) {
     this.type = raw.type;
-    this.radios = (raw.radios) ? [...raw.radios] : undefined;
-    this.placeholder = raw.placeholder;
-    this.checkboxes = (raw.checkboxes) ? [...raw.checkboxes] : undefined;
+    switch (this.type) {
+      case 'checkbox':
+        this.checkboxes = [...raw.checkboxes];
+        this.default = [];
+        break;
+      case 'radio':
+        this.radios = [...raw.radios];
+        this.default = '';
+        break;
+      case 'text':
+        this.placeholder = raw.placeholder;
+        this.default = '';
+        break;
+      default:
+        break;
+    }
   }
 }
 
@@ -18,6 +31,6 @@ export class Task {
 export class Test {
   constructor(raw) {
     this.topic = raw.topic;
-    this.tasks = [...raw.tasks].map(rawTask => new Task(rawTask));
+    this.tasks = raw.tasks.map(rawTask => new Task(rawTask));
   }
 }
