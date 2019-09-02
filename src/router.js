@@ -52,6 +52,11 @@ export default new Router({
       }),
     },
     {
+      path: '/training/card/:topic',
+      name: 'training-card',
+      component: () => import(/* webpackChunkName: "training-card" */ './views/TrainingCard.vue'),
+    },
+    {
       path: '*',
       name: 'not-found',
       component: () => import(/* webpackChunkName: "not-found" */ './views/NotFound.vue'),
