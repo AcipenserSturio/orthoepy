@@ -53,7 +53,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     loadTest(to.params.topic, 'card').then((test) => {
-      next(vm => vm.setTest(test));
+      next(vm => test && vm.setTest(test));
     });
   },
   methods: {
