@@ -66,6 +66,7 @@ export default {
       this.savedUserAnswers[this.taskIndex] = userAnswer;
     },
     onContinue() {
+      this.isChecking = false;
       if (this.taskIndex < this.test.tasks.length - 1) {
         this.taskIndex += 1;
         return;
