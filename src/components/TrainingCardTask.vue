@@ -32,8 +32,20 @@
     </div>
 
     <footer class="card-footer">
-      <a v-if="isChecking" class="card-footer-item">Продолжить</a>
-      <a v-else class="card-footer-item">Ответить</a>
+      <a
+        v-if="!isChecking"
+        class="card-footer-item"
+        @click="onAnswer"
+      >
+        Ответить
+      </a>
+      <a
+        v-else
+        class="card-footer-item"
+        @click="onContinue"
+      >
+        Продолжить
+      </a>
     </footer>
   </div>
 </template>
@@ -78,6 +90,14 @@ export default {
       return this.task.checkAnswer(this.userAnswer);
     },
   },
+  methods: {
+    onAnswer() {
+      this.$emit('answer', this.userAnswer);
+    },
+    onContinue() {
+      this.$emit('continue');
+    },
+  },
 };
 </script>
 
@@ -87,5 +107,9 @@ export default {
 }
 .card-incorrect {
   box-shadow: 0 0 15px 1px rgba(hsl(348, 100%, 61%), 1);
+}
+
+.card {
+  width: 24rem;
 }
 </style>
