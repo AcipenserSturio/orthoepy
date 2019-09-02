@@ -39,10 +39,7 @@ export default {
   components: { BButton },
   methods: {
     openTraining() {
-      this.$router.push({
-        name: 'question-training',
-        params: { topic: 'not' },
-      });
+      alert('Doesn\'t work right now.');
     },
   },
 };
