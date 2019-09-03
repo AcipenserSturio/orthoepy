@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss">
+@import "./assets/variables";
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 </style>
