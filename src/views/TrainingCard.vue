@@ -1,5 +1,5 @@
 <template>
-  <div class="has-items-centered has-background-info">
+  <div class="has-items-centered">
     <TrainingCardTask
       v-if="test"
       key="task"
@@ -51,6 +51,12 @@ export default {
       return null;
     },
   },
+  beforeCreate() {
+    document.documentElement.className = 'training-card-view';
+  },
+  destroyed() {
+    document.documentElement.className = '';
+  },
   beforeRouteEnter(to, from, next) {
     loadTest(to.params.topic, 'card').then((test) => {
       next(vm => test && vm.setTest(test));
@@ -79,6 +85,14 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "./../assets/variables";
+
+html.training-card-view {
+  background-color: $info;
+}
+</style>
 
 <style scoped>
 .has-items-centered {
