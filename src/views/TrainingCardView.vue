@@ -1,20 +1,37 @@
 <template>
   <div class="has-items-centered">
-    <TrainingCardTask
-      v-if="test"
-      key="task"
-      :task-index="taskIndex"
-      :test="test"
-      :saved-user-answer="savedUserAnswer"
-      :is-checking="isChecking"
-      @answer="onAnswer"
-      @continue="onContinue"
-    />
-
     <div
-      v-else
-      key="error-message"
+      v-if="test"
+      key="training"
+      class="card"
+      :class="{ [isCorrect ? 'card-correct' : 'card-incorrect']: isChecking }"
     >
+      <header class="card-header">
+        <p class="card-header-title">
+          {{ taskNumber }}/{{ tasksTotal }} — {{ test.topic }}
+        </p>
+      </header>
+
+      <div class="card-content">
+        <TrainingCardTask
+          :task="currentTask"
+          :is-checking="isChecking"
+          :is-correct="isCorrect"
+          v-model="currentAnswer"
+        />
+      </div>
+
+      <footer class="card-footer">
+        <a v-if="!isChecking" class="card-footer-item" @click="onAnswer">
+          Ответить
+        </a>
+        <a v-else class="card-footer-item" @click="onContinue">
+          Продолжить
+        </a>
+      </footer>
+    </div>
+
+    <div v-else key="error-message">
       <p class="title has-text-white">
         Увы,
       </p>
@@ -36,19 +53,25 @@ export default {
   },
   data() {
     return {
-      taskIndex: 0,
-      savedUserAnswers: [],
-      isChecking: false,
       test: null,
+      testUserAnswers: [],
+
+      taskIndex: 0,
+      currentAnswer: null,
+
+      isChecking: false,
+      isCorrect: null,
     };
   },
   computed: {
-    savedUserAnswer() {
-      const answer = this.savedUserAnswers[this.taskIndex];
-      if (answer) {
-        return answer;
-      }
-      return null;
+    taskNumber() {
+      return this.taskIndex + 1;
+    },
+    tasksTotal() {
+      return this.test.tasks.length;
+    },
+    currentTask() {
+      return this.test.tasks[this.taskIndex];
     },
   },
   beforeCreate() {
@@ -65,18 +88,23 @@ export default {
   methods: {
     setTest(test) {
       this.test = test;
-      this.savedUserAnswers.length = test.tasks.length;
+      this.testUserAnswers.length = test.tasks.length;
     },
-    onAnswer(userAnswer) {
+    onAnswer() {
       this.isChecking = true;
-      this.savedUserAnswers[this.taskIndex] = userAnswer;
+      this.isCorrect = this.currentTask.checkAnswer(this.currentAnswer);
+      this.testUserAnswers[this.taskIndex] = this.currentAnswer;
     },
     onContinue() {
+      this.currentAnswer = null;
       this.isChecking = false;
-      if (this.taskIndex < this.test.tasks.length - 1) {
+      this.isCorrect = null;
+
+      if (this.taskIndex < this.tasksTotal - 1) {
         this.taskIndex += 1;
         return;
       }
+
       this.onComplete();
     },
     onComplete() {
@@ -94,12 +122,22 @@ html.training-card-view {
 }
 </style>
 
-<style scoped>
+<style lang="scss" scoped>
 .has-items-centered {
   display: flex;
   width: 100vw;
   height: 100vh;
   align-items: center;
   justify-content: center;
+}
+
+.card {
+  width: 24rem;
+}
+.card-correct {
+  box-shadow: 0 0 15px 1px rgba(hsl(141, 71%, 48%), 1);
+}
+.card-incorrect {
+  box-shadow: 0 0 15px 1px rgba(hsl(348, 100%, 61%), 1);
 }
 </style>
