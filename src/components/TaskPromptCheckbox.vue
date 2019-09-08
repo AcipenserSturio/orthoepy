@@ -3,6 +3,7 @@
     <div class="field" v-for="checkbox in checkboxes" :key="checkbox">
       <b-checkbox
         :disabled="disabled"
+        :type="type"
         :native-value="checkbox"
         v-model="newValue"
       >
@@ -24,6 +25,7 @@ export default {
     value: Array,
     checkboxes: Array,
     disabled: Boolean,
+    type: String,
   },
   data() {
     return {

@@ -2,6 +2,7 @@
   <b-field>
     <b-input
       :disabled="disabled"
+      :type="type"
       :placeholder="placeholder"
       :value="value"
       @input="updateValue">
@@ -23,6 +24,7 @@ export default {
     value: String,
     placeholder: String,
     disabled: Boolean,
+    type: String,
   },
   methods: {
     updateValue(newValue) {

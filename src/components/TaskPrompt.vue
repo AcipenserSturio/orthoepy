@@ -4,6 +4,7 @@
       v-if="prompt.type === 'checkbox'"
       key="prompt-checkbox"
       :disabled="disabled"
+      :type="type"
       :value="value || prompt.default"
       @input="updateValue"
       :checkboxes="prompt.checkboxes"
@@ -12,6 +13,7 @@
       v-else-if="prompt.type === 'radio'"
       key="prompt-radio"
       :disabled="disabled"
+      :type="type"
       :value="value || prompt.default"
       @input="updateValue"
       :radios="prompt.radios"
@@ -20,6 +22,7 @@
       v-else-if="prompt.type === 'text'"
       key="prompt-text"
       :disabled="disabled"
+      :type="type"
       :value="value || prompt.default"
       @input="updateValue"
       :placeholder="prompt.placeholder"
@@ -51,6 +54,7 @@ export default {
     value: [String, Array],
     prompt: Prompt,
     disabled: Boolean,
+    type: String,
   },
   methods: {
     updateValue(newValue) {
