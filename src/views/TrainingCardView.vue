@@ -25,8 +25,11 @@
         <a v-if="!isChecking" class="card-footer-item" @click="onAnswer">
           Ответить
         </a>
-        <a v-else class="card-footer-item" @click="onContinue">
+        <a v-else-if="!isLastTask" class="card-footer-item" @click="onContinue">
           Продолжить
+        </a>
+        <a v-else class="card-footer-item" @click="onComplete">
+          Завершить
         </a>
       </footer>
     </div>
@@ -73,6 +76,9 @@ export default {
     currentTask() {
       return this.test.tasks[this.taskIndex];
     },
+    isLastTask() {
+      return this.taskIndex === this.tasksTotal - 1;
+    },
   },
   beforeCreate() {
     document.documentElement.className = 'training-card-view';
@@ -100,14 +106,13 @@ export default {
       this.isChecking = false;
       this.isCorrect = null;
 
-      if (this.taskIndex < this.tasksTotal - 1) {
-        this.taskIndex += 1;
-        return;
-      }
-
-      this.onComplete();
+      this.taskIndex += 1;
     },
     onComplete() {
+      this.currentAnswer = null;
+      this.isChecking = false;
+      this.isCorrect = null;
+
       alert('You are done.');
     },
   },
