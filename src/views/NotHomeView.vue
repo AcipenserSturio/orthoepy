@@ -35,7 +35,7 @@
 import BButton from 'buefy/src/components/button/Button.vue';
 
 export default {
-  name: 'NotHome',
+  name: 'NotHomeView',
   components: { BButton },
   methods: {
     openTraining() {

@@ -195,6 +195,6 @@
 
 <script>
 export default {
-  name: 'OrthoepyArticle',
+  name: 'OrthoepyArticleView',
 };
 </script>

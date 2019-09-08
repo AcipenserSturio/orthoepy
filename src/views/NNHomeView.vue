@@ -59,6 +59,6 @@
 
 <script>
 export default {
-  name: 'NNTopic',
+  name: 'NNHomeView',
 };
 </script>

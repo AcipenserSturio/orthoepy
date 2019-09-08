@@ -30,7 +30,7 @@
 import BIcon from 'buefy/src/components/icon/Icon.vue';
 
 export default {
-  name: 'NotFound',
+  name: 'NotFoundView',
   components: { BIcon },
 };
 </script>

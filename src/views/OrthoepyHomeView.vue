@@ -88,7 +88,7 @@
 import BButton from 'buefy/src/components/button/Button.vue';
 
 export default {
-  name: 'OrthoepyHome',
+  name: 'OrthoepyHomeView',
   components: { BButton },
 };
 </script>

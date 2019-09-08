@@ -10,32 +10,32 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import(/* webpackChunkName: "home" */ './views/Home.vue'),
+      component: () => import(/* webpackChunkName: "home" */ './views/HomeView.vue'),
     },
     {
       path: '/orthoepy',
       name: 'orthoepy-home',
-      component: () => import(/* webpackChunkName: "orthoepy-home" */ './views/OrthoepyHome.vue'),
+      component: () => import(/* webpackChunkName: "orthoepy-home" */ './views/OrthoepyHomeView.vue'),
     },
     {
       path: '/orthoepy/article',
       name: 'orthoepy-article',
-      component: () => import(/* webpackChunkName: "orthoepy-article" */ './views/OrthoepyArticle.vue'),
+      component: () => import(/* webpackChunkName: "orthoepy-article" */ './views/OrthoepyArticleView.vue'),
     },
     {
       path: '/nn',
       name: 'nn-home',
-      component: () => import(/* webpackChunkName: "nn-home" */ './views/NNHome.vue'),
+      component: () => import(/* webpackChunkName: "nn-home" */ './views/NNHomeView.vue'),
     },
     {
       path: '/not',
       name: 'not-home',
-      component: () => import(/* webpackChunkName: "not-home" */ './views/NotHome.vue'),
+      component: () => import(/* webpackChunkName: "not-home" */ './views/NotHomeView.vue'),
     },
     {
       path: '/training',
       name: 'training',
-      component: () => import(/* webpackChunkName: "training" */ './views/Training.vue'),
+      component: () => import(/* webpackChunkName: "training" */ './views/TrainingView.vue'),
     },
     {
       path: '/:topic/training/test',
@@ -49,12 +49,12 @@ export default new Router({
     {
       path: '/training/card/:topic',
       name: 'training-card',
-      component: () => import(/* webpackChunkName: "training-card" */ './views/TrainingCard.vue'),
+      component: () => import(/* webpackChunkName: "training-card" */ './views/TrainingCardView.vue'),
     },
     {
       path: '*',
       name: 'not-found',
-      component: () => import(/* webpackChunkName: "not-found" */ './views/NotFound.vue'),
+      component: () => import(/* webpackChunkName: "not-found" */ './views/NotFoundView.vue'),
     },
   ],
 });

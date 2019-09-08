@@ -30,7 +30,7 @@ import TrainingCardTask from '@/components/TrainingCardTask.vue';
 import { loadTest } from '@/loader';
 
 export default {
-  name: 'TrainingCard',
+  name: 'TrainingCardView',
   components: {
     TrainingCardTask,
   },
