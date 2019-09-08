@@ -3,6 +3,9 @@
     <p style="margin-bottom: 1.5rem">{{ task.question }}</p>
     <TaskPrompt
       :disabled="isChecking"
+      :type="isChecking
+        ? (isCorrect ? 'is-success' : 'is-danger')
+        : ('is-info')"
       :prompt="task.prompt"
       :value="value"
       @input="updateValue"
