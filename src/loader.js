@@ -4,6 +4,9 @@ const testPathsForTrainings = {
   card: {
     test: 'assets/test.json',
   },
+  test: {
+    test: 'assets/test.json',
+  },
 };
 
 export async function loadTest(topic, trainingType) {
@@ -23,5 +26,6 @@ export async function loadTest(topic, trainingType) {
   } catch (e) {
     return null;
   }
+
   return new Test(rawTest);
 }
