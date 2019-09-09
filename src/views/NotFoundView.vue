@@ -17,6 +17,7 @@
       <div class="container has-text-centered">
         <p>
           <b-icon
+            class="has-text-grey-lighter"
             icon="emoticon-sad"
             size="is-large">
           </b-icon>
