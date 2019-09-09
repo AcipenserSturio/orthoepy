@@ -19,13 +19,43 @@
           "Слитно",
           "Раздельно",
           "Не знаю"
-        ],
+        ]
+      }
+    },
+    {
+      "question": "Выберите животных.",
+      "answer": ["Зебра", "Слон"],
+      "explanation": {
+        "type": "text",
+        "text": "Ромашка - это растение. (https://ru.wikipedia.org/wiki/Ромашка)"
+      },
+      "prompt": {
+        "type": "checkbox",
         "checkboxes": [
-          "A",
-          "B",
-          "C"
-        ],
-        "placeholder": "Плейсхолдер"
+          "Зебра",
+          "Слон",
+          "Ромашка"
+        ]
+      }
+    },
+    {
+      "question": "Год окончания Великой Отечественной Войны.",
+      "answer": "1945",
+      "prompt": {
+        "type": "text",
+        "placeholder": "Год"
+      }
+    },
+    {
+      "question": "Выберите растения.",
+      "answer": ["Ромашка"],
+      "prompt": {
+        "type": "checkbox",
+        "checkboxes": [
+          "Ромашка",
+          "Слон",
+          "Зебра"
+        ]
       }
     }
   ]
