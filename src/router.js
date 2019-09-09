@@ -38,15 +38,6 @@ export default new Router({
       component: () => import(/* webpackChunkName: "training" */ './views/TrainingView.vue'),
     },
     {
-      path: '/:topic/training/test',
-      name: 'test-training',
-      component: () => import(/* webpackChunkName: "test-training" */ './views/TestTraining.vue'),
-      props: route => ({
-        correctRuleAsTaskIDs: new Set(JSON.parse(route.query.correct)),
-        wrongRuleAsTaskIDs: new Set(JSON.parse(route.query.wrong)),
-      }),
-    },
-    {
       path: '/training/card/:topic',
       name: 'training-card',
       component: () => import(/* webpackChunkName: "training-card" */ './views/TrainingCardView.vue'),
