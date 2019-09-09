@@ -53,8 +53,16 @@ export default {
   props: {
     value: [String, Array],
     prompt: Prompt,
-    disabled: Boolean,
-    type: String,
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    type: {
+      type: String,
+      required: false,
+      default: 'is-primary',
+    },
   },
   methods: {
     updateValue(newValue) {
