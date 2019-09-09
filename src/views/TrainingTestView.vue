@@ -1,17 +1,34 @@
 <template>
-  <div v-if="test" class="container">
-    <div
-      v-for="(task, index) in test.tasks"
-      :key="index"
-    >
-      <hr v-if="index !== 0">
-      <TrainingTestTask
-        :task="task"
-        :number="index + 1"
-        :preserved-number-length="maxTestNumberLength"
-        v-model="testUserAnswers[index]"
-      />
-    </div>
+  <div v-if="test">
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Тест
+          </h1>
+          <h2 class="subtitle">
+            {{ test.topic }}
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div
+          v-for="(task, index) in test.tasks"
+          :key="index"
+        >
+          <hr v-if="index !== 0">
+          <TrainingTestTask
+            :task="task"
+            :number="index + 1"
+            :preserved-number-length="maxTestNumberLength"
+            v-model="testUserAnswers[index]"
+          />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
