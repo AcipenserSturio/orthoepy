@@ -1,21 +1,36 @@
 <template>
-  <div class="is-flex" style="align-items: flex-start">
-    <div
-      class="has-text-right"
-      style="margin-right: 1rem"
-      :style="{ width: preservedNumberLength + 'rem' }"
-    >
-      <strong>{{ number }}.</strong>
-    </div>
-    <div style="flex: auto">
-      <p style="margin-bottom: 1.5rem">{{ task.question }}</p>
-      <div class="columns">
-        <TaskPrompt
-          class="column is-half"
-          :prompt="task.prompt"
-          :value="value"
-          @input="updateValue"
-        />
+  <div>
+    <div class="is-flex" style="align-items: flex-start">
+      <div
+        class="has-text-right"
+        style="margin-right: 1rem"
+        :style="{ width: preservedNumberLength + 'rem' }"
+      >
+        <strong>{{ number }}.</strong>
+      </div>
+      <div style="flex: auto; flex-direction: column">
+        <p style="margin-bottom: 1.5rem">{{ task.question }}</p>
+          <TaskPrompt
+            class="column is-half"
+            :disabled="isChecking"
+            :type="isChecking
+              ? (isCorrect ? 'is-success' : 'is-danger')
+              : ('is-primary')"
+            :prompt="task.prompt"
+            :value="value"
+            @input="updateValue"
+          />
+          <div v-if="isChecking" style="margin-top: 1.5rem">
+            <TrainingTestTaskCheckingLabel
+              :is-correct="isCorrect"
+              :display-answer="task.getDisplayAnswer()"
+            />
+            <TrainingTestTaskExplanation
+              v-if="task.explanation"
+              style="margin-top: 1.5rem"
+              :explanation="task.explanation"
+            />
+          </div>
       </div>
     </div>
   </div>
@@ -24,16 +39,22 @@
 <script>
 import TaskPrompt from '@/components/TaskPrompt.vue';
 import { Task } from '@/models';
+import TrainingTestTaskCheckingLabel from '@/components/TrainingTestTaskCheckingLabel';
+import TrainingTestTaskExplanation from '@/components/TrainingTestTaskExplanation';
 
 export default {
   name: 'TrainingTestTask',
   components: {
+    TrainingTestTaskExplanation,
+    TrainingTestTaskCheckingLabel,
     TaskPrompt,
   },
   props: {
     task: Task,
     number: Number,
     preservedNumberLength: Number,
+    isChecking: Boolean,
+    isCorrect: Boolean,
     value: [String, Array],
   },
   methods: {

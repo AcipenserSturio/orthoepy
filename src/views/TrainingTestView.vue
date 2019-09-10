@@ -14,6 +14,13 @@
     </section>
 
     <section class="section">
+      <div v-if="isChecking">
+        <TrainingTestResult
+          :tasks-total="tasksTotal"
+          :tasks-correct="tasksCorrect"
+        />
+        <hr>
+      </div>
       <div class="container">
         <div
           v-for="(task, index) in test.tasks"
@@ -24,9 +31,22 @@
             :task="task"
             :number="index + 1"
             :preserved-number-length="maxTestNumberLength"
+            :is-checking="isChecking"
+            :is-correct="testIsCorrects[index]"
             v-model="testUserAnswers[index]"
           />
         </div>
+      </div>
+    </section>
+
+    <section class="section has-text-centered">
+      <div class="buttons is-centered">
+        <b-button @click="$router.push({ name: 'home' })">
+          На главную
+        </b-button>
+        <b-button :disabled="isChecking" type="is-primary" @click="onComplete">
+          Завершить
+        </b-button>
       </div>
     </section>
   </div>
@@ -60,15 +80,19 @@
 </template>
 
 <script>
+import BButton from 'buefy/src/components/button/Button.vue';
 import BIcon from 'buefy/src/components/icon/Icon.vue';
 
 import { loadTest } from '@/loader';
 import TrainingTestTask from '@/components/TrainingTestTask';
+import TrainingTestResult from '@/components/TrainingTestResult';
 
 
 export default {
   name: 'TrainingTestView',
   components: {
+    TrainingTestResult,
+    BButton,
     BIcon,
     TrainingTestTask,
   },
@@ -78,13 +102,44 @@ export default {
       testUserAnswers: [],
 
       maxTestNumberLength: null,
+
+      isChecking: false,
+      testIsCorrects: [],
     };
+  },
+  computed: {
+    tasksTotal() {
+      return this.test.tasks.length;
+    },
+    tasksCorrect() {
+      let count = 0;
+
+      this.testIsCorrects.forEach((isCorrect) => {
+        if (isCorrect) count += 1;
+      });
+
+      return count;
+    },
   },
   methods: {
     setTest(test) {
       this.test = test;
       this.testUserAnswers.length = test.tasks.length;
       this.maxTestNumberLength = test.tasks.length.toString().length;
+    },
+    onComplete() {
+      this.isChecking = true;
+      for (let i = 0; i < this.test.tasks.length; i += 1) {
+        const task = this.test.tasks[i];
+        const userAnswer = this.testUserAnswers[i];
+        task.checkAnswer(userAnswer);
+        this.testIsCorrects[i] = task.checkAnswer(userAnswer);
+      }
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     },
   },
 
