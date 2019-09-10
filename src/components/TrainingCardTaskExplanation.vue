@@ -1,7 +1,7 @@
 <template>
   <details>
     <summary
-      class="accordion-control has-text-weight-bold"
+      class="accordion-control has-text-weight-semibold"
       style="margin-bottom: 1rem"
     >
       Пояснение
