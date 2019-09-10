@@ -14,14 +14,14 @@
     </section>
 
     <section class="section">
-      <div v-if="isChecking">
-        <TrainingTestResult
-          :tasks-total="tasksTotal"
-          :tasks-correct="tasksCorrect"
-        />
-        <hr>
-      </div>
       <div class="container">
+        <div v-if="isChecking">
+          <TrainingTestResult
+            :tasks-total="tasksTotal"
+            :tasks-correct="tasksCorrect"
+          />
+          <hr>
+        </div>
         <div
           v-for="(task, index) in test.tasks"
           :key="index"
