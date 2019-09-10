@@ -53,6 +53,9 @@ export class Task {
   checkAnswer(userAnswer) {
     switch (this.prompt.type) {
       case 'checkbox': {
+        if (!userAnswer) {
+          return false
+        }
         const answer = [...userAnswer];
         answer.sort();
         return isArraysEqual(this.answer, answer);
