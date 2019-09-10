@@ -37,10 +37,8 @@
           />
         </div>
       </div>
-    </section>
 
-    <section class="section has-text-centered">
-      <div class="buttons is-centered">
+      <div class="buttons is-centered" style="margin-top: 1.5rem">
         <b-button @click="$router.push({ name: 'home' })">
           На главную
         </b-button>
