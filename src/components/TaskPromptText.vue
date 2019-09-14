@@ -3,7 +3,7 @@
     <b-input
       :disabled="disabled"
       :type="type"
-      :placeholder="placeholder"
+      :placeholder="prompt.placeholder"
       :value="value"
       @input="updateValue">
     </b-input>
@@ -14,6 +14,9 @@
 import BInput from 'buefy/src/components/input/Input.vue';
 import BField from 'buefy/src/components/field/Field.vue';
 
+import { TextPrompt } from '@/models/prompts';
+
+
 export default {
   name: 'TaskPromptText',
   components: {
@@ -22,7 +25,7 @@ export default {
   },
   props: {
     value: String,
-    placeholder: String,
+    prompt: TextPrompt,
     disabled: Boolean,
     type: String,
   },

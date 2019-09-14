@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-    <div class="field" v-for="checkbox in checkboxes" :key="checkbox">
+    <div class="field" v-for="checkbox in prompt.checkboxes" :key="checkbox">
       <b-checkbox
         :disabled="disabled"
         :type="type"
@@ -16,6 +16,9 @@
 <script>
 import BCheckbox from 'buefy/src/components/checkbox/Checkbox.vue';
 
+import { CheckboxPrompt } from '@/models/prompts';
+
+
 export default {
   name: 'TaskPromptCheckbox',
   components: {
@@ -23,7 +26,7 @@ export default {
   },
   props: {
     value: Array,
-    checkboxes: Array,
+    prompt: CheckboxPrompt,
     disabled: Boolean,
     type: String,
   },

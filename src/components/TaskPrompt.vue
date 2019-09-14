@@ -1,31 +1,31 @@
 <template>
   <div>
     <TaskPromptCheckbox
-      v-if="prompt.type === 'checkbox'"
+      v-if="isCheckboxPrompt"
       key="prompt-checkbox"
       :disabled="disabled"
       :type="type"
-      :value="value || prompt.default"
+      :value="value || prompt.constructor.default()"
       @input="updateValue"
-      :checkboxes="prompt.checkboxes"
-    />
-    <TaskPromptRadio
-      v-else-if="prompt.type === 'radio'"
-      key="prompt-radio"
-      :disabled="disabled"
-      :type="type"
-      :value="value || prompt.default"
-      @input="updateValue"
-      :radios="prompt.radios"
+      :prompt="prompt"
     />
     <TaskPromptText
-      v-else-if="prompt.type === 'text'"
+      v-else-if="isTextPrompt"
       key="prompt-text"
       :disabled="disabled"
       :type="type"
-      :value="value || prompt.default"
+      :value="value || prompt.constructor.default()"
       @input="updateValue"
-      :placeholder="prompt.placeholder"
+      :prompt="prompt"
+    />
+    <TaskPromptRadio
+      v-else-if="isRadioPrompt"
+      key="prompt-radio"
+      :disabled="disabled"
+      :type="type"
+      :value="value || prompt.constructor.default()"
+      @input="updateValue"
+      :prompt="prompt"
     />
     <p
       v-else
@@ -41,7 +41,14 @@
 import TaskPromptCheckbox from '@/components/TaskPromptCheckbox.vue';
 import TaskPromptRadio from '@/components/TaskPromptRadio.vue';
 import TaskPromptText from '@/components/TaskPromptText.vue';
-import { Prompt } from '@/models';
+
+import {
+  BasePrompt,
+  CheckboxPrompt,
+  TextPrompt,
+  RadioPrompt,
+} from '@/models/prompts';
+
 
 export default {
   name: 'TaskPrompt',
@@ -52,7 +59,7 @@ export default {
   },
   props: {
     value: [String, Array],
-    prompt: Prompt,
+    prompt: BasePrompt,
     disabled: {
       type: Boolean,
       required: false,
@@ -62,6 +69,17 @@ export default {
       type: String,
       required: false,
       default: 'is-primary',
+    },
+  },
+  computed: {
+    isCheckboxPrompt() {
+      return this.prompt instanceof CheckboxPrompt;
+    },
+    isTextPrompt() {
+      return this.prompt instanceof TextPrompt;
+    },
+    isRadioPrompt() {
+      return this.prompt instanceof RadioPrompt;
     },
   },
   methods: {
