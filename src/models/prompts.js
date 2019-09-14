@@ -34,6 +34,9 @@ export class CheckboxPrompt extends BasePrompt {
   }
 
   static normalizeValue(value) {
+    if (!value) {
+      return this.default();
+    }
     return [...value].sort();
   }
   static isValuesEqual(value1, value2) {
@@ -56,6 +59,9 @@ export class RadioPrompt extends BasePrompt {
   }
 
   static normalizeValue(value) {
+    if (!value) {
+      return this.default();
+    }
     return value.toLowerCase();
   }
   static isValuesEqual(value1, value2) {
@@ -78,6 +84,9 @@ export class TextPrompt extends BasePrompt {
   }
 
   static normalizeValue(value) {
+    if (!value) {
+      return this.default();
+    }
     return value.toLowerCase();
   }
   static isValuesEqual(value1, value2) {
