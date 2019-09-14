@@ -7,9 +7,9 @@ export default class Task {
   }
 
   checkAnswer(userAnswer) {
-    return this.prompt.isValuesEqual(
-      this.prompt.normalizeValue(this.answer),
-      this.prompt.normalizeValue(userAnswer),
+    return this.prompt.constructor.isValuesEqual(
+      this.prompt.constructor.normalizeValue(this.answer),
+      this.prompt.constructor.normalizeValue(userAnswer),
     )
   }
 }
