@@ -15,7 +15,7 @@
       <hr>
       <TrainingCardTaskCheckingLabel
         :is-correct="isCorrect"
-        :display-answer="task.getDisplayAnswer()"
+        :task-answer="task.answer"
       />
       <TrainingCardTaskExplanation
         v-if="task.explanation"
@@ -28,9 +28,11 @@
 
 <script>
 import TaskPrompt from '@/components/TaskPrompt.vue';
-import { Task } from '@/models';
 import TrainingCardTaskCheckingLabel from '@/components/TrainingCardTaskCheckingLabel.vue';
 import TrainingCardTaskExplanation from '@/components/TrainingCardTaskExplanation.vue';
+
+import Task from '@/models/task';
+
 
 export default {
   name: 'TrainingCardTask',

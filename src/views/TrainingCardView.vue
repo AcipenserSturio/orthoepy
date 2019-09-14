@@ -8,10 +8,10 @@
     >
       <header class="card-header">
         <p v-if="!isCompleted" class="card-header-title">
-          {{ taskNumber }}/{{ tasksTotal }} — {{ test.topic }}
+          {{ taskNumber }}/{{ tasksTotal }} — {{ test.title }}
         </p>
         <p v-else class="card-header-title">
-          Результаты — {{ test.topic }}
+          Результаты — {{ test.title }}
         </p>
       </header>
 
@@ -59,8 +59,10 @@
 
 <script>
 import TrainingCardTask from '@/components/TrainingCardTask.vue';
-import { loadTest } from '@/loader';
 import TrainingCardResult from '@/components/TrainingCardResult.vue';
+
+import { makeTest } from '@/test-maker';
+
 
 export default {
   name: 'TrainingCardView',
@@ -111,8 +113,8 @@ export default {
     document.documentElement.className = '';
   },
   beforeRouteEnter(to, from, next) {
-    loadTest(to.params.topic, 'card').then((test) => {
-      next(vm => test && vm.setTest(test));
+    makeTest(to.params.topic, 'card').then((test) => {
+      next(vm => vm.setTest(test));
     });
   },
   methods: {
