@@ -1,8 +1,9 @@
 export default class Task {
-  constructor(question, answer, prompt) {
+  constructor(question, answer, prompt, explanation) {
     this.question = question;
     this.answer = answer;
     this.prompt = prompt;
+    this.explanation = explanation
   }
 
   checkAnswer(userAnswer) {
