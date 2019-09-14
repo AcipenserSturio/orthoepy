@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import { Explanation } from '@/models';
+import { TextExplanation } from '@/models/explanations';
 import { linkify } from '@/utils';
 
 export default {
   name: 'TaskExplanationText',
   props: {
-    explanation: Explanation,
+    explanation: TextExplanation,
   },
   computed: {
     textHTML() {

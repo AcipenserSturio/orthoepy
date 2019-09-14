@@ -1,12 +1,12 @@
 <template>
-    <div>
+  <div>
     <TaskExplanationRuleChain
-      v-if="explanation.type === 'rule-chain'"
+      v-if="isRuleChainExplanation"
       key="explanation-rule-chain"
       :explanation="explanation"
     />
     <TaskExplanationText
-      v-else-if="explanation.type === 'text'"
+      v-else-if="isTextExplanation"
       key="explanation-text"
       :explanation="explanation"
     />
@@ -21,9 +21,14 @@
 </template>
 
 <script>
-import { Explanation } from '@/models';
 import TaskExplanationRuleChain from '@/components/TaskExplanationRuleChain.vue';
 import TaskExplanationText from '@/components/TaskExplanationText.vue';
+
+import {
+  BaseExplanation,
+  TextExplanation,
+  RuleChainExplanation,
+} from '@/models/explanations';
 
 export default {
   name: 'TaskExplanation',
@@ -32,7 +37,15 @@ export default {
     TaskExplanationRuleChain,
   },
   props: {
-    explanation: Explanation,
+    explanation: BaseExplanation,
+  },
+  computed: {
+    isTextExplanation() {
+      return this.explanation instanceof TextExplanation;
+    },
+    isRuleChainExplanation() {
+      return this.explanation instanceof RuleChainExplanation;
+    },
   },
 };
 </script>

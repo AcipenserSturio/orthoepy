@@ -5,18 +5,18 @@
       <li v-for="rule in explanation.ruleChain" :key="rule">
         {{ rule }} ⇨
       </li>
-      <li><strong>{{ explanation.chainTail }}</strong></li>
+      <li><strong>{{ explanation.result }}</strong></li>
     </ul>
   </div>
 </template>
 
 <script>
-import { Explanation } from '@/models';
+import { RuleChainExplanation } from '@/models/explanations';
 
 export default {
   name: 'TaskExplanationRuleChain',
   props: {
-    explanation: Explanation,
+    explanation: RuleChainExplanation,
   },
 };
 </script>
