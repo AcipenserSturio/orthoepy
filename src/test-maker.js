@@ -47,7 +47,7 @@ async function makeNotRulesTest() {
 
 
 function getNotRulesTestTitle() {
-  return 'Слитное или раздельное правописание "не"';
+  return 'Слитное и раздельное правописание "не"';
 }
 
 
@@ -118,9 +118,9 @@ function formatNotRulesTestTaskQuestion(question, pos) {
   switch ([Boolean(question), Boolean(pos)].join(' ')) {
     case 'true true':
       if (pos.split(', ').length === 1) {
-        return `${question} с частью речи: ${pos.toLowerCase()}.`;
+        return `${question}. Часть речи: ${pos.toLowerCase()}.`;
       }
-      return `${question} с частями речи: ${pos.toLowerCase()}.`;
+      return `${question}. Части речи: ${pos.toLowerCase()}.`;
     case 'true false':
       return `${question}.`;
     case 'false true':
