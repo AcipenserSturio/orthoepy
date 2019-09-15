@@ -68,7 +68,10 @@ export default {
   components: { BButton },
   methods: {
     openRuleTraining() {
-      alert('Doesn\'t work right now (rule).');
+      this.$router.push({
+        name: 'training-card',
+        params: { 'topic': 'not-rules' },
+      });
     },
     openAlgorithmTraining() {
       alert('Doesn\'t work right now (algorithm).');
