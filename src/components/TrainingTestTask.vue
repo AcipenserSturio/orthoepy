@@ -23,7 +23,7 @@
           <div v-if="isChecking" style="margin-top: 1.5rem">
             <TrainingTestTaskCheckingLabel
               :is-correct="isCorrect"
-              :display-answer="task.getDisplayAnswer()"
+              :task-answer="task.answer"
             />
             <TrainingTestTaskExplanation
               v-if="task.explanation"
@@ -38,9 +38,11 @@
 
 <script>
 import TaskPrompt from '@/components/TaskPrompt.vue';
-import { Task } from '@/models';
 import TrainingTestTaskCheckingLabel from '@/components/TrainingTestTaskCheckingLabel';
 import TrainingTestTaskExplanation from '@/components/TrainingTestTaskExplanation';
+
+import Task from '@/models/task';
+
 
 export default {
   name: 'TrainingTestTask',

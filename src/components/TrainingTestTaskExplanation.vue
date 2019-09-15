@@ -12,7 +12,9 @@
 
 <script>
 import TaskExplanation from '@/components/TaskExplanation.vue';
-import { Explanation } from '@/models';
+
+import { BaseExplanation } from '@/models/explanations';
+
 
 export default {
   name: 'TrainingTestTaskExplanation',
@@ -20,7 +22,7 @@ export default {
     TaskExplanation,
   },
   props: {
-    explanation: Explanation,
+    explanation: BaseExplanation,
   },
 };
 </script>

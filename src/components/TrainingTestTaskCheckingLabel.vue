@@ -22,7 +22,15 @@ export default {
   name: 'TrainingTestTaskCheckingLabel',
   props: {
     isCorrect: Boolean,
-    displayAnswer: String,
+    taskAnswer: [String, Array],
+  },
+  computed: {
+    displayAnswer() {
+      if (typeof this.taskAnswer === 'object') {
+        return this.taskAnswer.join(', ');
+      }
+      return this.taskAnswer;
+    },
   },
 };
 </script>

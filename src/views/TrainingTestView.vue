@@ -7,7 +7,7 @@
             Тест
           </h1>
           <h2 class="subtitle">
-            {{ test.topic }}
+            {{ test.title }}
           </h2>
         </div>
       </div>
@@ -81,9 +81,10 @@
 import BButton from 'buefy/src/components/button/Button.vue';
 import BIcon from 'buefy/src/components/icon/Icon.vue';
 
-import { loadTest } from '@/loader';
 import TrainingTestTask from '@/components/TrainingTestTask';
 import TrainingTestResult from '@/components/TrainingTestResult';
+
+import { makeTest } from '@/test-maker';
 
 
 export default {
@@ -130,7 +131,6 @@ export default {
       for (let i = 0; i < this.test.tasks.length; i += 1) {
         const task = this.test.tasks[i];
         const userAnswer = this.testUserAnswers[i];
-        task.checkAnswer(userAnswer);
         this.testIsCorrects[i] = task.checkAnswer(userAnswer);
       }
       window.scroll({
@@ -142,7 +142,7 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
-    loadTest(to.params.topic, 'test').then((test) => {
+    makeTest(to.params.topic, 'test').then((test) => {
       next(vm => test && vm.setTest(test));
     });
   },
