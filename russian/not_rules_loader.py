@@ -24,18 +24,29 @@ COL_I_RULES_TAIL = 23
 def main():
     table = get_rules_table()
 
-    rule_tree = extract_value(
+    deadlock_tasks = list()
+    rule_tree = extract_value_and_update_deadlock_tasks(
         table,
         row_i=ROW_I_RULES_HEAD,
         col_i_head=COL_I_RULES_HEAD,
         col_i_tail=COL_I_RULES_TAIL,
+        deadlock_tasks=deadlock_tasks,
     )
 
     with open('../src/assets/not_rules_tree.json', '+w') as f:
         json.dump(rule_tree, f, ensure_ascii=False)
 
+    with open('../src/assets/not_rules_deadlock_tasks.json', '+w') as f:
+        json.dump(deadlock_tasks, f, ensure_ascii=False)
 
-def extract_value(table, row_i, col_i_head, col_i_tail):
+
+def extract_value_and_update_deadlock_tasks(
+        table,
+        row_i,
+        col_i_head,
+        col_i_tail,
+        deadlock_tasks
+):
     row_i_value = row_i + 1
 
     values_count = 0
@@ -46,32 +57,67 @@ def extract_value(table, row_i, col_i_head, col_i_tail):
         col_i += 1
 
     if values_count == 0 or ROW_I_RULES_TAIL == row_i:
-        return _extract_spelling_and_tasks(table, row_i, col_i_head, col_i_tail)
+        spelling = _extract_spelling_string(
+            table,
+            row_i,
+            col_i_head,
+            col_i_tail,
+        )
+        tasks = _extract_tasks_list(
+            table,
+            row_i,
+            col_i_head,
+            col_i_tail,
+        )
+
+        deadlock_i = len(deadlock_tasks)
+        deadlock_tasks.append(tasks)
+
+        return {
+            'deadlock_i': deadlock_i,
+            'spelling': spelling,
+        }
     elif values_count == 2:
-        return _extract_if(table, row_i, col_i_head, col_i_tail)
+        return _extract_if(
+            table,
+            row_i,
+            col_i_head,
+            col_i_tail,
+            deadlock_tasks,
+        )
     elif values_count > 2:
-        return _extract_switch(table, row_i, col_i_head, col_i_tail)
+        return _extract_switch(
+            table,
+            row_i,
+            col_i_head,
+            col_i_tail,
+            deadlock_tasks,
+        )
     return None
 
 
-def _extract_spelling_and_tasks(table, row_i, col_i_head, col_i_tail):
+def _extract_spelling_string(table, row_i, col_i_head, col_i_tail):
     row_i_spelling = row_i
     col_i = col_i_head
 
     spelling = table[row_i_spelling][col_i]
+
+    return spelling
+
+
+def _extract_tasks_list(table, row_i, col_i_head, col_i_tail):
+    col_i = col_i_head
+
     tasks = list()
     for row_i_task in range(ROW_I_TASKS_HEAD, ROW_I_TASKS_TAIL + 1):
         task = table[row_i_task][col_i]
         if task:
             tasks.append(task)
 
-    return {
-        'spelling': spelling,
-        'tasks': tasks,
-    }
+    return tasks
 
 
-def _extract_if(table, row_i, col_i_head, col_i_tail):
+def _extract_if(table, row_i, col_i_head, col_i_tail, deadlock_tasks):
     row_i_title = row_i
     row_i_value = row_i + 1
 
@@ -84,17 +130,19 @@ def _extract_if(table, row_i, col_i_head, col_i_tail):
     col_i_false_value_tail = col_i_tail
 
     title = table[row_i_title][col_i_title]
-    true_value = extract_value(
+    true_value = extract_value_and_update_deadlock_tasks(
         table,
         row_i_value,
         col_i_true_value_head,
         col_i_true_value_tail,
+        deadlock_tasks,
     )
-    false_value = extract_value(
+    false_value = extract_value_and_update_deadlock_tasks(
         table,
         row_i_value,
         col_i_false_value_head,
         col_i_false_value_tail,
+        deadlock_tasks,
     )
 
     return {
@@ -104,7 +152,7 @@ def _extract_if(table, row_i, col_i_head, col_i_tail):
     }
 
 
-def _extract_switch(table, row_i, col_i_head, col_i_tail):
+def _extract_switch(table, row_i, col_i_head, col_i_tail, deadlock_tasks):
     row_i_title = row_i
     row_i_case = row_i + 1
     row_i_value = row_i + 2
@@ -125,11 +173,12 @@ def _extract_switch(table, row_i, col_i_head, col_i_tail):
         col_i_case_tail = col_is_cases[j + 1] - 1
 
         case = table[row_i_case][col_i_case_head]
-        cases[case] = extract_value(
+        cases[case] = extract_value_and_update_deadlock_tasks(
             table,
             row_i_value,
             col_i_case_head,
             col_i_case_tail,
+            deadlock_tasks,
         )
 
     return {
