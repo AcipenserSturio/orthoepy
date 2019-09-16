@@ -140,5 +140,72 @@ async function getNotAlgorithmTest() {
 
 
 async function getNotTasksTest() {
+  const deadlockRules = (await import('@/assets/not_deadlock_rules')).default;
+  const deadlockTasks = (await import('@/assets/not_deadlock_tasks')).default;
+  const deadlockRuleChains = (await import('@/assets/not_deadlock_rule_chains')).default;
 
+  const deadlockShuffledTaskIndices = deadlockTasks.map((tasksAtDeadlock) => {
+    return shuffle([...Array(tasksAtDeadlock.length).keys()]);
+  });
+  const deadlockIndices = Array(deadlockTasks.length).keys();
+  const shuffledDoubledDeadlockIndices = shuffle(
+    [].concat([...deadlockIndices], [...deadlockIndices]),
+  );
+
+  const deadlockPickedTaskIndices = new Array(deadlockTasks.length);
+  for (let i = 0; i < deadlockTasks.length; i += 1) {
+    deadlockPickedTaskIndices[i] = [];
+  }
+
+  let shuffledDoubledDeadlockIndicesIndex = 0;
+  let pickedTasksCount = 0;
+  while (pickedTasksCount < 20) {
+    shuffledDoubledDeadlockIndicesIndex += 1;
+    const deadlockIndex = shuffledDoubledDeadlockIndices[shuffledDoubledDeadlockIndicesIndex];
+    const deadlockTaskIndex = deadlockShuffledTaskIndices[deadlockIndex].pop();
+    if (deadlockTaskIndex === undefined) {
+      continue;
+    }
+    deadlockPickedTaskIndices[deadlockIndex].push(deadlockTaskIndex);
+    pickedTasksCount += 1;
+  }
+
+  let title = 'Слитное и раздельное правописание "не"';
+  let tasks = [];
+  Object.entries(deadlockPickedTaskIndices).forEach(([deadlockIndex, pickedDeadlockTaskIndices]) => {
+    pickedDeadlockTaskIndices.forEach((deadlockTaskIndex) => {
+      const deadlockTask = deadlockTasks[deadlockIndex][deadlockTaskIndex];
+      const deadlockRuleChain = deadlockRuleChains[deadlockIndex];
+
+      const spelling = deadlockRules[deadlockIndex].spelling;
+      const explanation = new RuleChainExplanation(
+        deadlockRuleChain.map((deadlockIndex) => {
+          const deadlockRule = deadlockRules[deadlockIndex];
+
+          const pos = deadlockRule.pos;
+          const rule = deadlockRule.rule;
+          const spelling = deadlockRule.spelling;
+          if (rule) {
+            return `${rule} (${spelling.toLowerCase()}).`;
+          } else if (pos.split(', ').length === 1) {
+            return `С частью речи: ${pos.toLowerCase()} — в любом другом случае пишем ${spelling.toLowerCase()}.`;
+          } else {
+            return `С частями речи: ${pos.toLowerCase()} — в любом другом случае пишем ${spelling.toLowerCase()}.`;
+          }
+        }),
+        spelling,
+      );
+
+      const task = new Task(
+        deadlockTask,
+        spelling,
+        new RadioPrompt(['Слитно', 'Раздельно']),
+        explanation,
+      );
+      tasks.push(task);
+    });
+  });
+  shuffle(tasks);
+
+  return new Test(title, tasks);
 }
