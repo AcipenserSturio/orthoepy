@@ -84,7 +84,7 @@ import BIcon from 'buefy/src/components/icon/Icon.vue';
 import TrainingTestTask from '@/components/TrainingTestTask';
 import TrainingTestResult from '@/components/TrainingTestResult';
 
-import { makeTest } from '@/test-maker';
+import { getTest } from '@/tester';
 
 
 export default {
@@ -142,7 +142,7 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
-    makeTest(to.params.topic, 'test').then((test) => {
+    getTest(to.params.topic, 'test').then((test) => {
       next(vm => test && vm.setTest(test));
     });
   },

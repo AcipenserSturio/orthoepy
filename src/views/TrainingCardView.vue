@@ -61,7 +61,7 @@
 import TrainingCardTask from '@/components/TrainingCardTask.vue';
 import TrainingCardResult from '@/components/TrainingCardResult.vue';
 
-import { makeTest } from '@/test-maker';
+import { getTest } from '@/tester';
 
 
 export default {
@@ -113,7 +113,7 @@ export default {
     document.documentElement.className = '';
   },
   beforeRouteEnter(to, from, next) {
-    makeTest(to.params.topic, 'card').then((test) => {
+    getTest(to.params.topic, 'card').then((test) => {
       next(vm => test && vm.setTest(test));
     });
   },
