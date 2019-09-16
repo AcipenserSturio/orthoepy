@@ -78,7 +78,7 @@ async function getNotAlgorithmTest() {
 
   const deadlockTask = deadlockTasks[deadlockIndex][deadlockTaskIndex];
   const deadlockRuleChain = deadlockRuleChains[deadlockIndex];
-  const lastDeadlockRuleIndex = deadlockRuleChains[deadlockRuleChains.length - 1];
+  const lastDeadlockRuleIndex = deadlockRuleChain[deadlockRuleChain.length - 1];
 
   const title = `Алгоритм "Слитно или раздельно?"`;
   const tasks = [];
