@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <TaskExplanationRuleChain
       v-if="isRuleChainExplanation"
       key="explanation-rule-chain"
