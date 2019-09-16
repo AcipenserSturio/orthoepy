@@ -1,6 +1,3 @@
-import Autolinker from 'autolinker';
-
-
 export function isArraysEqual(a, b) {
   if (a === b) return true;
   if (a === null || b === null) return false;
@@ -10,16 +7,6 @@ export function isArraysEqual(a, b) {
     if (a[i] !== b[i]) return false;
   }
   return true;
-}
-
-
-const autolinker = new Autolinker({
-  stripPrefix: false,
-  stripTrailingSlash: false,
-});
-
-export function linkify(textOrHTML) {
-  return autolinker.link(textOrHTML);
 }
 
 

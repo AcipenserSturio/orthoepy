@@ -1,19 +1,21 @@
 <template>
-  <p v-html="textHTML"></p>
+  <div class="content" v-html="marked(this.explanation.text)"></div>
 </template>
 
 <script>
+import marked from 'marked';
+
 import { TextExplanation } from '@/models/explanations';
-import { linkify } from '@/utils';
+
 
 export default {
   name: 'TaskExplanationText',
   props: {
     explanation: TextExplanation,
   },
-  computed: {
-    textHTML() {
-      return linkify(this.explanation.text);
+  methods: {
+    marked(s) {
+      return marked(s)
     },
   },
 };
