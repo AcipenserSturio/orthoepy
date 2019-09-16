@@ -7,12 +7,14 @@
       :class="{ [isCorrect ? 'card-correct' : 'card-incorrect']: isChecking }"
     >
       <header class="card-header">
-        <p v-if="!isCompleted" class="card-header-title">
-          <span v-if="shouldDisplayProgress">{{ taskNumber }}/{{ tasksTotal }} — </span>
-          <span>{{ test.title }}</span>
+        <p v-if="isCompleted" class="card-header-title">
+          Результаты — {{ test.title }}
+        </p>
+        <p v-else-if="shouldDisplayProgress" class="card-header-title">
+          {{ taskNumber }}/{{ tasksTotal }} — {{ test.title }}
         </p>
         <p v-else class="card-header-title">
-          Результаты — {{ test.title }}
+          {{ test.title }}
         </p>
       </header>
 
