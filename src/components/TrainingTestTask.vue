@@ -9,34 +9,36 @@
         <strong>{{ number }}.</strong>
       </div>
       <div style="flex: auto; flex-direction: column">
-        <p style="margin-bottom: 1.5rem">{{ task.question }}</p>
-          <TaskPrompt
-            class="column is-half"
-            :disabled="isChecking"
-            :type="isChecking
-              ? (isCorrect ? 'is-success' : 'is-danger')
-              : ('is-primary')"
-            :prompt="task.prompt"
-            :value="value"
-            @input="updateValue"
+        <div class="content" style="margin-bottom: 2rem" v-html="marked(task.question)"></div>
+        <TaskPrompt
+          class="column is-half"
+          :disabled="isChecking"
+          :type="isChecking
+            ? (isCorrect ? 'is-success' : 'is-danger')
+            : ('is-primary')"
+          :prompt="task.prompt"
+          :value="value"
+          @input="updateValue"
+        />
+        <div v-if="isChecking" style="margin-top: 1.5rem">
+          <TrainingTestTaskCheckingLabel
+            :is-correct="isCorrect"
+            :task-answer="task.answer"
           />
-          <div v-if="isChecking" style="margin-top: 1.5rem">
-            <TrainingTestTaskCheckingLabel
-              :is-correct="isCorrect"
-              :task-answer="task.answer"
-            />
-            <TrainingTestTaskExplanation
-              v-if="task.explanation"
-              style="margin-top: 1.5rem"
-              :explanation="task.explanation"
-            />
-          </div>
+          <TrainingTestTaskExplanation
+            v-if="task.explanation"
+            style="margin-top: 1.5rem"
+            :explanation="task.explanation"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import marked from 'marked';
+
 import TaskPrompt from '@/components/TaskPrompt.vue';
 import TrainingTestTaskCheckingLabel from '@/components/TrainingTestTaskCheckingLabel';
 import TrainingTestTaskExplanation from '@/components/TrainingTestTaskExplanation';
@@ -60,6 +62,7 @@ export default {
     value: [String, Array],
   },
   methods: {
+    marked: s => marked(s),
     updateValue(newValue) {
       this.$emit('input', newValue);
     },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p style="margin-bottom: 1.5rem">{{ task.question }}</p>
+    <div class="content" style="margin-bottom: 2rem" v-html="marked(task.question)"></div>
     <TaskPrompt
       :disabled="isChecking"
       :type="isChecking
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import marked from 'marked';
+
 import TaskPrompt from '@/components/TaskPrompt.vue';
 import TrainingCardTaskCheckingLabel from '@/components/TrainingCardTaskCheckingLabel.vue';
 import TrainingCardTaskExplanation from '@/components/TrainingCardTaskExplanation.vue';
@@ -48,6 +50,7 @@ export default {
     value: [String, Array],
   },
   methods: {
+    marked: s => marked(s),
     updateValue(newValue) {
       this.$emit('input', newValue);
     },
