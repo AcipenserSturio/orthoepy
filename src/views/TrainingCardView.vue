@@ -8,7 +8,8 @@
     >
       <header class="card-header">
         <p v-if="!isCompleted" class="card-header-title">
-          {{ taskNumber }}/{{ tasksTotal }} — {{ test.title }}
+          <span v-if="shouldDisplayProgress">{{ taskNumber }}/{{ tasksTotal }} — </span>
+          <span>{{ test.title }}</span>
         </p>
         <p v-else class="card-header-title">
           Результаты — {{ test.title }}
@@ -104,6 +105,9 @@ export default {
     },
     isLastTask() {
       return this.taskIndex === this.tasksTotal - 1;
+    },
+    shouldDisplayProgress() {
+      return !this.test.options.hideProgress;
     },
   },
   beforeCreate() {

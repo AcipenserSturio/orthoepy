@@ -57,7 +57,7 @@ async function getNotRulesTest() {
   });
   shuffle(tasks);
 
-  return new Test(title, tasks);
+  return new Test(title, tasks, {});
 }
 
 
@@ -80,7 +80,7 @@ async function getNotAlgorithmTest() {
   const deadlockRuleChain = deadlockRuleChains[deadlockIndex];
   const lastDeadlockRuleIndex = deadlockRuleChains[deadlockRuleChains.length - 1];
 
-  const title = `Слитно или раздельно?`;
+  const title = `Алгоритм "Слитно или раздельно?"`;
   const tasks = [];
   let hasPosTask = false;
   const questionPrefix = `*${deadlockTask}*\n\n`;
@@ -135,7 +135,7 @@ async function getNotAlgorithmTest() {
     }
   });
 
-  return new Test(title, tasks);
+  return new Test(title, tasks, { hideProgress: true });
 }
 
 
@@ -207,5 +207,5 @@ async function getNotTasksTest() {
   });
   shuffle(tasks);
 
-  return new Test(title, tasks);
+  return new Test(title, tasks, {});
 }
