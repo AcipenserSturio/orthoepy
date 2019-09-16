@@ -74,10 +74,16 @@ export default {
       });
     },
     openAlgorithmTraining() {
-      alert('Doesn\'t work right now (algorithm).');
+      this.$router.push({
+        name: 'training-card',
+        params: { 'topic': 'not-algorithm' },
+      });
     },
     openTaskTraining() {
-      alert('Doesn\'t work right now (task).');
+      this.$router.push({
+        name: 'training-test',
+        params: { 'topic': 'not-tasks' },
+      });
     },
   },
 };
