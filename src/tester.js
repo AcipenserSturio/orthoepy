@@ -135,7 +135,10 @@ async function getNotAlgorithmTest() {
     }
   });
 
-  return new Test(title, tasks, { hideProgress: true });
+  return new Test(title, tasks, {
+    hideProgress: true,
+    offerRepeat: true,
+  });
 }
 
 

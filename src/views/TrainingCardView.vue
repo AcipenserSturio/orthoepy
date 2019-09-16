@@ -34,9 +34,14 @@
       </div>
 
       <footer class="card-footer">
-        <router-link v-if="isCompleted" class="card-footer-item" :to="{ name: 'home' }">
-          На главную
-        </router-link>
+        <template v-if="isCompleted">
+          <a v-if="shouldOfferRepeat" class="card-footer-item" @click="onRepeat">
+            Повторить
+          </a>
+          <router-link class="card-footer-item" :to="{ name: 'home' }">
+            На главную
+          </router-link>
+        </template>
         <a v-else-if="!isChecking" class="card-footer-item" @click="onAnswer">
           Ответить
         </a>
@@ -111,6 +116,9 @@ export default {
     shouldDisplayProgress() {
       return !this.test.options.hideProgress;
     },
+    shouldOfferRepeat() {
+      return this.test.options.offerRepeat;
+    },
   },
   beforeCreate() {
     document.documentElement.className = 'training-card-view';
@@ -150,6 +158,9 @@ export default {
 
       this.isCompleted = true;
     },
+    onRepeat() {
+      window.location.reload();
+    }
   },
 };
 </script>

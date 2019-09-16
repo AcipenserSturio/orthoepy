@@ -42,7 +42,15 @@
         <b-button @click="$router.push({ name: 'home' })">
           На главную
         </b-button>
-        <b-button :disabled="isChecking" type="is-primary" @click="onComplete">
+        <template v-if="shouldOfferRepeat">
+          <b-button v-if="isChecking" type="is-primary" @click="onRepeat">
+            Повторить
+          </b-button>
+          <b-button v-else type="is-primary" @click="onComplete">
+            Завершить
+          </b-button>
+        </template>
+        <b-button v-else :disabled="isChecking" type="is-primary" @click="onComplete">
           Завершить
         </b-button>
       </div>
@@ -119,6 +127,9 @@ export default {
 
       return count;
     },
+    shouldOfferRepeat() {
+      return this.test.options.offerRepeat;
+    },
   },
   methods: {
     setTest(test) {
@@ -138,6 +149,9 @@ export default {
         left: 0,
         behavior: 'smooth'
       });
+    },
+    onRepeat() {
+      window.location.reload();
     },
   },
 

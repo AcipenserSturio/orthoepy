@@ -1,7 +1,7 @@
 export default class Test {
-  constructor(title, tasks, { hideProgress = false }) {
+  constructor(title, tasks, { hideProgress = false, offerRepeat = false }) {
     this.title = title;
     this.tasks = tasks;
-    this.options = { hideProgress };
+    this.options = { hideProgress, offerRepeat };
   }
 }
