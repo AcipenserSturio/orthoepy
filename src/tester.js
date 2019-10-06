@@ -1,6 +1,6 @@
 import Test from '@/models/test';
 import Task from '@/models/task';
-import { RadioPrompt } from '@/models/prompts';
+import { RadioPrompt, TextPrompt } from '@/models/prompts';
 import { RuleChainExplanation } from '@/models/explanations';
 import { shuffle } from '@/utils';
 
@@ -9,6 +9,7 @@ const asyncTestGetters = {
   card: {
     'not-rules': async () => getNotRulesTest(),
     'not-algorithm': async () => getNotAlgorithmTest(),
+    'ege-t12-infinitives': async () => getEgeT12Infinitives(),
   },
   test: {
     'not-tasks': async () => getNotTasksTest(),
@@ -27,6 +28,25 @@ export async function getTest(topic, trainingType) {
   }
 
   return asyncGetTest();
+}
+
+
+async function getEgeT12Infinitives() {
+  const rawInfinitives = (await import('@/assets/ege_t12_infinitives')).default;
+
+  const questionPrefix = '*Вставьте пропущенную букву.*\n\n';
+
+  const title = 'ЕГЭ. Задание 12. Инфинитивы';
+  let tasks = rawInfinitives.map(rawInfinitive => new Task(
+    questionPrefix + rawInfinitive.word,
+    rawInfinitive.letter,
+    new TextPrompt('Пропущенная буква'),
+    null
+  ));
+  shuffle(tasks);
+  tasks = tasks.slice(0, 30);
+
+  return new Test(title, tasks, { offerRepeat: true })
 }
 
 
