@@ -28,6 +28,9 @@
           <router-link :to="{ name: 'not-home' }" class="list-item">
             Слитное и раздельное правописание НЕ
           </router-link>
+          <router-link :to="{ name: 'ege-t12' }" class="list-item">
+            ЕГЭ. Задание 12
+          </router-link>
         </div>
       </div>
     </section>

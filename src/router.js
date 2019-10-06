@@ -33,6 +33,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "not-home" */ './views/NotHomeView.vue'),
     },
     {
+      path: '/ege-t12',
+      name: 'ege-t12',
+      component: () => import(/* webpackChunkName: "ege-t12" */ './views/EgeT12View.vue'),
+    },
+    {
       path: '/training',
       name: 'training',
       component: () => import(/* webpackChunkName: "training" */ './views/TrainingView.vue'),
