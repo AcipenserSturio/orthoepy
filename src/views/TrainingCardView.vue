@@ -28,7 +28,7 @@
         />
         <TrainingCardResult
           v-else
-          :tasks-correct="tasksCorrect"
+          :tasks-correct="getTasksCorrect()"
           :tasks-total="tasksTotal"
         />
       </div>
@@ -98,15 +98,6 @@ export default {
     tasksTotal() {
       return this.test.tasks.length;
     },
-    tasksCorrect() {
-      let count = 0;
-
-      this.testUserAnswers.forEach((answer) => {
-        if (answer.isCorrect) count += 1;
-      });
-
-      return count;
-    },
     currentTask() {
       return this.test.tasks[this.taskIndex];
     },
@@ -135,6 +126,15 @@ export default {
     setTest(test) {
       this.test = test;
       this.testUserAnswers.length = test.tasks.length;
+    },
+    getTasksCorrect() {
+      let count = 0;
+
+      this.testUserAnswers.forEach((answer) => {
+        if (answer.isCorrect) count += 1;
+      });
+
+      return count;
     },
     onAnswer() {
       this.isChecking = true;
