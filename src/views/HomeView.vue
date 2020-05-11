@@ -1,17 +1,9 @@
 <template>
   <div>
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Тренажер правил русского языка
-          </h1>
-          <h2 class="subtitle">
-            Добро пожаловать в тренажер для закрепления правил русского языка.
-          </h2>
-        </div>
-      </div>
-    </section>
+    <page-header
+      title="Тренажер правил русского языка"
+      subtitle="Добро пожаловать в тренажер для закрепления правил русского языка."
+    />
 
     <section class="section">
       <div class="container">
@@ -51,7 +43,9 @@
 </template>
 
 <script>
+import PageHeader from "../components/PageHeader";
 export default {
   name: 'HomeView',
+  components: {PageHeader},
 };
 </script>

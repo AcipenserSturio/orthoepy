@@ -1,14 +1,9 @@
 <template>
   <div>
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Орфоэпия
-          </h1>
-        </div>
-      </div>
-    </section>
+    <page-header
+      title="Орфоэпия"
+      has-home-button
+    />
 
     <section class="section">
       <div class="columns">
@@ -86,9 +81,10 @@
 
 <script>
 import BButton from 'buefy/src/components/button/Button.vue';
+import PageHeader from "../components/PageHeader";
 
 export default {
   name: 'OrthoepyHomeView',
-  components: { BButton },
+  components: {PageHeader, BButton },
 };
 </script>

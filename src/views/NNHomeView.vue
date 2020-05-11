@@ -1,14 +1,9 @@
 <template>
   <div>
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Н/НН
-          </h1>
-        </div>
-      </div>
-    </section>
+    <page-header
+      title="Н/НН"
+      has-home-button
+    />
 
     <section class="section">
       <div class="columns">
@@ -58,7 +53,9 @@
 </template>
 
 <script>
+import PageHeader from "../components/PageHeader";
 export default {
   name: 'NNHomeView',
+  components: {PageHeader},
 };
 </script>
