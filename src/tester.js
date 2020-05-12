@@ -15,6 +15,7 @@ const asyncTestGetters = {
     'ege-t11-suffices-ic-ec': async () => getEgeT11SufficesIcEc(),
     'ege-t11-suffices-ichk-echk': async () => getEgeT11SufficesIchkEchk(),
     'ege-t11-suffices-ink-enk': async () => getEgeT11SufficesInkEnk(),
+    'ege-t11-nouns-mya': async () => getEgeT11NounsMya(),
   },
   test: {
     'not-tasks': async () => getNotTasksTest(),
@@ -44,6 +45,17 @@ function makeInsertLetterTasks(rawWords) {
       new TextPrompt('Пропущенная буква'),
       rawWord.explanation !== null ? new TextExplanation(rawWord.explanation) : null
   ));
+}
+
+
+async function getEgeT11NounsMya() {
+  const raw = (await import('@/assets/ege_t11_nouns_mya')).default;
+
+  const title = 'ЕГЭ. Задание 11. Существительные на -МЯ';
+  let tasks = makeInsertLetterTasks(raw)
+  shuffle(tasks);
+
+  return new Test(title, tasks, { offerRepeat: true })
 }
 
 

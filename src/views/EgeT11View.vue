@@ -23,6 +23,9 @@
           <router-link :to="{ name: 'training-card', params: { 'topic': 'ege-t11-suffices-ink-enk' } }" class="list-item">
             Существительные. Суффиксы ИНК/ЕНК
           </router-link>
+          <router-link :to="{ name: 'training-card', params: { 'topic': 'ege-t11-nouns-mya' } }" class="list-item">
+            Существительные. Заканчиваются на -МЯ.
+          </router-link>
         </div>
       </div>
     </section>
