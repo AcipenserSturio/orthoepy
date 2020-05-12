@@ -14,6 +14,9 @@
           <router-link :to="{ name: 'training-card', params: { 'topic': 'ege-t11-suffices-ik-ek' } }" class="list-item">
             Существительные. Суффиксы ИК/ЕК
           </router-link>
+          <router-link :to="{ name: 'training-card', params: { 'topic': 'ege-t11-suffices-ic-ec' } }" class="list-item">
+            Существительные. Суффиксы ИЦ/ЕЦ
+          </router-link>
         </div>
       </div>
     </section>

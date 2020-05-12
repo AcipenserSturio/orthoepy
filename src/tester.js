@@ -12,6 +12,7 @@ const asyncTestGetters = {
     'not-algorithm': async () => getNotAlgorithmTest(),
     'ege-t12-infinitives': async () => getEgeT12Infinitives(),
     'ege-t11-suffices-ik-ek': async () => getEgeT11SufficesIkEk(),
+    'ege-t11-suffices-ic-ec': async () => getEgeT11SufficesIcEc(),
   },
   test: {
     'not-tasks': async () => getNotTasksTest(),
@@ -45,10 +46,21 @@ function makeInsertLetterTasks(rawWords) {
 
 
 async function getEgeT11SufficesIkEk() {
-  const rawInfinitives = (await import('@/assets/ege_t11_suffices_ik_ek')).default;
+  const raw = (await import('@/assets/ege_t11_suffices_ik_ek')).default;
 
   const title = 'ЕГЭ. Задание 11. Существительные с суффиксами ИК/ЕК';
-  let tasks = makeInsertLetterTasks(rawInfinitives)
+  let tasks = makeInsertLetterTasks(raw)
+  shuffle(tasks);
+
+  return new Test(title, tasks, { offerRepeat: true })
+}
+
+
+async function getEgeT11SufficesIcEc() {
+  const raw = (await import('@/assets/ege_t11_suffices_ic_ec')).default;
+
+  const title = 'ЕГЭ. Задание 11. Существительные с суффиксами ИЦ/ЕЦ';
+  let tasks = makeInsertLetterTasks(raw)
   shuffle(tasks);
 
   return new Test(title, tasks, { offerRepeat: true })
@@ -56,10 +68,10 @@ async function getEgeT11SufficesIkEk() {
 
 
 async function getEgeT12Infinitives() {
-  const rawInfinitives = (await import('@/assets/ege_t12_infinitives')).default;
+  const raw = (await import('@/assets/ege_t12_infinitives')).default;
 
   const title = 'ЕГЭ. Задание 12. Инфинитивы';
-  let tasks = makeInsertLetterTasks(rawInfinitives)
+  let tasks = makeInsertLetterTasks(raw)
   shuffle(tasks);
   tasks = tasks.slice(0, 30);
 
