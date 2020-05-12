@@ -1,11 +1,13 @@
 <template>
   <b-field>
     <b-input
+      ref="input"
       :disabled="disabled"
       :type="type"
       :placeholder="prompt.placeholder"
       :value="value"
-      @input="updateValue">
+      @input="updateValue"
+      autofocus>
     </b-input>
   </b-field>
 </template>
@@ -28,6 +30,13 @@ export default {
     prompt: TextPrompt,
     disabled: Boolean,
     type: String,
+  },
+  watch: {
+    disabled: function(oldValue, newValue) {
+      if (newValue === true) {
+        this.$refs.input.focus()
+      }
+    },
   },
   methods: {
     updateValue(newValue) {

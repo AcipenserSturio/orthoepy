@@ -25,6 +25,7 @@
           :is-checking="isChecking"
           :is-correct="isCorrect"
           v-model="currentAnswer"
+          @enterPressed="onEnterPress"
         />
         <TrainingCardResult
           v-else
@@ -114,6 +115,12 @@ export default {
   beforeCreate() {
     document.documentElement.className = 'training-card-view';
   },
+  mounted() {
+    window.addEventListener('keyup', this.onKeyup)
+  },
+  beforeDestroy() {
+    window.removeEventListener('keyup', this.onKeyup)
+  },
   destroyed() {
     document.documentElement.className = '';
   },
@@ -126,6 +133,21 @@ export default {
     setTest(test) {
       this.test = test;
       this.testUserAnswers.length = test.tasks.length;
+    },
+    onKeyup(event) {
+      if (event.keyCode === 13) {
+        this.onEnterPress()
+      }
+    },
+    onEnterPress() {
+      if (this.isCompleted) {
+      } else if (!this.isChecking) {
+        this.onAnswer()
+      } else if (!this.isLastTask) {
+        this.onContinue()
+      } else {
+        this.onComplete()
+      }
     },
     getTasksCorrect() {
       let count = 0;
