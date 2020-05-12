@@ -1,14 +1,9 @@
 <template>
   <div>
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Слитное и раздельное правописание НЕ
-          </h1>
-        </div>
-      </div>
-    </section>
+    <page-header
+      title="Слитное и раздельное правописание НЕ"
+      has-home-button
+    />
 
     <section class="section">
       <div class="container">
@@ -89,11 +84,12 @@
 
 <script>
 import BButton from 'buefy/src/components/button/Button.vue';
+import PageHeader from "../components/PageHeader";
 
 
 export default {
   name: 'NotHomeView',
-  components: { BButton },
+  components: {PageHeader, BButton },
   methods: {
     openRuleTraining() {
       this.$router.push({
