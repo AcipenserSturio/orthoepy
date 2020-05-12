@@ -14,6 +14,7 @@ const asyncTestGetters = {
     'ege-t11-suffices-ik-ek': async () => getEgeT11SufficesIkEk(),
     'ege-t11-suffices-ic-ec': async () => getEgeT11SufficesIcEc(),
     'ege-t11-suffices-ichk-echk': async () => getEgeT11SufficesIchkEchk(),
+    'ege-t11-suffices-ink-enk': async () => getEgeT11SufficesInkEnk(),
   },
   test: {
     'not-tasks': async () => getNotTasksTest(),
@@ -43,6 +44,17 @@ function makeInsertLetterTasks(rawWords) {
       new TextPrompt('Пропущенная буква'),
       rawWord.explanation !== null ? new TextExplanation(rawWord.explanation) : null
   ));
+}
+
+
+async function getEgeT11SufficesInkEnk() {
+  const raw = (await import('@/assets/ege_t11_suffices_ink_enk')).default;
+
+  const title = 'ЕГЭ. Задание 11. Существительные с суффиксами ИНК/ЕНК';
+  let tasks = makeInsertLetterTasks(raw)
+  shuffle(tasks);
+
+  return new Test(title, tasks, { offerRepeat: true })
 }
 
 
