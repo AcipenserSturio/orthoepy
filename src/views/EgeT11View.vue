@@ -40,9 +40,7 @@
                   <p class="title is-6">
                     {{ subtheory.title }}
                   </p>
-                  <div class="content">
-                    {{ subtheory.text }}
-                  </div>
+                  <div class="content" v-html="marked(subtheory.text)"></div>
                 </div>
               </div>
             </b-collapse>
@@ -80,6 +78,7 @@
 </template>
 
 <script>
+import marked from 'marked';
 import BCollapse from 'buefy/src/components/collapse/Collapse';
 import PageHeader from "../components/PageHeader";
 
@@ -107,7 +106,7 @@ export default {
             },
             {
               title: 'Суффикс -ИНК или -ЕНК?',
-              text: '-ИНК пишется в существительных образованных от слов женского рода на -ИН-А, например: соломинка. Исключение: горлинка. -ЕНК пишется в остальных случаях (например, в существительных женского рода, обозначающих лиц женского пола, например: француженка, монашенка).\n\nИсключение: горлинка',
+              text: '-ИНК пишется в существительных образованных от слов женского рода на -ИН-А, например: соломинка. Исключение: горлинка. -ЕНК пишется в остальных случаях (например, в существительных женского рода, обозначающих лиц женского пола, например: француженка, монашенка).\n\n*Исключение: горлинка*',
             },
             {
               title: 'Правописание существительных, оканчивающихся на -МЯ.',
@@ -119,6 +118,9 @@ export default {
     }
   },
   methods: {
+    marked(text) {
+      return marked(text);
+    },
     getTheoryKey(index) {
       return `theory_${index}`;
     },
