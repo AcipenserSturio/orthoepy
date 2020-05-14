@@ -67,7 +67,7 @@
                 Существительные. Суффиксы ИНК/ЕНК
               </router-link>
               <router-link :to="{ name: 'training-card', params: { 'topic': 'ege-t11-nouns-mya' } }" class="list-item">
-                Существительные. Заканчиваются на -МЯ.
+                Существительные. Слова на -МЯ
               </router-link>
             </div>
           </div>
