@@ -14,6 +14,7 @@
             </p>
             <b-collapse
               class="card"
+              animation="slide"
               v-for="(theory, index) of theoryItems"
               :key="getTheoryKey(index)"
               :open="isOpen === index"
@@ -80,11 +81,12 @@
 <script>
 import marked from 'marked';
 import BCollapse from 'buefy/src/components/collapse/Collapse';
+import BIcon from 'buefy/src/components/icon/Icon';
 import PageHeader from "../components/PageHeader";
 
 export default {
   name: "EgeT11View",
-  components: {PageHeader, BCollapse},
+  components: {PageHeader, BCollapse, BIcon},
   data() {
     return {
       isOpen: -1,
