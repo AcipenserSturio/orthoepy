@@ -1,8 +1,7 @@
 <template>
   <div>
-    <page-header
+    <v-navbar
       title="Тренажер правил русского языка"
-      subtitle="Добро пожаловать в тренажер для закрепления правил русского языка."
     />
 
     <section class="section">
@@ -43,9 +42,9 @@
 </template>
 
 <script>
-import PageHeader from "../components/PageHeader";
+import VNavbar from "../components/VNavbar";
 export default {
   name: 'HomeView',
-  components: {PageHeader},
+  components: { VNavbar },
 };
 </script>

@@ -1,8 +1,7 @@
 <template>
   <div>
-    <page-header
-      title="Орфоэпия"
-      subtitle="Теоретическая часть"
+    <v-navbar
+      title="Орфоэпия. Теория"
       has-home-button
     />
 
@@ -187,9 +186,10 @@
 </template>
 
 <script>
-import PageHeader from "../components/PageHeader";
+import VNavbar from '../components/VNavbar';
+
 export default {
   name: 'OrthoepyArticleView',
-  components: {PageHeader},
+  components: { VNavbar },
 };
 </script>

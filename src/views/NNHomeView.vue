@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header
+    <v-navbar
       title="Н/НН"
       has-home-button
     />
@@ -53,9 +53,10 @@
 </template>
 
 <script>
-import PageHeader from "../components/PageHeader";
+import VNavbar from '../components/VNavbar';
+
 export default {
   name: 'NNHomeView',
-  components: {PageHeader},
+  components: { VNavbar },
 };
 </script>

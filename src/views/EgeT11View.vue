@@ -1,7 +1,7 @@
 <template>
   <div>
-    <page-header
-      title="Задание 11 (ЕГЭ)"
+    <v-navbar
+      title="ЕГЭ. Задание 11"
       has-home-button
     />
 
@@ -82,11 +82,12 @@
 import marked from 'marked';
 import BCollapse from 'buefy/src/components/collapse/Collapse';
 import BIcon from 'buefy/src/components/icon/Icon';
-import PageHeader from "../components/PageHeader";
+import BButton from 'buefy/src/components/button/Button';
+import VNavbar from '../components/VNavbar';
 
 export default {
   name: "EgeT11View",
-  components: {PageHeader, BCollapse, BIcon},
+  components: { VNavbar, BCollapse, BIcon, BButton },
   data() {
     return {
       isOpen: -1,

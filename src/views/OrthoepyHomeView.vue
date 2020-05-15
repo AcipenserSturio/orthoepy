@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header
+    <v-navbar
       title="Орфоэпия"
       has-home-button
     />
@@ -81,10 +81,10 @@
 
 <script>
 import BButton from 'buefy/src/components/button/Button.vue';
-import PageHeader from "../components/PageHeader";
+import VNavbar from '../components/VNavbar';
 
 export default {
   name: 'OrthoepyHomeView',
-  components: {PageHeader, BButton },
+  components: { VNavbar, BButton },
 };
 </script>
