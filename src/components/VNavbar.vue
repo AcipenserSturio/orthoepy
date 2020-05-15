@@ -2,7 +2,7 @@
   <b-navbar type="is-primary">
     <template slot="brand">
       <b-navbar-item tag="div">
-        <p class="has-text-weight-semibold">
+        <p class="has-text-weight-bold">
           {{ title }}
         </p>
       </b-navbar-item>
