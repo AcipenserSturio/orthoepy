@@ -15,9 +15,7 @@
 <script>
 import BInput from 'buefy/src/components/input/Input.vue';
 import BField from 'buefy/src/components/field/Field.vue';
-
 import { TextPrompt } from '@/models/prompts';
-
 
 export default {
   name: 'TaskPromptText',
@@ -32,9 +30,9 @@ export default {
     type: String,
   },
   watch: {
-    disabled: function(oldValue, newValue) {
+    disabled(oldValue, newValue) {
       if (newValue === true) {
-        this.$refs.input.focus()
+        this.$refs.input.focus();
       }
     },
   },

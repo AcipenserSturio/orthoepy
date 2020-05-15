@@ -2,19 +2,19 @@ import { isArraysEqual } from '@/utils';
 
 
 export class BasePrompt {
-  constructor() {}
-
   static type() {
     throw new TypeError('Must override "type()"');
   }
+
   static default() {
     throw new TypeError('Must override "default()"');
   }
 
-  static normalizeValue(value) {
+  static normalizeValue() {
     throw new TypeError('Must override "normalizeValue()"');
   }
-  static isValuesEqual(value1, value2) {
+
+  static isValuesEqual() {
     throw new TypeError('Must override "isValuesEqual()"');
   }
 }
@@ -29,6 +29,7 @@ export class CheckboxPrompt extends BasePrompt {
   static type() {
     return 'checkbox';
   }
+
   static default() {
     return [];
   }
@@ -39,6 +40,7 @@ export class CheckboxPrompt extends BasePrompt {
     }
     return [...value].sort();
   }
+
   static isValuesEqual(value1, value2) {
     return isArraysEqual(value1, value2);
   }
@@ -54,6 +56,7 @@ export class RadioPrompt extends BasePrompt {
   static type() {
     return 'radio';
   }
+
   static default() {
     return '';
   }
@@ -64,6 +67,7 @@ export class RadioPrompt extends BasePrompt {
     }
     return value.toLowerCase();
   }
+
   static isValuesEqual(value1, value2) {
     return value1 === value2;
   }
@@ -79,6 +83,7 @@ export class TextPrompt extends BasePrompt {
   static type() {
     return 'text';
   }
+
   static default() {
     return '';
   }
@@ -89,6 +94,7 @@ export class TextPrompt extends BasePrompt {
     }
     return value.toLowerCase();
   }
+
   static isValuesEqual(value1, value2) {
     return value1 === value2;
   }

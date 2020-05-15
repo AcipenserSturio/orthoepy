@@ -186,7 +186,7 @@
 </template>
 
 <script>
-import VNavbar from '../components/VNavbar';
+import VNavbar from '../components/VNavbar.vue';
 
 export default {
   name: 'OrthoepyArticleView',

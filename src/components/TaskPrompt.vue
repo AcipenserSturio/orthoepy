@@ -29,7 +29,6 @@
     />
     <p
       v-else
-      key="prompt-error"
       class="is-italic"
     >
       Не удалось отобразить поле ввода ответа.
@@ -41,14 +40,12 @@
 import TaskPromptCheckbox from '@/components/TaskPromptCheckbox.vue';
 import TaskPromptRadio from '@/components/TaskPromptRadio.vue';
 import TaskPromptText from '@/components/TaskPromptText.vue';
-
 import {
   BasePrompt,
   CheckboxPrompt,
   TextPrompt,
   RadioPrompt,
 } from '@/models/prompts';
-
 
 export default {
   name: 'TaskPrompt',

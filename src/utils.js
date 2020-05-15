@@ -11,12 +11,14 @@ export function isArraysEqual(a, b) {
 
 
 export function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const x = array[i];
-        array[i] = array[j];
-        array[j] = x;
-    }
+  const theArray = array;
 
-    return array;
+  for (let i = theArray.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const x = theArray[i];
+    theArray[i] = theArray[j];
+    theArray[j] = x;
+  }
+
+  return theArray;
 }

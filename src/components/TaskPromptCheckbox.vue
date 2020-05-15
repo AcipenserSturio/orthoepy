@@ -15,9 +15,7 @@
 
 <script>
 import BCheckbox from 'buefy/src/components/checkbox/Checkbox.vue';
-
 import { CheckboxPrompt } from '@/models/prompts';
-
 
 export default {
   name: 'TaskPromptCheckbox',

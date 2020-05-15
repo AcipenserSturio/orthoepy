@@ -2,7 +2,6 @@
   <div class="has-items-centered">
     <div
       v-if="test"
-      key="training"
       class="card"
       :class="{ [isCorrect ? 'card-correct' : 'card-incorrect']: isChecking }"
     >
@@ -55,7 +54,7 @@
       </footer>
     </div>
 
-    <div v-else key="error-message">
+    <div v-else>
       <p class="title has-text-white">
         Увы,
       </p>
@@ -69,7 +68,6 @@
 <script>
 import TrainingCardTask from '@/components/TrainingCardTask.vue';
 import TrainingCardResult from '@/components/TrainingCardResult.vue';
-
 import { getTest } from '@/tester';
 
 
@@ -116,10 +114,10 @@ export default {
     document.documentElement.className = 'training-card-view';
   },
   mounted() {
-    window.addEventListener('keyup', this.onKeyup)
+    window.addEventListener('keyup', this.onKeyup);
   },
   beforeDestroy() {
-    window.removeEventListener('keyup', this.onKeyup)
+    window.removeEventListener('keyup', this.onKeyup);
   },
   destroyed() {
     document.documentElement.className = '';
@@ -136,17 +134,18 @@ export default {
     },
     onKeyup(event) {
       if (event.keyCode === 13) {
-        this.onEnterPress()
+        this.onEnterPress();
       }
     },
     onEnterPress() {
-      if (this.isCompleted) {
-      } else if (!this.isChecking) {
-        this.onAnswer()
-      } else if (!this.isLastTask) {
-        this.onContinue()
-      } else {
-        this.onComplete()
+      if (!this.isCompleted) {
+        if (this.isLastTask) {
+          this.onComplete();
+        } else if (this.isChecking) {
+          this.onContinue();
+        } else {
+          this.onAnswer();
+        }
       }
     },
     getTasksCorrect() {
@@ -182,7 +181,7 @@ export default {
     },
     onRepeat() {
       window.location.reload();
-    }
+    },
   },
 };
 </script>

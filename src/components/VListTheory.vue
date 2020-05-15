@@ -29,8 +29,8 @@
 
 <script>
 import marked from 'marked';
-import BCollapse from 'buefy/src/components/collapse/Collapse';
-import BIcon from 'buefy/src/components/icon/Icon';
+import BCollapse from 'buefy/src/components/collapse/Collapse.vue';
+import BIcon from 'buefy/src/components/icon/Icon.vue';
 
 export default {
   name: 'VListTheory',
@@ -54,7 +54,7 @@ export default {
       return marked(text);
     },
   },
-}
+};
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="test" key="training">
+  <div v-if="test">
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
@@ -57,7 +57,7 @@
     </section>
   </div>
 
-  <div v-else key="error-message">
+  <div v-else>
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
@@ -88,12 +88,9 @@
 <script>
 import BButton from 'buefy/src/components/button/Button.vue';
 import BIcon from 'buefy/src/components/icon/Icon.vue';
-
-import TrainingTestTask from '@/components/TrainingTestTask';
-import TrainingTestResult from '@/components/TrainingTestResult';
-
+import TrainingTestTask from '@/components/TrainingTestTask.vue';
+import TrainingTestResult from '@/components/TrainingTestResult.vue';
 import { getTest } from '@/tester';
-
 
 export default {
   name: 'TrainingTestView',
@@ -147,7 +144,7 @@ export default {
       window.scroll({
         top: 0,
         left: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     },
     onRepeat() {

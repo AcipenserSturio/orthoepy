@@ -16,9 +16,7 @@
 
 <script>
 import BRadio from 'buefy/src/components/radio/Radio.vue';
-
 import { RadioPrompt } from '@/models/prompts';
-
 
 export default {
   name: 'TaskPromptRadio',

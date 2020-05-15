@@ -18,9 +18,9 @@ export default {
     trainings: {
       type: Array,
       required: true,
-    }
+    },
   },
-}
+};
 </script>
 
 <style scoped>

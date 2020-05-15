@@ -7,12 +7,10 @@
     />
     <TaskExplanationText
       v-else-if="isTextExplanation"
-      key="explanation-text"
       :explanation="explanation"
     />
     <p
       v-else
-      key="explanation-error"
       class="is-italic"
     >
       Не удалось отобразить пояснение.

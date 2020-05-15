@@ -13,7 +13,6 @@
 <script>
 import { RuleChainExplanation } from '@/models/explanations';
 
-
 export default {
   name: 'TaskExplanationRuleChain',
   props: {

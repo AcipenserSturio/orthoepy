@@ -4,9 +4,7 @@
 
 <script>
 import marked from 'marked';
-
 import { TextExplanation } from '@/models/explanations';
-
 
 export default {
   name: 'TaskExplanationText',
@@ -15,7 +13,7 @@ export default {
   },
   methods: {
     marked(s) {
-      return marked(s)
+      return marked(s);
     },
   },
 };

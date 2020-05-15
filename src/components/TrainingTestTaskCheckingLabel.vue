@@ -2,7 +2,7 @@
   <div>
     <div v-if="isCorrect" class="label-correct">
       <p>
-        Правильно ✔&#xfe0e
+        Правильно ✔&#xfe0e;
       </p>
     </div>
 

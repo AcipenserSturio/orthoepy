@@ -1,6 +1,4 @@
 export class BaseExplanation {
-  constructor() {}
-
   static type() {
     throw new TypeError('Must override "type()"');
   }

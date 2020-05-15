@@ -75,7 +75,6 @@
               </p>
             </div>
           </div>
-          
         </div>
       </div>
     </section>
@@ -84,7 +83,7 @@
 
 <script>
 import BButton from 'buefy/src/components/button/Button.vue';
-import VNavbar from '../components/VNavbar';
+import VNavbar from '../components/VNavbar.vue';
 
 export default {
   name: 'NotHomeView',
@@ -93,19 +92,19 @@ export default {
     openRuleTraining() {
       this.$router.push({
         name: 'training-card',
-        params: { 'topic': 'not-rules' },
+        params: { topic: 'not-rules' },
       });
     },
     openAlgorithmTraining() {
       this.$router.push({
         name: 'training-card',
-        params: { 'topic': 'not-algorithm' },
+        params: { topic: 'not-algorithm' },
       });
     },
     openTaskTraining() {
       this.$router.push({
         name: 'training-test',
-        params: { 'topic': 'not-tasks' },
+        params: { topic: 'not-tasks' },
       });
     },
   },

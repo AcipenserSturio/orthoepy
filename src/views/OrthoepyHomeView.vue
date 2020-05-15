@@ -81,10 +81,13 @@
 
 <script>
 import BButton from 'buefy/src/components/button/Button.vue';
-import VNavbar from '../components/VNavbar';
+import VNavbar from '../components/VNavbar.vue';
 
 export default {
   name: 'OrthoepyHomeView',
-  components: { VNavbar, BButton },
+  components: {
+    VNavbar,
+    BButton,
+  },
 };
 </script>

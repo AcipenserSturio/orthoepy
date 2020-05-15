@@ -28,13 +28,10 @@
 
 <script>
 import marked from 'marked';
-
 import TaskPrompt from '@/components/TaskPrompt.vue';
 import TrainingCardTaskCheckingLabel from '@/components/TrainingCardTaskCheckingLabel.vue';
 import TrainingCardTaskExplanation from '@/components/TrainingCardTaskExplanation.vue';
-
 import Task from '@/models/task';
-
 
 export default {
   name: 'TrainingCardTask',

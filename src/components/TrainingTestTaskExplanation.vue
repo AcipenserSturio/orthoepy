@@ -12,9 +12,7 @@
 
 <script>
 import TaskExplanation from '@/components/TaskExplanation.vue';
-
 import { BaseExplanation } from '@/models/explanations';
-
 
 export default {
   name: 'TrainingTestTaskExplanation',
