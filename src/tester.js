@@ -49,7 +49,7 @@ function makeInsertLetterTasks(rawWords) {
 
 
 async function getEgeT11NounsMya() {
-  const raw = (await import('@/assets/ege_t11_nouns_mya')).default;
+  const raw = (await import('@/assets/trainings/ege11__nouns_mya')).default;
 
   const title = 'ЕГЭ. Задание 11. Существительные на -МЯ';
   let tasks = makeInsertLetterTasks(raw)
@@ -60,7 +60,7 @@ async function getEgeT11NounsMya() {
 
 
 async function getEgeT11SufficesInkEnk() {
-  const raw = (await import('@/assets/ege_t11_suffices_ink_enk')).default;
+  const raw = (await import('@/assets/trainings/ege11__nouns_ink_enk')).default;
 
   const title = 'ЕГЭ. Задание 11. Существительные с суффиксами ИНК/ЕНК';
   let tasks = makeInsertLetterTasks(raw)
@@ -71,7 +71,7 @@ async function getEgeT11SufficesInkEnk() {
 
 
 async function getEgeT11SufficesIchkEchk() {
-  const raw = (await import('@/assets/ege_t11_suffices_ichk_echk')).default;
+  const raw = (await import('@/assets/trainings/ege11__nouns_ichk_echk')).default;
 
   const title = 'ЕГЭ. Задание 11. Существительные с суффиксами ИЧК/ЕЧК';
   let tasks = makeInsertLetterTasks(raw)
@@ -82,7 +82,7 @@ async function getEgeT11SufficesIchkEchk() {
 
 
 async function getEgeT11SufficesIkEk() {
-  const raw = (await import('@/assets/ege_t11_suffices_ik_ek')).default;
+  const raw = (await import('@/assets/trainings/ege11__nouns_ik_ek')).default;
 
   const title = 'ЕГЭ. Задание 11. Существительные с суффиксами ИК/ЕК';
   let tasks = makeInsertLetterTasks(raw)
@@ -93,7 +93,7 @@ async function getEgeT11SufficesIkEk() {
 
 
 async function getEgeT11SufficesIcEc() {
-  const raw = (await import('@/assets/ege_t11_suffices_ic_ec')).default;
+  const raw = (await import('@/assets/trainings/ege11__nouns_ic_ec')).default;
 
   const title = 'ЕГЭ. Задание 11. Существительные с суффиксами ИЦ/ЕЦ';
   let tasks = makeInsertLetterTasks(raw)
@@ -104,7 +104,7 @@ async function getEgeT11SufficesIcEc() {
 
 
 async function getEgeT12Infinitives() {
-  const raw = (await import('@/assets/ege_t12_infinitives')).default;
+  const raw = (await import('@/assets/trainings/ege12__verbs_infinitives')).default;
 
   const title = 'ЕГЭ. Задание 12. Инфинитивы';
   let tasks = makeInsertLetterTasks(raw)
@@ -116,7 +116,7 @@ async function getEgeT12Infinitives() {
 
 
 async function getNotRulesTest() {
-  const deadlockRules = (await import('@/assets/not_deadlock_rules')).default;
+  const deadlockRules = (await import('@/assets/trainings/not__deadlock_rules')).default;
 
   const title = 'Слитное и раздельное правописание "не"';
   let tasks = deadlockRules.map((deadlockRule) => {
@@ -147,9 +147,9 @@ async function getNotRulesTest() {
 
 
 async function getNotAlgorithmTest() {
-  const deadlockRules = (await import('@/assets/not_deadlock_rules')).default;
-  const deadlockTasks = (await import('@/assets/not_deadlock_tasks')).default;
-  const deadlockRuleChains = (await import('@/assets/not_deadlock_rule_chains')).default;
+  const deadlockRules = (await import('@/assets/trainings/not__deadlock_rules')).default;
+  const deadlockTasks = (await import('@/assets/trainings/not__deadlock_tasks')).default;
+  const deadlockRuleChains = (await import('@/assets/trainings/not__deadlock_rule_chains')).default;
 
   // find a deadlock index with tasks
   let deadlockIndex;
@@ -228,9 +228,9 @@ async function getNotAlgorithmTest() {
 
 
 async function getNotTasksTest() {
-  const deadlockRules = (await import('@/assets/not_deadlock_rules')).default;
-  const deadlockTasks = (await import('@/assets/not_deadlock_tasks')).default;
-  const deadlockRuleChains = (await import('@/assets/not_deadlock_rule_chains')).default;
+  const deadlockRules = (await import('@/assets/trainings/not__deadlock_rules')).default;
+  const deadlockTasks = (await import('@/assets/trainings/not__deadlock_tasks')).default;
+  const deadlockRuleChains = (await import('@/assets/trainings/not__deadlock_rule_chains')).default;
 
   const deadlockShuffledTaskIndices = deadlockTasks.map((tasksAtDeadlock) => {
     return shuffle([...Array(tasksAtDeadlock.length).keys()]);
