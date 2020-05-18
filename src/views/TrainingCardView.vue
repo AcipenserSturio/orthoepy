@@ -193,7 +193,7 @@ export default {
 @import "./../assets/variables";
 
 html.training-card-view {
-  background-color: $info;
+  background-color: $primary;
 }
 </style>
 
