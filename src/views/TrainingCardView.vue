@@ -138,15 +138,18 @@ export default {
       }
     },
     onEnterPress() {
-      if (!this.isCompleted) {
-        if (this.isLastTask) {
-          this.onComplete();
-        } else if (this.isChecking) {
-          this.onContinue();
-        } else {
-          this.onAnswer();
-        }
+      if (this.isCompleted) {
+        return;
       }
+      if (!this.isChecking) {
+        this.onAnswer();
+        return;
+      }
+      if (this.isLastTask) {
+        this.onComplete();
+        return;
+      }
+      this.onContinue();
     },
     getTasksCorrect() {
       let count = 0;
