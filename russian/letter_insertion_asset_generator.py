@@ -1,37 +1,66 @@
 import json
 
 
-def make_insert_letter_object(word, letter, explanation):
+def make_letter_insertion_spec(word, letter, explanation):
     return {
         'word': word,
         'letter': letter,
-        'explanation': explanation,
+        'explanation': explanation or None,
     }
 
 
-def generate_objects_from_stdin():
-    objects = list()
+def gen_specs_from_stdin():
+    specs = list()
 
-    explanation = input().replace('\\n', '\n')
-    pair = input()
-    while pair not in {'NEXT', 'DONE'}:
-        letter, word = pair.split(maxsplit=1)
-        objects.append(make_insert_letter_object(
-            word,
-            letter,
-            explanation,
+    explanation = ''
+    explanation_master_lines = list()
+    explanation_extra_lines = list()
+
+    is_reading_words = True
+    is_master_mode = False
+    is_extra_mode = False
+
+    line = input().strip()
+    while line != '#finish':
+        if line == '#master':
+            explanation_master_lines = list()
+            is_reading_words = False
+            is_master_mode = True
+            is_extra_mode = False
+        elif line == '#extra':
+            explanation_extra_lines = list()
+            is_reading_words = False
+            is_master_mode = False
+            is_extra_mode = True
+        elif line == '#end':
+            is_reading_words = True
+            is_master_mode = False
+            is_extra_mode = False
+            explanation = '\n'.join(
+                explanation_extra_lines
+                + ['']
+                + explanation_master_lines
+            ).strip()
+        elif is_reading_words and line:
+            letter, word = line.split('\t')
+            specs.append(make_letter_insertion_spec(
+                word,
+                letter,
+                explanation
             ))
-        pair = input()
+        elif is_master_mode:
+            explanation_master_lines.append(line)
+        elif is_extra_mode:
+            explanation_extra_lines.append(line)
 
-    if pair == 'NEXT':
-        objects += generate_objects_from_stdin()
+        line = input().strip()
 
-    return objects
+    return specs
 
 
 def main():
-    objects = generate_objects_from_stdin()
-    print(json.dumps(objects, ensure_ascii=False, indent=4))
+    specs = gen_specs_from_stdin()
+    print(json.dumps(specs, ensure_ascii=False, indent=4))
 
 
 if __name__ == '__main__':
