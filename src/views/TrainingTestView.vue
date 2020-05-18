@@ -90,7 +90,7 @@ import BButton from 'buefy/src/components/button/Button.vue';
 import BIcon from 'buefy/src/components/icon/Icon.vue';
 import TrainingTestTask from '@/components/TrainingTestTask.vue';
 import TrainingTestResult from '@/components/TrainingTestResult.vue';
-import { getTest } from '@/tester';
+import { getTraining } from '@/trainer';
 
 export default {
   name: 'TrainingTestView',
@@ -153,7 +153,7 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
-    getTest(to.params.topic, 'test').then((test) => {
+    getTraining(to.params.topic, 'test').then((test) => {
       next(vm => test && vm.setTest(test));
     });
   },

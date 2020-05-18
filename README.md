@@ -17,13 +17,13 @@ Create a router link that opens your test.
 ```vue
 <!-- you can also change 'training-card' to 'training-test' in case you need -->
 <!-- a regular test instead of a card one -->
-<router-link :to="{ name: 'training-card', params: { 'topic': 'YOUR-TEST-TOPIC' } }" class="list-item">
+<router-link :to="{ name: 'training-card', params: { topic: 'YOUR-TEST-TOPIC' } }" class="list-item">
     THE-LINK
 </router-link>
 ```
 
-In `tester.js` implement a test generator for `YOUR-TEST-TOPIC`. Don't forget
-to add it to `asyncTestGetter` object.
+In `trainer` implement a test generator for `YOUR-TEST-TOPIC`. Don't forget
+to add it to `asyncTrainingGetters` object.
 
 ## License
 

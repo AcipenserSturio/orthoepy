@@ -68,7 +68,7 @@
 <script>
 import TrainingCardTask from '@/components/TrainingCardTask.vue';
 import TrainingCardResult from '@/components/TrainingCardResult.vue';
-import { getTest } from '@/tester';
+import { getTraining } from '@/trainer';
 
 
 export default {
@@ -123,7 +123,7 @@ export default {
     document.documentElement.className = '';
   },
   beforeRouteEnter(to, from, next) {
-    getTest(to.params.topic, 'card').then((test) => {
+    getTraining(to.params.topic, 'card').then((test) => {
       next(vm => test && vm.setTest(test));
     });
   },
