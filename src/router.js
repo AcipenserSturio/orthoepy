@@ -31,13 +31,13 @@ const routes = [
   },
   {
     path: '/ege11',
-    name: 'ege11',
-    component: () => import(/* webpackChunkName: "ege11" */ './views/Ege11View.vue'),
+    name: 'ege11-home',
+    component: () => import(/* webpackChunkName: "ege11-home" */ './views/Ege11HomeView.vue'),
   },
   {
     path: '/ege12',
-    name: 'ege12',
-    component: () => import(/* webpackChunkName: "ege12" */ './views/Ege12View.vue'),
+    name: 'ege12-home',
+    component: () => import(/* webpackChunkName: "ege12-home" */ './views/Ege12HomeView.vue'),
   },
   {
     path: '/training',

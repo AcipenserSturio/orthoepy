@@ -52,7 +52,7 @@ import BButton from 'buefy/src/components/button/Button.vue';
 import VNavbar from '../components/VNavbar.vue';
 
 export default {
-  name: 'Ege12View',
+  name: 'Ege12HomeView',
   components: { VNavbar, BButton },
   methods: {
     openTaskGuide() {
