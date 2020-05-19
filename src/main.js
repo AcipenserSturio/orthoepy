@@ -1,3 +1,4 @@
+import Buefy from 'buefy';
 import Vue from 'vue';
 import DOMPurify from 'dompurify';
 import marked from 'marked';
@@ -11,6 +12,7 @@ marked.setOptions({
 });
 
 Vue.config.productionTip = false;
+Vue.use(Buefy);
 
 new Vue({
   router,
