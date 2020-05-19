@@ -30,14 +30,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "not-home" */ './views/NotHomeView.vue'),
   },
   {
-    path: '/ege-t12',
-    name: 'ege-t12',
-    component: () => import(/* webpackChunkName: "ege-t12" */ './views/EgeT12View.vue'),
+    path: '/ege11',
+    name: 'ege11',
+    component: () => import(/* webpackChunkName: "ege11" */ './views/Ege11View.vue'),
   },
   {
-    path: '/ege-t11',
-    name: 'ege-t11',
-    component: () => import(/* webpackChunkName: "ege-t11" */ './views/EgeT11View.vue'),
+    path: '/ege12',
+    name: 'ege12',
+    component: () => import(/* webpackChunkName: "ege12" */ './views/Ege12View.vue'),
   },
   {
     path: '/training',

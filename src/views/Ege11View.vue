@@ -36,7 +36,7 @@ import VListTraining from '../components/VListTraining.vue';
 import VListTheory from '../components/VListTheory.vue';
 
 export default {
-  name: 'EgeT11View',
+  name: 'Ege11View',
   components: {
     VListTheory,
     VListTraining,

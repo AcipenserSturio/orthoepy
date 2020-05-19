@@ -10,10 +10,10 @@
           Выберите задание ЕГЭ, которое будете закреплять:
         </p>
         <div class="list is-hoverable">
-          <router-link :to="{ name: 'ege-t11' }" class="list-item">
+          <router-link :to="{ name: 'ege11' }" class="list-item">
             ЕГЭ. Задание 11
           </router-link>
-          <router-link :to="{ name: 'ege-t12' }" class="list-item">
+          <router-link :to="{ name: 'ege12' }" class="list-item">
             ЕГЭ. Задание 12
           </router-link>
         </div>
