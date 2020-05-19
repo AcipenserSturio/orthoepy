@@ -1,14 +1,17 @@
 import trainingsNot from '@/trainer/trainings_not';
 import trainingsEge11 from '@/trainer/trainings_ege11';
+import trainingsEge12 from '@/trainer/trainings_ege12';
 
 const asyncTrainingGetters = {
   card: {
     ...trainingsNot.makeAsyncTrainingGettersForCard(),
     ...trainingsEge11.makeAsyncTrainingGettersForCard(),
+    ...trainingsEge12.makeAsyncTrainingGettersForCard(),
   },
   test: {
     ...trainingsNot.makeAsyncTrainingGettersForTest(),
     ...trainingsEge11.makeAsyncTrainingGettersForTest(),
+    ...trainingsEge12.makeAsyncTrainingGettersForTest(),
   },
 };
 

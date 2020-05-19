@@ -23,10 +23,6 @@ export default {
         'ЕГЭ. Задание 11. Существительные на -МЯ',
         'ege11__nouns_mya',
       ),
-      'ege12-verbs-infinitives': async () => makeTrainingLetterInsertion(
-        'ЕГЭ. Задание 12. Инфинитивы',
-        'ege12__verbs_infinitives',
-      ),
     };
   },
   makeAsyncTrainingGettersForTest() {
