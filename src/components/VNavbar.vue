@@ -1,5 +1,5 @@
 <template>
-  <b-navbar type="is-primary">
+  <b-navbar type="is-primary" :mobile-burger="hasHomeButton">
     <template slot="brand">
       <b-navbar-item tag="div">
         <p class="has-text-weight-bold">
