@@ -52,28 +52,28 @@ export default {
       ],
       trainings: [
         {
-          title: 'Существительные. Суффиксы ИК/ЕК',
-          topic: 'ege-t11-suffices-ik-ek',
+          title: 'Существительные с суффиксами -ИК- и -ЕК-',
+          topic: 'ege11-nouns-ik-ek',
           type: 'card',
         },
         {
-          title: 'Существительные. Суффиксы ИЦ/ЕЦ',
-          topic: 'ege-t11-suffices-ic-ec',
+          title: 'Существительные с суффиксами -ИЦ- и -ЕЦ-',
+          topic: 'ege11-nouns-ic-ec',
           type: 'card',
         },
         {
-          title: 'Существительные. Суффиксы ИЧК/ЕЧК',
-          topic: 'ege-t11-suffices-ichk-echk',
+          title: 'Существительные с суффиксами -ИЧК- и -ЕЧК-',
+          topic: 'ege11-nouns-ichk-echk',
           type: 'card',
         },
         {
-          title: 'Существительные. Суффиксы ИНК/ЕНК',
-          topic: 'ege-t11-suffices-ink-enk',
+          title: 'Существительные с суффиксами -ИНК- и -ЕНК-',
+          topic: 'ege11-nouns-ink-enk',
           type: 'card',
         },
         {
-          title: 'Существительные. Слова на -МЯ',
-          topic: 'ege-t11-nouns-mya',
+          title: 'Существительные на -МЯ',
+          topic: 'ege11-nouns-mya',
           type: 'card',
         },
       ],

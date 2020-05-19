@@ -32,27 +32,27 @@ async function makeTrainingLetterInsertion(title, assetFilename) {
 export default {
   makeAsyncTrainingGettersForCard() {
     return {
-      'ege-t11-suffices-ik-ek': async () => makeTrainingLetterInsertion(
+      'ege11-nouns-ik-ek': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные с суффиксами -ИК- и -ЕК-',
         'ege11__nouns_ik_ek',
       ),
-      'ege-t11-suffices-ic-ec': async () => makeTrainingLetterInsertion(
+      'ege11-nouns-ic-ec': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные с суффиксами -ИЦ- и -ЕЦ-',
         'ege11__nouns_ic_ec',
       ),
-      'ege-t11-suffices-ichk-echk': async () => makeTrainingLetterInsertion(
+      'ege11-nouns-ichk-echk': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные с суффиксами -ИЧК- и -ЕЧК-',
         'ege11__nouns_ichk_echk',
       ),
-      'ege-t11-suffices-ink-enk': async () => makeTrainingLetterInsertion(
+      'ege11-nouns-ink-enk': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные с суффиксами -ИНК- и -ЕНК-',
         'ege11__nouns_ink_enk',
       ),
-      'ege-t11-nouns-mya': async () => makeTrainingLetterInsertion(
+      'ege11-nouns-mya': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные на -МЯ',
         'ege11__nouns_mya',
       ),
-      'ege-t12-infinitives': async () => makeTrainingLetterInsertion(
+      'ege12-verbs-infinitives': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 12. Инфинитивы',
         'ege12__verbs_infinitives',
       ),
