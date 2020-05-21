@@ -77,6 +77,11 @@ export default {
           type: 'card',
         },
         {
+          title: 'Существительные с суффиксами -ЧИК- и -ЩИК-',
+          topic: 'ege11-nouns-chik-shik',
+          type: 'card',
+        },
+        {
           title: 'Существительные на -МЯ',
           topic: 'ege11-nouns-mya',
           type: 'card',

@@ -23,6 +23,10 @@ export default {
         'ЕГЭ. Задание 11. Существительные с суффиксами -ОНЬК- и -ЕНЬК-',
         'ege11__nouns_onk_enk',
       ),
+      'ege11-nouns-chik-shik': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Существительные с суффиксами -ЧИК- и -ЩИК-',
+        'ege11__nouns_chik_shik',
+      ),
       'ege11-nouns-mya': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные на -МЯ',
         'ege11__nouns_mya',
