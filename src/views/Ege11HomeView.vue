@@ -82,6 +82,11 @@ export default {
           type: 'card',
         },
         {
+          title: 'Существительные с неизменяемыми суффиксами',
+          topic: 'ege11-nouns-const',
+          type: 'card',
+        },
+        {
           title: 'Существительные на -МЯ',
           topic: 'ege11-nouns-mya',
           type: 'card',

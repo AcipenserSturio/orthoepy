@@ -27,6 +27,10 @@ export default {
         'ЕГЭ. Задание 11. Существительные с суффиксами -ЧИК- и -ЩИК-',
         'ege11__nouns_chik_shik',
       ),
+      'ege11-nouns-const': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Существительные с неизменяемыми суффиксами',
+        'ege11__nouns_const',
+      ),
       'ege11-nouns-mya': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные на -МЯ',
         'ege11__nouns_mya',
