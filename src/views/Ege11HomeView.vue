@@ -72,6 +72,11 @@ export default {
           type: 'card',
         },
         {
+          title: 'Существительные с суффиксами -ОНЬК- и -ЕНЬК-',
+          topic: 'ege11-nouns-onk-enk',
+          type: 'card',
+        },
+        {
           title: 'Существительные на -МЯ',
           topic: 'ege11-nouns-mya',
           type: 'card',
