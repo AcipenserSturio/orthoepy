@@ -51,6 +51,10 @@ export default {
         'ЕГЭ. Задание 11. Прилагательные с неизменяемыми суффиксами',
         'ege11__adjs_const',
       ),
+      'ege11-advs-o-a': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Наречия с суффиксами -О- и -А- (приставочно-суффиксальные)',
+        'ege11__advs_o_a',
+      ),
     };
   },
   makeAsyncTrainingGettersForTest() {
