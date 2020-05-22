@@ -35,6 +35,22 @@ export default {
         'ЕГЭ. Задание 11. Существительные на -МЯ',
         'ege11__nouns_mya',
       ),
+      'ege11-adjs-iv-ev': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Прилагательные с суффиксами -ИВ- и -ЕВ-',
+        'ege11__adjs_iv_ev',
+      ),
+      'ege11-adjs-onk-enk': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Прилагательные с суффиксами -ОНЬК- и -ЕНЬК-',
+        'ege11__adjs_onk_enk',
+      ),
+      'ege11-adjs-ov-ev': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Прилагательные с суффиксами -ОВ-, -ОВАТ-, -ОВИТ- и -ЕВ-, -ЕВАТ-, -ЕВИТ-',
+        'ege11__adjs_ov_ev',
+      ),
+      'ege11-adjs-const': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Прилагательные с неизменяемыми суффиксами',
+        'ege11__adjs_const',
+      ),
     };
   },
   makeAsyncTrainingGettersForTest() {
