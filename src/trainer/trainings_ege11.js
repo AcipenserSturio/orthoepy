@@ -67,6 +67,10 @@ export default {
         'ЕГЭ. Задание 11. Глаголы с суффиксами -ОВА-, -ЕВА-, -ЫВА-, -ИВА- и -ВА-',
         'ege11__verbs_ova_eva_yiva_iva_va',
       ),
+      'ege11-other-hsss-o-ieo': async () => makeTrainingLetterInsertion(
+        'ЕГЭ. Задание 11. Гласные "о" и "ё" в суффиксах и окончаниях после шипящих',
+        'ege11__other_hsss_o_ieo',
+      ),
     };
   },
   makeAsyncTrainingGettersForTest() {
