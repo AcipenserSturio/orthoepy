@@ -56,11 +56,11 @@ export default {
         'ege11__advs_o_a',
       ),
       'ege11-verbs-before-l': async () => makeTrainingLetterInsertion(
-        'ЕГЭ. Задание 11. Гласная в глаголе перед суффиксом -Л-',
+        'ЕГЭ. Задание 11. Гласные в глаголах перед суффиксом -Л-',
         'ege11__verbs_before_l',
       ),
       'ege11-verbs-infinitives': async () => makeTrainingLetterInsertion(
-        'ЕГЭ. Задание 11. Гласная в неопределенной форме глагола перед -ТЬ',
+        'ЕГЭ. Задание 11. Гласные в неопределенных формах глаголов перед -ТЬ',
         'ege11__verbs_infinitives',
       ),
       'ege11-verbs-ova-eva-yiva-iva-va': async () => makeTrainingLetterInsertion(

@@ -10,6 +10,14 @@
         <section class="section">
           <div class="container">
             <p class="title is-5">
+              Работа с тренажером
+            </p>
+            <div class="content" v-html="how_to_html"></div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container">
+            <p class="title is-5">
               Теория
             </p>
             <v-list-theory :theories="theories"/>
@@ -34,6 +42,7 @@
 </template>
 
 <script>
+import marked from 'marked';
 import VNavbar from '../components/VNavbar.vue';
 import VListTraining from '../components/VListTraining.vue';
 import VListTheory from '../components/VListTheory.vue';
@@ -47,6 +56,7 @@ export default {
   },
   data() {
     return {
+      how_to_html: marked('Я рекомендую перед тренировкой вспомнить правила написания каждого суффикса и исключения. Если нужно, освежите знания теорией.\n\nОтветить на задание можно нажав кнопку "Ответить" или клавишу "Enter". Тренажер покажет результат, поясняя каждую ошибку.\n\nУ каждого правила есть исключения и сложные случаи, так что лучше сделать всё. Если *время поджимает*, то хотя бы прочитайте теорию и пройдите:\n\n- *Существительные с суффиксами -ЧИК- и -ЩИК-*\n- *Гласные в неопределенных формах глаголов перед -ТЬ*\n- *Гласные "о" и "ё" в суффиксах и окончаниях после шипящих*'),
       theories: [
         {
           title: 'Существительные',
@@ -159,12 +169,12 @@ export default {
               type: 'card',
             },
             {
-              title: 'Гласная в глаголе перед суффиксом -Л-',
+              title: 'Гласные в глаголах перед суффиксом -Л-',
               topic: 'ege11-verbs-before-l',
               type: 'card',
             },
             {
-              title: 'Гласная в неопределенной форме глагола перед -ТЬ',
+              title: 'Гласные в неопределенных формах глаголов перед -ТЬ',
               topic: 'ege11-verbs-infinitives',
               type: 'card',
             },
