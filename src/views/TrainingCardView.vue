@@ -34,7 +34,26 @@
       </div>
 
       <footer class="card-footer">
-        <template v-if="isCompleted">
+        <template v-if="isAnsweringStage">
+          <a class="card-footer-item" @click="onAnswer">
+            Ответить
+          </a>
+        </template>
+
+        <template v-else-if="isCheckingStage">
+          <template v-if="isLastTask">
+            <a class="card-footer-item" @click="onComplete">
+              Завершить
+            </a>
+          </template>
+          <template v-else>
+            <a class="card-footer-item" @click="onContinue">
+              Продолжить
+            </a>
+          </template>
+        </template>
+
+        <template v-else-if="isCompletedStage">
           <a v-if="shouldOfferRepeat" class="card-footer-item" @click="onRepeat">
             Повторить
           </a>
@@ -42,15 +61,12 @@
             На главную
           </router-link>
         </template>
-        <a v-else-if="!isChecking" class="card-footer-item" @click="onAnswer">
-          Ответить
-        </a>
-        <a v-else-if="!isLastTask" class="card-footer-item" @click="onContinue">
-          Продолжить
-        </a>
-        <a v-else class="card-footer-item" @click="onComplete">
-          Завершить
-        </a>
+
+        <template v-else>
+          <p class="is-italic card-footer-item">
+            Не удалось отобразить кнопки управления.
+          </p>
+        </template>
       </footer>
     </div>
 
@@ -91,6 +107,15 @@ export default {
     };
   },
   computed: {
+    isAnsweringStage() {
+      return !this.isCompleted && !this.isChecking;
+    },
+    isCheckingStage() {
+      return this.isChecking;
+    },
+    isCompletedStage() {
+      return this.isCompleted;
+    },
     taskNumber() {
       return this.taskIndex + 1;
     },
