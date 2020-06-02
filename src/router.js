@@ -58,6 +58,14 @@ const routes = [
     },
   },
   {
+    path: '/training/choose/:topic',
+    name: 'training-choose',
+    component: () => import(/* webpackChunkName: "training-choose" */ './views/TrainingChooseView.vue'),
+    meta: {
+      shouldShowLoading: true,
+    },
+  },
+  {
     path: '/training/test/:topic',
     name: 'training-test',
     component: () => import(/* webpackChunkName: "training-test" */ './views/TrainingTestView.vue'),
