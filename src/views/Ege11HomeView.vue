@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-navbar
-      title="ЕГЭ. Задание 11"
+      title="ЕГЭ. Задание 11. Правописание суффиксов (кроме -Н-/-НН-)"
       has-home-button
     />
 

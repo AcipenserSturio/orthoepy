@@ -11,10 +11,10 @@
         </p>
         <div class="list is-hoverable">
           <router-link :to="{ name: 'ege11-home' }" class="list-item">
-            ЕГЭ. Задание 11
+            ЕГЭ. Задание 11. Правописание суффиксов (кроме -Н-/-НН-)
           </router-link>
           <router-link :to="{ name: 'ege12-home' }" class="list-item">
-            ЕГЭ. Задание 12
+            ЕГЭ. Задание 12. Правописание личных окончаний глаголов и суффиксов причастий
           </router-link>
         </div>
       </div>
