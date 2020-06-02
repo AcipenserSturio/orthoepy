@@ -1,6 +1,6 @@
 import Task from '@/models/task';
 import { TextExplanation } from '@/models/explanations';
-import { TextPrompt } from '@/models/prompts';
+import { RadioPrompt, TextPrompt } from '@/models/prompts';
 import { shuffle } from '@/utils';
 import Test from '@/models/test';
 
@@ -8,7 +8,6 @@ import Test from '@/models/test';
 // Card Training Factory: letter-insertion
 //
 
-/* eslint-disable-next-line import/prefer-default-export */
 export async function makeTrainingLetterInsertion(title, assetFilename) {
   const rawTasks = (await import(`@/assets/trainings/${assetFilename}`)).default;
 
@@ -20,6 +19,24 @@ export async function makeTrainingLetterInsertion(title, assetFilename) {
     !rawTask.explanation
       ? null
       : new TextExplanation(rawTask.explanation),
+  ));
+  shuffle(tasks);
+
+  return new Test(title, tasks, { offerRepeat: true });
+}
+
+//
+// Choose Training Factory: stress-choosing
+//
+
+export async function makeTrainingStressChoosing(title, assetFilename) {
+  const rawTasks = (await import(`@/assets/trainings/${assetFilename}`)).default;
+
+  const tasks = rawTasks.map(rawTask => new Task(
+    '*Выберите слово с правильным ударением.*',
+    rawTask[0],
+    new RadioPrompt(shuffle([rawTask[0], rawTask[1]])),
+    null,
   ));
   shuffle(tasks);
 
