@@ -204,6 +204,9 @@ export default {
       'not-algorithm': async () => makeTrainingNotAlgorithm(),
     };
   },
+  makeAsyncTrainingGettersForChoose() {
+    return {};
+  },
   makeAsyncTrainingGettersForTest() {
     return {
       'not-tasks': async () => makeTrainingNotTasks(),

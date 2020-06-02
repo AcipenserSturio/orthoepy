@@ -9,6 +9,9 @@ export default {
       ),
     };
   },
+  makeAsyncTrainingGettersForChoose() {
+    return {};
+  },
   makeAsyncTrainingGettersForTest() {
     return {};
   },

@@ -8,6 +8,11 @@ const asyncTrainingGetters = {
     ...trainingsEge11.makeAsyncTrainingGettersForCard(),
     ...trainingsEge12.makeAsyncTrainingGettersForCard(),
   },
+  choose: {
+    ...trainingsNot.makeAsyncTrainingGettersForChoose(),
+    ...trainingsEge11.makeAsyncTrainingGettersForChoose(),
+    ...trainingsEge12.makeAsyncTrainingGettersForChoose(),
+  },
   test: {
     ...trainingsNot.makeAsyncTrainingGettersForTest(),
     ...trainingsEge11.makeAsyncTrainingGettersForTest(),
