@@ -1,20 +1,24 @@
 import trainingsNot from '@/trainer/trainings_not';
+import trainingsEge04 from '@/trainer/trainings_ege04';
 import trainingsEge11 from '@/trainer/trainings_ege11';
 import trainingsEge12 from '@/trainer/trainings_ege12';
 
 const asyncTrainingGetters = {
   card: {
     ...trainingsNot.makeAsyncTrainingGettersForCard(),
+    ...trainingsEge04.makeAsyncTrainingGettersForCard(),
     ...trainingsEge11.makeAsyncTrainingGettersForCard(),
     ...trainingsEge12.makeAsyncTrainingGettersForCard(),
   },
   choose: {
     ...trainingsNot.makeAsyncTrainingGettersForChoose(),
+    ...trainingsEge04.makeAsyncTrainingGettersForChoose(),
     ...trainingsEge11.makeAsyncTrainingGettersForChoose(),
     ...trainingsEge12.makeAsyncTrainingGettersForChoose(),
   },
   test: {
     ...trainingsNot.makeAsyncTrainingGettersForTest(),
+    ...trainingsEge04.makeAsyncTrainingGettersForTest(),
     ...trainingsEge11.makeAsyncTrainingGettersForTest(),
     ...trainingsEge12.makeAsyncTrainingGettersForTest(),
   },
