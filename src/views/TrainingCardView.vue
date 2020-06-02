@@ -163,18 +163,17 @@ export default {
       }
     },
     onEnterPress() {
-      if (this.isCompleted) {
-        return;
-      }
-      if (!this.isChecking) {
+      if (this.isAnsweringStage) {
         this.onAnswer();
         return;
       }
-      if (this.isLastTask) {
-        this.onComplete();
+      if (this.isCheckingStage && !this.isLastTask) {
+        this.onContinue();
         return;
       }
-      this.onContinue();
+      if (this.isCheckingStage && this.isLastTask) {
+        this.onComplete();
+      }
     },
     getTasksCorrect() {
       let count = 0;
