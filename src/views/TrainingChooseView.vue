@@ -151,7 +151,7 @@ export default {
     document.documentElement.className = '';
   },
   beforeRouteEnter(to, from, next) {
-    getTraining(to.params.topic, 'card').then((test) => {
+    getTraining(to.params.topic, 'choose').then((test) => {
       next(vm => test && vm.setTest(test));
     });
   },
