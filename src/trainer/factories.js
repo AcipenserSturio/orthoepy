@@ -40,5 +40,8 @@ export async function makeTrainingStressChoosing(title, assetFilename) {
   ));
   shuffle(tasks);
 
-  return new Test(title, tasks, { offerRepeat: true });
+  return new Test(title, tasks, {
+    offerRepeat: true,
+    showMistakesSummary: true,
+  });
 }
