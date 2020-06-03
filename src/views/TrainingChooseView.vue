@@ -171,8 +171,10 @@ export default {
     onKeyup(event) {
       if (event.keyCode === 13) {
         this.onEnterPress();
-      } else if (event.keyCode >= 49 && event.keyCode <= 57) {
-        this.onNumberPress(event.keyCode - 48);
+      } else if (event.keyCode === 37) {
+        this.onLeftPress();
+      } else if (event.keyCode === 39) {
+        this.onRightPress();
       }
     },
     onEnterPress() {
@@ -184,7 +186,13 @@ export default {
         this.onComplete();
       }
     },
-    onNumberPress(number) {
+    onLeftPress() {
+      this.onAnswerPress(1);
+    },
+    onRightPress() {
+      this.onAnswerPress(2);
+    },
+    onAnswerPress(number) {
       if (!this.isAnsweringStage) {
         return;
       }
