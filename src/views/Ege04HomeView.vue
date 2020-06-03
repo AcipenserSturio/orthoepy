@@ -20,9 +20,7 @@
             <p class="title is-5">
               Теория
             </p>
-            <p>
-              ...
-            </p>
+            <div class="content" v-html="theory_html"></div>
           </div>
         </section>
       </div>
@@ -41,6 +39,7 @@
 </template>
 
 <script>
+import marked from 'marked';
 import VNavbar from '@/components/VNavbar.vue';
 import VListTraining from '@/components/VListTraining.vue';
 
@@ -49,7 +48,8 @@ export default {
   components: { VListTraining, VNavbar },
   data() {
     return {
-      how_to_html: '...',
+      how_to_html: marked('Ответить на задание можно, нажав кнопку одного из предложенных вариантов или клавиши "Стрелка влево", "Стрелка вправо".\n\nЕсли у вас возникают проблемы с группами слов, я рекомендую почитать теорию. Там описаны закономерности при постановке некоторых ударений.'),
+      theory_html: marked('- [Орфоэпический словник от ФИПИ 2020](http://doc.fipi.ru/ege/demoversii-specifikacii-kodifikatory/2020/ru_ege_2020.zip)\n- [Статья про ударения в глаголах](https://lampa.io/p/ударение-в-глаголах-00000000a0d8069e277eb510d1ca31bd)'),
       trainings: [
         {
           title: 'Существительные',
