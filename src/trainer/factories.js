@@ -34,8 +34,8 @@ export async function makeTrainingStressChoosing(title, assetFilename) {
 
   const tasks = rawTasks.map(rawTask => new Task(
     '*Выберите слово с правильным ударением.*',
-    rawTask[0],
-    new RadioPrompt(shuffle([rawTask[0], rawTask[1]])),
+    rawTask.correct,
+    new RadioPrompt(rawTask.options),
     null,
   ));
   shuffle(tasks);
