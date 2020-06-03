@@ -33,6 +33,9 @@
             v-else
             :tasks-correct="getTasksCorrect()"
             :tasks-total="tasksSolved"
+            :training-title="test.title"
+            :show-mistakes-summary="shouldShowMistakesSummary"
+            :user-answers="testUserAnswers"
           />
         </div>
 
@@ -145,6 +148,9 @@ export default {
     shouldOfferRepeat() {
       return this.test.options.offerRepeat;
     },
+    shouldShowMistakesSummary() {
+      return this.test.options.showMistakesSummary;
+    },
   },
   beforeCreate() {
     document.documentElement.className = 'training-choose-view';
@@ -220,6 +226,7 @@ export default {
       this.isCorrect = this.currentTask.checkAnswer(this.currentAnswer);
       this.testUserAnswers[this.taskIndex] = {
         userAnswer: this.currentAnswer,
+        correctAnswer: this.currentTask.answer,
         isCorrect: this.isCorrect,
       };
     },
