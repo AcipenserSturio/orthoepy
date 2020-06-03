@@ -1,82 +1,87 @@
 <template>
   <div class="has-items-centered">
-    <div
-      v-if="test"
-      class="card"
-      :class="{ [isCorrect ? 'card-correct' : 'card-incorrect']: isChecking }"
-    >
-      <header class="card-header">
-        <p v-if="isCompleted" class="card-header-title">
-          Результаты — {{ test.title }}
-        </p>
-        <p v-else-if="shouldDisplayProgress" class="card-header-title">
-          {{ taskNumber }}/{{ tasksTotal }} — {{ test.title }}
-        </p>
-        <p v-else class="card-header-title">
-          {{ test.title }}
-        </p>
-      </header>
+    <div>
+      <div
+        v-if="test"
+        class="card"
+        :class="{ [isCorrect ? 'card-correct' : 'card-incorrect']: isChecking }"
+      >
+        <header class="card-header">
+          <p v-if="isCompleted" class="card-header-title">
+            Результаты — {{ test.title }}
+          </p>
+          <p v-else-if="shouldDisplayProgress" class="card-header-title">
+            {{ taskNumber }}/{{ tasksTotal }} — {{ test.title }}
+          </p>
+          <p v-else class="card-header-title">
+            {{ test.title }}
+          </p>
+          <a v-if="!isCompleted" class="card-header-icon has-text-dark" @click="onComplete">
+            <b-icon icon="door-open" size="is-small" title="Завершить"/>
+          </a>
+        </header>
 
-      <div class="card-content">
-        <TrainingCardTask
-          v-if="!isCompleted"
-          :task="currentTask"
-          :is-checking="isChecking"
-          :is-correct="isCorrect"
-          v-model="currentAnswer"
-          @enterPressed="onEnterPress"
-        />
-        <TrainingCardResult
-          v-else
-          :tasks-correct="getTasksCorrect()"
-          :tasks-total="tasksTotal"
-        />
+        <div class="card-content">
+          <TrainingCardTask
+            v-if="!isCompleted"
+            :task="currentTask"
+            :is-checking="isChecking"
+            :is-correct="isCorrect"
+            v-model="currentAnswer"
+            @enterPressed="onEnterPress"
+          />
+          <TrainingCardResult
+            v-else
+            :tasks-correct="getTasksCorrect()"
+            :tasks-total="tasksSolved"
+          />
+        </div>
+
+        <footer class="card-footer">
+          <template v-if="isAnsweringStage">
+            <a class="card-footer-item" @click="onAnswer">
+              Ответить
+            </a>
+          </template>
+
+          <template v-else-if="isCheckingStage">
+            <template v-if="isLastTask">
+              <a class="card-footer-item" @click="onComplete">
+                Завершить
+              </a>
+            </template>
+            <template v-else>
+              <a class="card-footer-item" @click="onContinue">
+                Продолжить
+              </a>
+            </template>
+          </template>
+
+          <template v-else-if="isCompletedStage">
+            <a v-if="shouldOfferRepeat" class="card-footer-item" @click="onRepeat">
+              Повторить
+            </a>
+            <router-link class="card-footer-item" :to="{ name: 'home' }">
+              На главную
+            </router-link>
+          </template>
+
+          <template v-else>
+            <p class="is-italic card-footer-item">
+              Не удалось отобразить кнопки управления.
+            </p>
+          </template>
+        </footer>
       </div>
 
-      <footer class="card-footer">
-        <template v-if="isAnsweringStage">
-          <a class="card-footer-item" @click="onAnswer">
-            Ответить
-          </a>
-        </template>
-
-        <template v-else-if="isCheckingStage">
-          <template v-if="isLastTask">
-            <a class="card-footer-item" @click="onComplete">
-              Завершить
-            </a>
-          </template>
-          <template v-else>
-            <a class="card-footer-item" @click="onContinue">
-              Продолжить
-            </a>
-          </template>
-        </template>
-
-        <template v-else-if="isCompletedStage">
-          <a v-if="shouldOfferRepeat" class="card-footer-item" @click="onRepeat">
-            Повторить
-          </a>
-          <router-link class="card-footer-item" :to="{ name: 'home' }">
-            На главную
-          </router-link>
-        </template>
-
-        <template v-else>
-          <p class="is-italic card-footer-item">
-            Не удалось отобразить кнопки управления.
-          </p>
-        </template>
-      </footer>
-    </div>
-
-    <div v-else>
-      <p class="title has-text-white">
-        Увы,
-      </p>
-      <p class="subtitle has-text-grey-lighter">
-        но такого теста не существует
-      </p>
+      <div v-else>
+        <p class="title has-text-white">
+          Увы,
+        </p>
+        <p class="subtitle has-text-grey-lighter">
+          но такого теста не существует
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -85,7 +90,6 @@
 import TrainingCardTask from '@/components/TrainingCardTask.vue';
 import TrainingCardResult from '@/components/TrainingCardResult.vue';
 import { getTraining } from '@/trainer';
-
 
 export default {
   name: 'TrainingCardView',
@@ -121,6 +125,9 @@ export default {
     },
     tasksTotal() {
       return this.test.tasks.length;
+    },
+    tasksSolved() {
+      return this.taskIndex;
     },
     currentTask() {
       return this.test.tasks[this.taskIndex];
@@ -200,10 +207,13 @@ export default {
       this.taskIndex += 1;
     },
     onComplete() {
+      if (this.isChecking) {
+        this.taskIndex += 1;
+      }
+
       this.currentAnswer = null;
       this.isChecking = false;
       this.isCorrect = null;
-
       this.isCompleted = true;
     },
     onRepeat() {
