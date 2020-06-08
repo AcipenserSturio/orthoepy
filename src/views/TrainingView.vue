@@ -9,7 +9,7 @@
         <div class="column column-training is-full container">
 
           <div class="card" v-if="training" :key="'training'">
-            <training-card-header
+            <TrainingCardHeader
               :training="training"
               :active-task-index="activeTaskIndex"
               :active-state="activeState"
@@ -19,7 +19,7 @@
               <div class="content" v-html="marked(activeTask.question)"></div>
             </div>
 
-            <training-card-footer
+            <TrainingCardFooter
               :training="training"
               :active-task-index="activeTaskIndex"
               :active-state="activeState"
