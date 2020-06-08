@@ -85,13 +85,6 @@ export class RadioPrompt extends BasePrompt {
     return optionDefault;
   }
 
-  static normalizeValue(value) {
-    if (!value) {
-      return this.default();
-    }
-    return value.toLowerCase();
-  }
-
   static areEqualByContent(v1, v2) {
     return normalizeOption(v1) === normalizeOption(v2);
   }
@@ -110,13 +103,6 @@ export class ButtonPrompt extends BasePrompt {
 
   static default() {
     return optionDefault;
-  }
-
-  static normalizeValue(value) {
-    if (!value) {
-      return this.default();
-    }
-    return value.toLowerCase();
   }
 
   static areEqualByContent(v1, v2) {
@@ -154,10 +140,6 @@ export class NullPrompt extends BasePrompt {
   }
 
   static default() {
-    return null;
-  }
-
-  static normalizeValue() {
     return null;
   }
 
