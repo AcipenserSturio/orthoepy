@@ -1,4 +1,4 @@
-export function isArraysEqual(a, b) {
+export function areArraysEqual(a, b) {
   if (a === b) return true;
   if (a === null || b === null) return false;
   if (a.length !== b.length) return false;
@@ -8,7 +8,6 @@ export function isArraysEqual(a, b) {
   }
   return true;
 }
-
 
 export function shuffle(array) {
   const theArray = array;
