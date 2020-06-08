@@ -1,11 +1,11 @@
 import { areArraysEqual } from '@/utils';
 
 export class BasePrompt {
-  static type() {
+  static get type() {
     throw new TypeError('Must override "type()"');
   }
 
-  static default() {
+  static get default() {
     throw new TypeError('Must override "default()"');
   }
 
@@ -57,11 +57,11 @@ export class CheckboxPrompt extends BasePrompt {
     this.options = [...options];
   }
 
-  static type() {
+  static get type() {
     return 'checkbox';
   }
 
-  static default() {
+  static get default() {
     return optionsDefault;
   }
 
@@ -77,11 +77,11 @@ export class RadioPrompt extends BasePrompt {
     this.options = [...options];
   }
 
-  static type() {
+  static get type() {
     return 'radio';
   }
 
-  static default() {
+  static get default() {
     return optionDefault;
   }
 
@@ -97,11 +97,11 @@ export class ButtonPrompt extends BasePrompt {
     this.options = [...options];
   }
 
-  static type() {
+  static get type() {
     return 'button';
   }
 
-  static default() {
+  static get default() {
     return optionDefault;
   }
 
@@ -121,11 +121,11 @@ export class TextPrompt extends BasePrompt {
     this.placeholder = placeholder;
   }
 
-  static type() {
+  static get type() {
     return 'text';
   }
 
-  static default() {
+  static get default() {
     return textDefault;
   }
 
@@ -135,11 +135,11 @@ export class TextPrompt extends BasePrompt {
 }
 
 export class NullPrompt extends BasePrompt {
-  static type() {
+  static get type() {
     return 'null';
   }
 
-  static default() {
+  static get default() {
     return null;
   }
 
