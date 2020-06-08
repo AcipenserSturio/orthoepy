@@ -36,4 +36,16 @@ export default class Training {
     this.userAnswersTotalCount += 1;
     this.userAnswersCorrectCount += isCorrect ? 1 : 0;
   }
+
+  static get STATE_ANSWERING() {
+    return 0;
+  }
+
+  static get STATE_CHECKING() {
+    return 1;
+  }
+
+  static get STATE_FINISHED() {
+    return 2;
+  }
 }
