@@ -151,6 +151,6 @@ export class NullPrompt extends BasePrompt {
   }
 
   static areValuesSame() {
-    return false;
+    return null;
   }
 }
