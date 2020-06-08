@@ -58,6 +58,14 @@ const routes = [
     },
   },
   {
+    path: '/training/card-beta/:topic',
+    name: 'training-card-v2',
+    component: () => import(/* webpackChunkName: "training-card-v2" */ './views/TrainingCardV2View.vue'),
+    meta: {
+      shouldShowLoading: true,
+    },
+  },
+  {
     path: '/training/choose/:topic',
     name: 'training-choose',
     component: () => import(/* webpackChunkName: "training-choose" */ './views/TrainingChooseView.vue'),
