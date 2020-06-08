@@ -1,6 +1,5 @@
 import { isArraysEqual } from '@/utils';
 
-
 export class BasePrompt {
   static type() {
     throw new TypeError('Must override "type()"');
@@ -18,6 +17,10 @@ export class BasePrompt {
     throw new TypeError('Must override "isValuesEqual()"');
   }
 }
+
+//
+// Option Prompts
+//
 
 export class CheckboxPrompt extends BasePrompt {
   constructor(checkboxes) {
@@ -73,15 +76,15 @@ export class RadioPrompt extends BasePrompt {
   }
 }
 
-export class TextPrompt extends BasePrompt {
-  constructor(placeholder) {
+export class ButtonPrompt extends BasePrompt {
+  constructor(buttons) {
     super();
 
-    this.placeholder = placeholder;
+    this.buttons = [...buttons];
   }
 
   static type() {
-    return 'text';
+    return 'button';
   }
 
   static default() {
@@ -100,15 +103,19 @@ export class TextPrompt extends BasePrompt {
   }
 }
 
-export class ButtonPrompt extends BasePrompt {
-  constructor(buttons) {
+//
+// Other Prompts
+//
+
+export class TextPrompt extends BasePrompt {
+  constructor(placeholder) {
     super();
 
-    this.buttons = [...buttons];
+    this.placeholder = placeholder;
   }
 
   static type() {
-    return 'button';
+    return 'text';
   }
 
   static default() {
