@@ -23,7 +23,7 @@ export default class Training {
     this.userAnswersCorrectCount = 0;
   }
 
-  userAnswered(taskIndex, userAnswer) {
+  onUserAnswered(taskIndex, userAnswer) {
     const task = this.tasks[taskIndex];
 
     const isCorrect = task.prompt.constructor.areEqualByContent(
