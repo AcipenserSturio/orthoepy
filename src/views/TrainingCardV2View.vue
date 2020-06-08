@@ -2,6 +2,7 @@
   <div>
     <v-navbar
       title="Тренировка"
+      has-home-button
     />
     <section class="section">
       <div class="columns">
