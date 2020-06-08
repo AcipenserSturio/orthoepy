@@ -9,13 +9,41 @@ export class BasePrompt {
     throw new TypeError('Must override "default()"');
   }
 
-  static normalizeValue() {
-    throw new TypeError('Must override "normalizeValue()"');
+  static areEqualByContent() {
+    throw new TypeError('Must override "areEqualByContent()"');
+  }
+}
+
+//
+// Normalizers and Defaults
+//
+
+const optionDefault = '';
+const optionsDefault = [];
+const textDefault = '';
+
+function normalizeOption(value) {
+  if (!value) {
+    return optionDefault;
   }
 
-  static areValuesSame() {
-    throw new TypeError('Must override "isValueEqual()"');
+  return value;
+}
+
+function normalizeOptions(value) {
+  if (!value) {
+    return optionsDefault;
   }
+
+  return [...value].sort();
+}
+
+function normalizeText(value) {
+  if (!value) {
+    return textDefault;
+  }
+
+  return value.toLowerCase();
 }
 
 //
@@ -34,21 +62,11 @@ export class CheckboxPrompt extends BasePrompt {
   }
 
   static default() {
-    return [];
+    return optionsDefault;
   }
 
-  static normalizeValue(value) {
-    if (!value) {
-      return this.default();
-    }
-    return [...value].sort();
-  }
-
-  static areValuesSame(value1, value2) {
-    return areArraysEqual(
-      this.normalizeValue(value1),
-      this.normalizeValue(value2),
-    );
+  static areEqualByContent(v1, v2) {
+    return areArraysEqual(normalizeOptions(v1), normalizeOptions(v2));
   }
 }
 
@@ -64,7 +82,7 @@ export class RadioPrompt extends BasePrompt {
   }
 
   static default() {
-    return '';
+    return optionDefault;
   }
 
   static normalizeValue(value) {
@@ -74,8 +92,8 @@ export class RadioPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static areValuesSame(value1, value2) {
-    return this.normalizeValue(value1) === this.normalizeValue(value2);
+  static areEqualByContent(v1, v2) {
+    return normalizeOption(v1) === normalizeOption(v2);
   }
 }
 
@@ -91,7 +109,7 @@ export class ButtonPrompt extends BasePrompt {
   }
 
   static default() {
-    return '';
+    return optionDefault;
   }
 
   static normalizeValue(value) {
@@ -101,8 +119,8 @@ export class ButtonPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static areValuesSame(value1, value2) {
-    return this.normalizeValue(value1) === this.normalizeValue(value2);
+  static areEqualByContent(v1, v2) {
+    return normalizeOption(v1) === normalizeOption(v2);
   }
 }
 
@@ -122,18 +140,11 @@ export class TextPrompt extends BasePrompt {
   }
 
   static default() {
-    return '';
+    return textDefault;
   }
 
-  static normalizeValue(value) {
-    if (!value) {
-      return this.default();
-    }
-    return value.toLowerCase();
-  }
-
-  static areValuesSame(value1, value2) {
-    return this.normalizeValue(value1) === this.normalizeValue(value2);
+  static areEqualByContent(v1, v2) {
+    return normalizeText(v1) === normalizeText(v2);
   }
 }
 
@@ -150,7 +161,7 @@ export class NullPrompt extends BasePrompt {
     return null;
   }
 
-  static areValuesSame() {
+  static areEqualByContent() {
     return null;
   }
 }
