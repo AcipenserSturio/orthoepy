@@ -1,15 +1,8 @@
 export default class Task {
-  constructor(question, answer, prompt, explanation) {
+  constructor(question, correctAnswer, prompt, explanation) {
     this.question = question;
-    this.answer = answer;
+    this.correctAnswer = correctAnswer;
     this.prompt = prompt;
     this.explanation = explanation;
-  }
-
-  checkAnswer(userAnswer) {
-    return this.prompt.constructor.isValuesEqual(
-      this.prompt.constructor.normalizeValue(this.answer),
-      this.prompt.constructor.normalizeValue(userAnswer),
-    );
   }
 }
