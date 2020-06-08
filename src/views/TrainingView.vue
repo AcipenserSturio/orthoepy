@@ -4,20 +4,18 @@
       title="Тренажер"
       has-home-button
     />
-
-    <section class="section" v-if="training" :key="'training'">
+    <section class="section">
       <div class="columns">
-        <div class="column is-half container">
-          <div class="card">
+        <div class="column column-training is-full container">
+
+          <div class="card" v-if="training" :key="'training'">
             <div class="card-header">
               <div class="card-header-title">
                 {{ training.title }}
               </div>
             </div>
             <div class="card-content">
-              <div class="content">
-                Dummy Content
-              </div>
+              <div class="content" v-html="marked(activeTask.question)"></div>
             </div>
             <div class="card-footer">
               <a class="card-footer-item">
@@ -25,19 +23,16 @@
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" v-else :key="'training-404'">
-      <div class="columns">
-        <div class="column is-half container">
-          <h1 class="title">
-            Увы,
-          </h1>
-          <h2 class="subtitle">
-            но такой тренировки не существует
-          </h2>
+          <div v-else :key="'training-404'">
+            <h1 class="title">
+              Увы,
+            </h1>
+            <h2 class="subtitle">
+              но такой тренировки не существует
+            </h2>
+          </div>
+
         </div>
       </div>
     </section>
@@ -47,6 +42,7 @@
 <script>
 import VNavbar from '@/components/VNavbar.vue';
 import getTraining from '@/trainer';
+import marked from 'marked';
 
 export default {
   name: 'TrainingView',
@@ -61,15 +57,27 @@ export default {
   data() {
     return {
       training: null,
+      activeTaskIndex: 0,
     };
+  },
+  computed: {
+    activeTask() {
+      return this.training.tasks[this.activeTaskIndex];
+    },
   },
   methods: {
     setTraining(training) {
       this.training = training;
+    },
+    marked(text) {
+      return marked(text);
     },
   },
 };
 </script>
 
 <style scoped>
+.column-training {
+  max-width: 30rem;
+}
 </style>
