@@ -99,3 +99,30 @@ export class TextPrompt extends BasePrompt {
     return value1 === value2;
   }
 }
+
+export class ButtonPrompt extends BasePrompt {
+  constructor(buttons) {
+    super();
+
+    this.buttons = [...buttons];
+  }
+
+  static type() {
+    return 'button';
+  }
+
+  static default() {
+    return '';
+  }
+
+  static normalizeValue(value) {
+    if (!value) {
+      return this.default();
+    }
+    return value.toLowerCase();
+  }
+
+  static isValuesEqual(value1, value2) {
+    return value1 === value2;
+  }
+}
