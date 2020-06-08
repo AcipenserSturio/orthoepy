@@ -18,11 +18,12 @@
             <div class="card-content">
               <div class="content" v-html="marked(activeTask.question)"></div>
             </div>
-            <div class="card-footer">
-              <a class="card-footer-item">
-                Dummy Footer
-              </a>
-            </div>
+
+            <training-card-footer
+              :training="training"
+              :active-task-index="activeTaskIndex"
+              :active-state="activeState"
+            />
           </div>
 
           <div v-else :key="'training-404'">
@@ -46,10 +47,12 @@ import getTraining from '@/trainer';
 import marked from 'marked';
 import Training from '@/models/training';
 import TrainingCardHeader from '@/components/TrainingCardHeader.vue';
+import TrainingCardFooter from '@/components/TrainingCardFooter.vue';
 
 export default {
   name: 'TrainingView',
   components: {
+    TrainingCardFooter,
     TrainingCardHeader,
     VNavbar,
   },
