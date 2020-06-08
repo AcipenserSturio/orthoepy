@@ -9,11 +9,12 @@
         <div class="column column-training is-full container">
 
           <div class="card" v-if="training" :key="'training'">
-            <div class="card-header">
-              <div class="card-header-title">
-                {{ training.title }}
-              </div>
-            </div>
+            <training-card-header
+              :training="training"
+              :active-task-index="activeTaskIndex"
+              :active-state="activeState"
+            />
+
             <div class="card-content">
               <div class="content" v-html="marked(activeTask.question)"></div>
             </div>
@@ -43,10 +44,13 @@
 import VNavbar from '@/components/VNavbar.vue';
 import getTraining from '@/trainer';
 import marked from 'marked';
+import Training from '@/models/training';
+import TrainingCardHeader from '@/components/TrainingCardHeader.vue';
 
 export default {
   name: 'TrainingView',
   components: {
+    TrainingCardHeader,
     VNavbar,
   },
   beforeRouteEnter(to, from, next) {
@@ -58,6 +62,7 @@ export default {
     return {
       training: null,
       activeTaskIndex: 0,
+      activeState: Training.STATE_ANSWERING,
     };
   },
   computed: {
