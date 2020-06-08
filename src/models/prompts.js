@@ -13,7 +13,7 @@ export class BasePrompt {
     throw new TypeError('Must override "normalizeValue()"');
   }
 
-  static areValuesEqual() {
+  static areValuesSame() {
     throw new TypeError('Must override "isValueEqual()"');
   }
 }
@@ -44,8 +44,11 @@ export class CheckboxPrompt extends BasePrompt {
     return [...value].sort();
   }
 
-  static areValuesEqual(value1, value2) {
-    return areArraysEqual(value1, value2);
+  static areValuesSame(value1, value2) {
+    return areArraysEqual(
+      this.normalizeValue(value1),
+      this.normalizeValue(value2),
+    );
   }
 }
 
@@ -71,8 +74,8 @@ export class RadioPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static areValuesEqual(value1, value2) {
-    return value1 === value2;
+  static areValuesSame(value1, value2) {
+    return this.normalizeValue(value1) === this.normalizeValue(value2);
   }
 }
 
@@ -98,8 +101,8 @@ export class ButtonPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static areValuesEqual(value1, value2) {
-    return value1 === value2;
+  static areValuesSame(value1, value2) {
+    return this.normalizeValue(value1) === this.normalizeValue(value2);
   }
 }
 
@@ -129,8 +132,8 @@ export class TextPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static areValuesEqual(value1, value2) {
-    return value1 === value2;
+  static areValuesSame(value1, value2) {
+    return this.normalizeValue(value1) === this.normalizeValue(value2);
   }
 }
 
@@ -147,7 +150,7 @@ export class NullPrompt extends BasePrompt {
     return null;
   }
 
-  static areValuesEqual() {
+  static areValuesSame() {
     return false;
   }
 }
