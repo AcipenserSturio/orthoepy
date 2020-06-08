@@ -1,7 +1,7 @@
 import { makeTrainingLetterInsertion } from '@/trainer/factories';
 
 export default {
-  makeAsyncTrainingGettersForCard() {
+  makeAsyncTrainingFactories() {
     return {
       'ege11-nouns-ik-ek': async () => makeTrainingLetterInsertion(
         'ЕГЭ. Задание 11. Существительные с суффиксами -ИК- и -ЕК-',
@@ -72,11 +72,5 @@ export default {
         'ege11__other_hsss_o_ieo',
       ),
     };
-  },
-  makeAsyncTrainingGettersForChoose() {
-    return {};
-  },
-  makeAsyncTrainingGettersForTest() {
-    return {};
   },
 };

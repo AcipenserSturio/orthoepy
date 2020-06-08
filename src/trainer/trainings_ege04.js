@@ -1,38 +1,32 @@
-import { makeTrainingStressChoosing } from '@/trainer/factories';
+import { makeTrainingStressSelecting } from '@/trainer/factories';
 
 export default {
-  makeAsyncTrainingGettersForCard() {
-    return {};
-  },
-  makeAsyncTrainingGettersForChoose() {
+  makeAsyncTrainingFactories() {
     return {
-      'ege04-adjs': async () => makeTrainingStressChoosing(
+      'ege04-adjs': async () => makeTrainingStressSelecting(
         'ЕГЭ. Задание 4. Ударение в прилагательных',
         'ege04__adjs',
       ),
-      'ege04-advs': async () => makeTrainingStressChoosing(
+      'ege04-advs': async () => makeTrainingStressSelecting(
         'ЕГЭ. Задание 4. Ударение в наречиях',
         'ege04__advs',
       ),
-      'ege04-nouns': async () => makeTrainingStressChoosing(
+      'ege04-nouns': async () => makeTrainingStressSelecting(
         'ЕГЭ. Задание 4. Ударение в существительных',
         'ege04__nouns',
       ),
-      'ege04-partics': async () => makeTrainingStressChoosing(
+      'ege04-partics': async () => makeTrainingStressSelecting(
         'ЕГЭ. Задание 4. Ударение в причастиях',
         'ege04__partics',
       ),
-      'ege04-verbs': async () => makeTrainingStressChoosing(
+      'ege04-verbs': async () => makeTrainingStressSelecting(
         'ЕГЭ. Задание 4. Ударение в глаголах',
         'ege04__verbs',
       ),
-      'ege04-vpartics': async () => makeTrainingStressChoosing(
+      'ege04-vpartics': async () => makeTrainingStressSelecting(
         'ЕГЭ. Задание 4. Ударение в деепричастиях',
         'ege04__vpartics',
       ),
     };
-  },
-  makeAsyncTrainingGettersForTest() {
-    return {};
   },
 };

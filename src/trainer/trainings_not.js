@@ -1,11 +1,11 @@
 import { RadioPrompt } from '@/models/prompts';
 import Task from '@/models/task';
 import { shuffle } from '@/utils';
-import Test from '@/models/test';
+import Training from '@/models/training';
 import { RuleChainExplanation } from '@/models/explanations';
 
 //
-// Card Training: not-rules
+// Training: not-rules
 //
 
 async function makeTrainingNotRules() {
@@ -33,11 +33,11 @@ async function makeTrainingNotRules() {
   });
   shuffle(tasks);
 
-  return new Test(title, tasks, {});
+  return new Training(title, tasks, {});
 }
 
 //
-// Card Training: not-algorithm
+// Training: not-algorithm
 //
 
 async function makeTrainingNotAlgorithm() {
@@ -113,14 +113,14 @@ async function makeTrainingNotAlgorithm() {
     }
   });
 
-  return new Test(title, tasks, {
+  return new Training(title, tasks, {
     hideProgress: true,
     offerRepeat: true,
   });
 }
 
 //
-// Test Training: not-tasks
+// Training: not-tasks
 //
 
 async function makeTrainingNotTasks() {
@@ -190,7 +190,7 @@ async function makeTrainingNotTasks() {
   );
   shuffle(tasks);
 
-  return new Test(title, tasks, {});
+  return new Training(title, tasks, {});
 }
 
 //
@@ -198,17 +198,10 @@ async function makeTrainingNotTasks() {
 //
 
 export default {
-  makeAsyncTrainingGettersForCard() {
+  makeAsyncTrainingFactories() {
     return {
       'not-rules': async () => makeTrainingNotRules(),
       'not-algorithm': async () => makeTrainingNotAlgorithm(),
-    };
-  },
-  makeAsyncTrainingGettersForChoose() {
-    return {};
-  },
-  makeAsyncTrainingGettersForTest() {
-    return {
       'not-tasks': async () => makeTrainingNotTasks(),
     };
   },

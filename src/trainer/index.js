@@ -3,30 +3,15 @@ import trainingsEge04 from '@/trainer/trainings_ege04';
 import trainingsEge11 from '@/trainer/trainings_ege11';
 import trainingsEge12 from '@/trainer/trainings_ege12';
 
-const asyncTrainingGetters = {
-  card: {
-    ...trainingsNot.makeAsyncTrainingGettersForCard(),
-    ...trainingsEge04.makeAsyncTrainingGettersForCard(),
-    ...trainingsEge11.makeAsyncTrainingGettersForCard(),
-    ...trainingsEge12.makeAsyncTrainingGettersForCard(),
-  },
-  choose: {
-    ...trainingsNot.makeAsyncTrainingGettersForChoose(),
-    ...trainingsEge04.makeAsyncTrainingGettersForChoose(),
-    ...trainingsEge11.makeAsyncTrainingGettersForChoose(),
-    ...trainingsEge12.makeAsyncTrainingGettersForChoose(),
-  },
-  test: {
-    ...trainingsNot.makeAsyncTrainingGettersForTest(),
-    ...trainingsEge04.makeAsyncTrainingGettersForTest(),
-    ...trainingsEge11.makeAsyncTrainingGettersForTest(),
-    ...trainingsEge12.makeAsyncTrainingGettersForTest(),
-  },
+const asyncTrainingFactories = {
+  ...trainingsNot.makeAsyncTrainingFactories(),
+  ...trainingsEge04.makeAsyncTrainingFactories(),
+  ...trainingsEge11.makeAsyncTrainingFactories(),
+  ...trainingsEge12.makeAsyncTrainingFactories(),
 };
 
 /* eslint-disable-next-line import/prefer-default-export */
-export async function getTraining(topic, type) {
-  const typedGetters = asyncTrainingGetters[type];
-  const getter = !typedGetters ? null : typedGetters[topic];
-  return !getter ? null : getter();
+export async function getTraining(topic) {
+  const makeTraining = asyncTrainingFactories[topic];
+  return !makeTraining ? null : makeTraining();
 }
