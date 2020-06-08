@@ -34,8 +34,10 @@
 import VNavbar from '@/components/VNavbar.vue';
 
 export default {
-  name: 'TrainingCardV2View',
-  components: { VNavbar },
+  name: 'TrainingView',
+  components: {
+    VNavbar,
+  },
 };
 </script>
 

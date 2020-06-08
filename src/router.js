@@ -50,17 +50,17 @@ const routes = [
     component: () => import(/* webpackChunkName: "legacy-training" */ './views/LegacyTrainingView.vue'),
   },
   {
-    path: '/training/card/:topic',
-    name: 'training-card',
-    component: () => import(/* webpackChunkName: "training-card" */ './views/TrainingCardView.vue'),
+    path: '/training/:topic',
+    name: 'training',
+    component: () => import(/* webpackChunkName: "training" */ './views/TrainingView.vue'),
     meta: {
       shouldShowLoading: true,
     },
   },
   {
-    path: '/training/card-beta/:topic',
-    name: 'training-card-v2',
-    component: () => import(/* webpackChunkName: "training-card-v2" */ './views/TrainingCardV2View.vue'),
+    path: '/training/card/:topic',
+    name: 'training-card',
+    component: () => import(/* webpackChunkName: "training-card" */ './views/TrainingCardView.vue'),
     meta: {
       shouldShowLoading: true,
     },
