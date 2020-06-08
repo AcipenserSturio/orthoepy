@@ -16,8 +16,8 @@
       </div>
     </template>
     <template v-else>
-      <div class="card-header-title">
-        <em>Не удалось отобразить заголовок</em>
+      <div class="card-header-title is-italic">
+        Не удалось отобразить заголовок
       </div>
     </template>
 
