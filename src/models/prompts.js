@@ -126,3 +126,21 @@ export class ButtonPrompt extends BasePrompt {
     return value1 === value2;
   }
 }
+
+export class NullPrompt extends BasePrompt {
+  static type() {
+    return 'null';
+  }
+
+  static default() {
+    return null;
+  }
+
+  static normalizeValue() {
+    return null;
+  }
+
+  static isValuesEqual() {
+    return false;
+  }
+}
