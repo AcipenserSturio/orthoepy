@@ -43,7 +43,7 @@ import BButton from 'buefy/src/components/button/Button.vue';
 import scripts from '@/js/scripts';
 
 export default {
-  name: 'TrainingView',
+  name: 'LegacyTrainingView',
   components: { BButton },
   methods: {
     check: (buttonNumber) => {

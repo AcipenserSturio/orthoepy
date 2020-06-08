@@ -41,7 +41,7 @@
               Списки слов для закрепления
             </p>
             <div class="list is-hoverable">
-              <router-link :to="{ name: 'training', query: { q: 8 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 8 } }" class="list-item">
                 Исключения
               </router-link>
             </div>

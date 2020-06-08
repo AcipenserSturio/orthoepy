@@ -47,28 +47,28 @@
               Списки слов для закрепления
             </p>
             <div class="list is-hoverable">
-              <router-link :to="{ name: 'training', query: { q: 0 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 0 } }" class="list-item">
                 Версия-прототип: всего 4 слова
               </router-link>
-              <router-link :to="{ name: 'training', query: { q: 1 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 1 } }" class="list-item">
                 Имена существительные
               </router-link>
-              <router-link :to="{ name: 'training', query: { q: 2 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 2 } }" class="list-item">
                 Имена прилагательные
               </router-link>
-              <router-link :to="{ name: 'training', query: { q: 3 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 3 } }" class="list-item">
                 Глаголы
               </router-link>
-              <router-link :to="{ name: 'training', query: { q: 4 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 4 } }" class="list-item">
                 Причастия
               </router-link>
-              <router-link :to="{ name: 'training', query: { q: 5 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 5 } }" class="list-item">
                 Деепричастия
               </router-link>
-              <router-link :to="{ name: 'training', query: { q: 6 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 6 } }" class="list-item">
                 Наречия
               </router-link>
-              <router-link :to="{ name: 'training', query: { q: 7 } }" class="list-item">
+              <router-link :to="{ name: 'legacy-training', query: { q: 7 } }" class="list-item">
                 Все части речи
               </router-link>
             </div>

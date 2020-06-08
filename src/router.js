@@ -45,9 +45,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "ege12-home" */ './views/Ege12HomeView.vue'),
   },
   {
-    path: '/training',
-    name: 'training',
-    component: () => import(/* webpackChunkName: "training" */ './views/TrainingView.vue'),
+    path: '/legacy-training',
+    name: 'legacy-training',
+    component: () => import(/* webpackChunkName: "legacy-training" */ './views/LegacyTrainingView.vue'),
   },
   {
     path: '/training/card/:topic',
