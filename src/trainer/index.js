@@ -10,8 +10,7 @@ const asyncTrainingFactories = {
   ...trainingsEge12.makeAsyncTrainingFactories(),
 };
 
-/* eslint-disable-next-line import/prefer-default-export */
-export async function getTraining(topic) {
+export default async function getTraining(topic) {
   const makeTraining = asyncTrainingFactories[topic];
   return !makeTraining ? null : makeTraining();
 }
