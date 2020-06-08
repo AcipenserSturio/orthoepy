@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-navbar
-      title="Тренировка"
+      title="Тренажер"
       has-home-button
     />
     <section class="section">
