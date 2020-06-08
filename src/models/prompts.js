@@ -1,4 +1,4 @@
-import { isArraysEqual } from '@/utils';
+import { areArraysEqual } from '@/utils';
 
 export class BasePrompt {
   static type() {
@@ -13,8 +13,8 @@ export class BasePrompt {
     throw new TypeError('Must override "normalizeValue()"');
   }
 
-  static isValuesEqual() {
-    throw new TypeError('Must override "isValuesEqual()"');
+  static areValuesEqual() {
+    throw new TypeError('Must override "isValueEqual()"');
   }
 }
 
@@ -23,10 +23,10 @@ export class BasePrompt {
 //
 
 export class CheckboxPrompt extends BasePrompt {
-  constructor(checkboxes) {
+  constructor(options) {
     super();
 
-    this.checkboxes = [...checkboxes];
+    this.options = [...options];
   }
 
   static type() {
@@ -44,16 +44,16 @@ export class CheckboxPrompt extends BasePrompt {
     return [...value].sort();
   }
 
-  static isValuesEqual(value1, value2) {
-    return isArraysEqual(value1, value2);
+  static areValuesEqual(value1, value2) {
+    return areArraysEqual(value1, value2);
   }
 }
 
 export class RadioPrompt extends BasePrompt {
-  constructor(radios) {
+  constructor(options) {
     super();
 
-    this.radios = [...radios];
+    this.options = [...options];
   }
 
   static type() {
@@ -71,16 +71,16 @@ export class RadioPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static isValuesEqual(value1, value2) {
+  static areValuesEqual(value1, value2) {
     return value1 === value2;
   }
 }
 
 export class ButtonPrompt extends BasePrompt {
-  constructor(buttons) {
+  constructor(options) {
     super();
 
-    this.buttons = [...buttons];
+    this.options = [...options];
   }
 
   static type() {
@@ -98,7 +98,7 @@ export class ButtonPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static isValuesEqual(value1, value2) {
+  static areValuesEqual(value1, value2) {
     return value1 === value2;
   }
 }
@@ -129,7 +129,7 @@ export class TextPrompt extends BasePrompt {
     return value.toLowerCase();
   }
 
-  static isValuesEqual(value1, value2) {
+  static areValuesEqual(value1, value2) {
     return value1 === value2;
   }
 }
@@ -147,7 +147,7 @@ export class NullPrompt extends BasePrompt {
     return null;
   }
 
-  static isValuesEqual() {
+  static areValuesEqual() {
     return false;
   }
 }
