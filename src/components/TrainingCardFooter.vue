@@ -1,34 +1,39 @@
 <template>
   <div class="card-footer">
     <template v-if="isAnsweringState && !isButtonPrompt">
-      <a class="card-footer-item">
+      <a class="card-footer-item" @click="onAnswer">
         Ответить
       </a>
     </template>
 
     <template v-else-if="isAnsweringState && isButtonPrompt">
-      <a v-for="option in activeTask.prompt.options" :key="option" class="card-footer-item">
+      <a
+        v-for="option in activeTask.prompt.options"
+        :key="option"
+        class="card-footer-item has-text-primary"
+        @click="onAnswer(option)"
+      >
         {{ option }}
       </a>
     </template>
 
     <template v-else-if="isCheckingState && !isLastTask">
-      <a class="card-footer-item">
+      <a class="card-footer-item" @click="onContinue">
         Продолжить
       </a>
     </template>
 
     <template v-else-if="isCheckingState && isLastTask">
-      <a class="card-footer-item">
+      <a class="card-footer-item" @click="onContinue">
         Закончить
       </a>
     </template>
 
     <template v-else-if="isFinishedState">
-      <a v-if="shouldOfferRepeat" class="card-footer-item">
+      <a v-if="shouldOfferRepeat" class="card-footer-item" @click="onRepeat">
         Повторить
       </a>
-      <a class="card-footer-item">
+      <a class="card-footer-item" @click="onHome">
         На главную
       </a>
     </template>
@@ -81,6 +86,20 @@ export default {
     },
     isLastTask() {
       return this.training.tasks.length === this.activeTaskIndex + 1;
+    },
+  },
+  methods: {
+    onAnswer(userAnswer) {
+      this.$emit('answer', userAnswer);
+    },
+    onContinue() {
+      this.$emit('continue');
+    },
+    onRepeat() {
+      this.$emit('repeat');
+    },
+    onHome() {
+      this.$emit('home');
     },
   },
 };
