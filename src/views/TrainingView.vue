@@ -28,6 +28,7 @@
               @continue="onContinue"
               @repeat="onRepeat"
               @home="onHome"
+              v-model="userAnswer"
             />
           </div>
 
@@ -82,25 +83,18 @@ export default {
     isLastTask() {
       return this.training.tasks.length === this.activeTaskIndex + 1;
     },
-    isButtonPrompt() {
-      return this.activeTask.prompt.constructor.type === 'button';
-    },
   },
   methods: {
+    marked(text) {
+      return marked(text);
+    },
     setTraining(training) {
       this.training = training;
       this.activeTaskIndex = 0;
       this.activeState = Training.STATE_ANSWERING;
       this.userAnswer = null;
     },
-    marked(text) {
-      return marked(text);
-    },
-    onAnswer(userAnswer) {
-      if (this.isButtonPrompt) {
-        this.userAnswer = userAnswer;
-      }
-
+    onAnswer() {
       this.training.onUserAnswer(this.activeTaskIndex, this.userAnswer);
       this.activeState = Training.STATE_CHECKING;
     },
