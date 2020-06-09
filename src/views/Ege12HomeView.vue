@@ -34,7 +34,7 @@
             </p>
             <div class="list is-hoverable">
               <router-link
-                :to="{ name: 'training-card', params: { 'topic': 'ege12-verbs-infinitives' } }"
+                :to="{ name: 'training', params: { 'topic': 'ege12-verbs-infinitives' } }"
                 class="list-item"
               >
                 Инфинитивы

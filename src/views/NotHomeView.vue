@@ -89,22 +89,13 @@ export default {
   components: { VNavbar },
   methods: {
     openRuleTraining() {
-      this.$router.push({
-        name: 'training-card',
-        params: { topic: 'not-rules' },
-      });
+      this.$router.push({ name: 'training', params: { topic: 'not-rules' } });
     },
     openAlgorithmTraining() {
-      this.$router.push({
-        name: 'training-card',
-        params: { topic: 'not-algorithm' },
-      });
+      this.$router.push({ name: 'training', params: { topic: 'not-algorithm' } });
     },
     openTaskTraining() {
-      this.$router.push({
-        name: 'training-test',
-        params: { topic: 'not-tasks' },
-      });
+      this.$router.push({ name: 'training', params: { topic: 'not-tasks' } });
     },
   },
 };

@@ -86,42 +86,34 @@ export default {
             {
               title: 'Существительные с суффиксами -ИК- и -ЕК-',
               topic: 'ege11-nouns-ik-ek',
-              type: 'card',
             },
             {
               title: 'Существительные с суффиксами -ИЦ- и -ЕЦ-',
               topic: 'ege11-nouns-ic-ec',
-              type: 'card',
             },
             {
               title: 'Существительные с суффиксами -ИЧК- и -ЕЧК-',
               topic: 'ege11-nouns-ichk-echk',
-              type: 'card',
             },
             {
               title: 'Существительные с суффиксами -ИНК- и -ЕНК-',
               topic: 'ege11-nouns-ink-enk',
-              type: 'card',
             },
             {
               title: 'Существительные с суффиксами -ОНЬК- и -ЕНЬК-',
               topic: 'ege11-nouns-onk-enk',
-              type: 'card',
             },
             {
               title: 'Существительные с суффиксами -ЧИК- и -ЩИК-',
               topic: 'ege11-nouns-chik-shik',
-              type: 'card',
             },
             {
               title: 'Существительные с неизменяемыми суффиксами',
               topic: 'ege11-nouns-const',
-              type: 'card',
             },
             {
               title: 'Существительные на -МЯ',
               topic: 'ege11-nouns-mya',
-              type: 'card',
             },
           ],
         },
@@ -131,22 +123,18 @@ export default {
             {
               title: 'Прилагательные с суффиксами -ИВ- и -ЕВ-',
               topic: 'ege11-adjs-iv-ev',
-              type: 'card',
             },
             {
               title: 'Прилагательные с суффиксами -ОНЬК- и -ЕНЬК-',
               topic: 'ege11-adjs-onk-enk',
-              type: 'card',
             },
             {
               title: 'Прилагательные с суффиксами -ОВ-, -ОВАТ-, -ОВИТ- и -ЕВ-, -ЕВАТ-, -ЕВИТ-',
               topic: 'ege11-adjs-ov-ev',
-              type: 'card',
             },
             {
               title: 'Прилагательные с неизменяемыми суффиксами',
               topic: 'ege11-adjs-const',
-              type: 'card',
             },
           ],
         },
@@ -156,7 +144,6 @@ export default {
             {
               title: 'Наречия с суффиксами -О- и -А- (приставочно-суффиксальные)',
               topic: 'ege11-advs-o-a',
-              type: 'card',
             },
           ],
         },
@@ -166,17 +153,14 @@ export default {
             {
               title: 'Глаголы с суффиксами -ОВА-, -ЕВА-, -ЫВА-, -ИВА- и -ВА-',
               topic: 'ege11-verbs-ova-eva-yiva-iva-va',
-              type: 'card',
             },
             {
               title: 'Гласные в глаголах перед суффиксом -Л-',
               topic: 'ege11-verbs-before-l',
-              type: 'card',
             },
             {
               title: 'Гласные в неопределенных формах глаголов перед -ТЬ',
               topic: 'ege11-verbs-infinitives',
-              type: 'card',
             },
           ],
         },
@@ -186,7 +170,6 @@ export default {
             {
               title: 'Гласные "о" и "ё" в суффиксах и окончаниях после шипящих',
               topic: 'ege11-other-hsss-o-ieo',
-              type: 'card',
             },
           ],
         },

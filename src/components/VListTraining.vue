@@ -4,7 +4,7 @@
       v-for="(training, i) of trainings"
       :key="`training-${i}`"
       class="list-item"
-      :to="{ name: `training-${training.type}`, params: { 'topic': training.topic } }"
+      :to="{ name: `training`, params: { 'topic': training.topic } }"
     >
       {{ training.title }}
     </router-link>

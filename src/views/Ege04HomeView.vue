@@ -54,32 +54,26 @@ export default {
         {
           title: 'Существительные',
           topic: 'ege04-nouns',
-          type: 'choose',
         },
         {
           title: 'Прилагательные',
           topic: 'ege04-adjs',
-          type: 'choose',
         },
         {
           title: 'Наречия',
           topic: 'ege04-advs',
-          type: 'choose',
         },
         {
           title: 'Глаголы',
           topic: 'ege04-verbs',
-          type: 'choose',
         },
         {
           title: 'Причастия',
           topic: 'ege04-partics',
-          type: 'choose',
         },
         {
           title: 'Деепричастия',
           topic: 'ege04-vpartics',
-          type: 'choose',
         },
       ],
     };
