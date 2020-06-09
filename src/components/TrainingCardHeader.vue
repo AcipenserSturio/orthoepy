@@ -38,7 +38,7 @@ export default {
   name: 'TrainingCardHeader',
   props: {
     training: {
-      type: Object,
+      type: Training,
       required: true,
     },
     activeTaskIndex: {

@@ -56,7 +56,7 @@ export default {
       required: true,
     },
     training: {
-      type: Object,
+      type: Training,
       required: true,
     },
     activeTaskIndex: {
