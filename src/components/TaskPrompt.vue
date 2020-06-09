@@ -5,7 +5,7 @@
       key="prompt-checkbox"
       :disabled="disabled"
       :type="type"
-      :value="value || prompt.constructor.default()"
+      :value="value || prompt.constructor.default"
       @input="updateValue"
       :prompt="prompt"
     />
@@ -14,7 +14,7 @@
       key="prompt-text"
       :disabled="disabled"
       :type="type"
-      :value="value || prompt.constructor.default()"
+      :value="value || prompt.constructor.default"
       @input="updateValue"
       :prompt="prompt"
     />
@@ -23,7 +23,7 @@
       key="prompt-radio"
       :disabled="disabled"
       :type="type"
-      :value="value || prompt.constructor.default()"
+      :value="value || prompt.constructor.default"
       @input="updateValue"
       :prompt="prompt"
     />
