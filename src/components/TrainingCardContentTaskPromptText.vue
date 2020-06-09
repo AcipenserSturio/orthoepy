@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { TextPrompt } from '@/models/prompts_v2';
+import { TextPrompt } from '@/models/prompts';
 
 export default {
   name: 'TrainingCardContentTaskPromptText',

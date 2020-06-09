@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { RadioPrompt } from '@/models/prompts_v2';
+import { RadioPrompt } from '@/models/prompts';
 
 export default {
   name: 'TrainingCardContentTaskPromptRadio',

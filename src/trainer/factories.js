@@ -1,6 +1,6 @@
 import Task from '@/models/task';
 import { TextExplanation } from '@/models/explanations';
-import { RadioButtonPrompt, TextPrompt } from '@/models/prompts_v2';
+import { RadioButtonPrompt, TextPrompt } from '@/models/prompts';
 import { shuffle } from '@/utils';
 import Training from '@/models/training';
 

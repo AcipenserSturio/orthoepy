@@ -1,4 +1,4 @@
-import { RadioPrompt } from '@/models/prompts_v2';
+import { RadioPrompt } from '@/models/prompts';
 import Task from '@/models/task';
 import { shuffle } from '@/utils';
 import Training from '@/models/training';

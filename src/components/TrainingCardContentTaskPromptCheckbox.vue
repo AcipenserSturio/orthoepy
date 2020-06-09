@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { CheckboxPrompt } from '@/models/prompts_v2';
+import { CheckboxPrompt } from '@/models/prompts';
 
 export default {
   name: 'TrainingCardContentTaskPromptCheckbox',

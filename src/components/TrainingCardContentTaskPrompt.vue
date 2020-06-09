@@ -39,7 +39,7 @@ import {
   TextPrompt,
   CheckboxPrompt,
   RadioPrompt,
-} from '@/models/prompts_v2';
+} from '@/models/prompts';
 
 const supportedPrompts = [
   TextPrompt,
