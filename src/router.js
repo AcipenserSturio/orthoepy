@@ -10,21 +10,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ './views/HomeView.vue'),
   },
   {
-    path: '/orthoepy',
-    name: 'orthoepy-home',
-    component: () => import(/* webpackChunkName: "orthoepy-home" */ './views/OrthoepyHomeView.vue'),
-  },
-  {
-    path: '/orthoepy/article',
-    name: 'orthoepy-article',
-    component: () => import(/* webpackChunkName: "orthoepy-article" */ './views/OrthoepyArticleView.vue'),
-  },
-  {
-    path: '/nn',
-    name: 'nn-home',
-    component: () => import(/* webpackChunkName: "nn-home" */ './views/NNHomeView.vue'),
-  },
-  {
     path: '/not',
     name: 'not-home',
     component: () => import(/* webpackChunkName: "not-home" */ './views/NotHomeView.vue'),
@@ -43,11 +28,6 @@ const routes = [
     path: '/ege12',
     name: 'ege12-home',
     component: () => import(/* webpackChunkName: "ege12-home" */ './views/Ege12HomeView.vue'),
-  },
-  {
-    path: '/legacy-training',
-    name: 'legacy-training',
-    component: () => import(/* webpackChunkName: "legacy-training" */ './views/LegacyTrainingView.vue'),
   },
   {
     path: '/training/:topic',
