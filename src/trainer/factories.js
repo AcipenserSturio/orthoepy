@@ -1,6 +1,6 @@
 import Task from '@/models/task';
 import { TextExplanation } from '@/models/explanations';
-import { ButtonPrompt, TextPrompt } from '@/models/prompts';
+import { RadioButtonPrompt, TextPrompt } from '@/models/prompts_v2';
 import { shuffle } from '@/utils';
 import Training from '@/models/training';
 
@@ -35,7 +35,7 @@ export async function makeTrainingStressSelecting(title, assetFilename) {
   const tasks = rawTasks.map(rawTask => new Task(
     '*Выберите слово с правильным ударением.*',
     rawTask.correct,
-    new ButtonPrompt(rawTask.options),
+    new RadioButtonPrompt(rawTask.options),
     null,
   ));
   shuffle(tasks);
