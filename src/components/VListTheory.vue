@@ -29,15 +29,9 @@
 
 <script>
 import marked from 'marked';
-import BCollapse from 'buefy/src/components/collapse/Collapse.vue';
-import BIcon from 'buefy/src/components/icon/Icon.vue';
 
 export default {
   name: 'VListTheory',
-  components: {
-    BCollapse,
-    BIcon,
-  },
   props: {
     theories: {
       type: Array,

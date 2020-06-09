@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navbar
+    <VNavbar
       title="ЕГЭ. Задание 4. Постановка ударения"
       has-home-button
     />
@@ -30,7 +30,7 @@
             <p class="title is-5">
               Списки слов для закрепления
             </p>
-            <v-list-training :trainings="trainings"/>
+            <VListTraining :trainings="trainings"/>
           </div>
         </section>
       </div>

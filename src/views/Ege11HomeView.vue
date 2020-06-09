@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navbar
+    <VNavbar
       title="ЕГЭ. Задание 11. Правописание суффиксов (кроме -Н-/-НН-)"
       has-home-button
     />
@@ -20,7 +20,7 @@
             <p class="title is-5">
               Теория
             </p>
-            <v-list-theory :theories="theories"/>
+            <VListTheory :theories="theories"/>
           </div>
         </section>
       </div>
@@ -32,7 +32,7 @@
             </p>
             <div v-for="(trainings, i) of trainings_lists" :key="i" style="margin-top: 1.5rem">
               <p class="subtitle is-6">{{ trainings.title }}</p>
-              <v-list-training :trainings="trainings.list"/>
+              <VListTraining :trainings="trainings.list"/>
             </div>
           </div>
         </section>

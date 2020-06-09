@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navbar
+    <VNavbar
       title="ЕГЭ. Задание 12. Правописание личных окончаний глаголов и суффиксов причастий"
       has-home-button
     />
@@ -48,12 +48,11 @@
 </template>
 
 <script>
-import BButton from 'buefy/src/components/button/Button.vue';
 import VNavbar from '../components/VNavbar.vue';
 
 export default {
   name: 'Ege12HomeView',
-  components: { VNavbar, BButton },
+  components: { VNavbar },
   methods: {
     openTaskGuide() {
       const url = 'http://letmegooglethat.com/?q=12+%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5+%D0%B5%D0%B3%D1%8D+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9';

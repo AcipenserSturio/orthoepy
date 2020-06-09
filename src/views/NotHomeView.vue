@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navbar
+    <VNavbar
       title="Слитное и раздельное правописание НЕ"
       has-home-button
     />
@@ -82,12 +82,11 @@
 </template>
 
 <script>
-import BButton from 'buefy/src/components/button/Button.vue';
 import VNavbar from '../components/VNavbar.vue';
 
 export default {
   name: 'NotHomeView',
-  components: { VNavbar, BButton },
+  components: { VNavbar },
   methods: {
     openRuleTraining() {
       this.$router.push({

@@ -28,10 +28,8 @@
 </template>
 
 <script>
-import BIcon from 'buefy/src/components/icon/Icon.vue';
 
 export default {
   name: 'NotFoundView',
-  components: { BIcon },
 };
 </script>

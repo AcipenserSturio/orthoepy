@@ -21,10 +21,6 @@
 </template>
 
 <script>
-import BButton from 'buefy/src/components/button/Button.vue';
-import BNavbar from 'buefy/src/components/navbar/Navbar.vue';
-import BNavbarItem from 'buefy/src/components/navbar/NavbarItem.vue';
-
 export default {
   name: 'VNavbar',
   props: {
@@ -37,11 +33,6 @@ export default {
       required: false,
       default: false,
     },
-  },
-  components: {
-    BButton,
-    BNavbar,
-    BNavbarItem,
   },
 };
 </script>

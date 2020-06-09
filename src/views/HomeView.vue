@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navbar
+    <VNavbar
       title="Тренажер правил русского языка"
     />
 
