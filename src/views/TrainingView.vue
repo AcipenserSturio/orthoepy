@@ -1,32 +1,37 @@
 <template>
   <div>
-    <v-navbar
+    <VNavbar
       title="Тренажер"
       has-home-button
     />
     <section class="section">
       <div class="columns">
         <div class="column column-training is-full container">
-
-          <div class="card" v-if="training" :key="'training'">
+          <div class="card" v-if="training">
             <TrainingCardHeader
               :training="training"
               :active-task-index="activeTaskIndex"
               :active-state="activeState"
+              @finish="onFinish"
             />
-
-            <div class="card-content">
-              <div class="content" v-html="marked(activeTask.question)"></div>
-            </div>
-
+            <TrainingCardContent
+              :training="training"
+              :active-task-index="activeTaskIndex"
+              :active-state="activeState"
+              v-model="userAnswer"
+            />
             <TrainingCardFooter
               :training="training"
               :active-task-index="activeTaskIndex"
               :active-state="activeState"
+              @answer="onAnswer"
+              @continue="onContinue"
+              @repeat="onRepeat"
+              @home="onHome"
             />
           </div>
 
-          <div v-else :key="'training-404'">
+          <div v-else>
             <h1 class="title">
               Увы,
             </h1>
@@ -34,7 +39,6 @@
               но такой тренировки не существует
             </h2>
           </div>
-
         </div>
       </div>
     </section>
@@ -43,15 +47,17 @@
 
 <script>
 import VNavbar from '@/components/VNavbar.vue';
+import TrainingCardHeader from '@/components/TrainingCardHeader.vue';
+import TrainingCardContent from '@/components/TrainingCardContent.vue';
+import TrainingCardFooter from '@/components/TrainingCardFooter.vue';
 import getTraining from '@/trainer';
 import marked from 'marked';
 import Training from '@/models/training';
-import TrainingCardHeader from '@/components/TrainingCardHeader.vue';
-import TrainingCardFooter from '@/components/TrainingCardFooter.vue';
 
 export default {
   name: 'TrainingView',
   components: {
+    TrainingCardContent,
     TrainingCardFooter,
     TrainingCardHeader,
     VNavbar,
@@ -66,19 +72,61 @@ export default {
       training: null,
       activeTaskIndex: 0,
       activeState: Training.STATE_ANSWERING,
+      userAnswer: null,
     };
   },
   computed: {
     activeTask() {
       return this.training.tasks[this.activeTaskIndex];
     },
+    isLastTask() {
+      return this.training.tasks.length === this.activeTaskIndex + 1;
+    },
+    isButtonPrompt() {
+      return this.activeTask.prompt.constructor.type === 'button';
+    },
   },
   methods: {
     setTraining(training) {
       this.training = training;
+      this.activeTaskIndex = 0;
+      this.activeState = Training.STATE_ANSWERING;
+      this.userAnswer = null;
     },
     marked(text) {
       return marked(text);
+    },
+    onAnswer(userAnswer) {
+      if (this.isButtonPrompt) {
+        this.userAnswer = userAnswer;
+      }
+
+      this.training.onUserAnswer(this.activeTaskIndex, this.userAnswer);
+      this.activeState = Training.STATE_CHECKING;
+    },
+    onContinue() {
+      if (this.isLastTask) {
+        this.onFinish();
+        return;
+      }
+
+      this.userAnswer = null;
+      this.activeTaskIndex += 1;
+      this.activeState = Training.STATE_ANSWERING;
+    },
+    onFinish() {
+      this.activeState = Training.STATE_FINISHED;
+    },
+    onRepeat() {
+      const loadingComponent = this.$buefy.loading.open({ container: null });
+
+      getTraining(this.$route.params.topic).then((training) => {
+        this.setTraining(training || null);
+        loadingComponent.close();
+      });
+    },
+    onHome() {
+      this.$router.push({ name: 'home' });
     },
   },
 };
