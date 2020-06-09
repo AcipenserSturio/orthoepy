@@ -38,14 +38,14 @@ export default class Training {
   }
 
   static get STATE_ANSWERING() {
-    return 0;
+    return 'answering';
   }
 
   static get STATE_CHECKING() {
-    return 1;
+    return 'checking';
   }
 
   static get STATE_FINISHED() {
-    return 2;
+    return 'finished';
   }
 }
