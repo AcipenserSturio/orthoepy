@@ -1,19 +1,16 @@
 <template>
   <div class="card-footer">
-    <template v-if="isAnsweringState && !isButtonPrompt">
-      <a class="card-footer-item" @click="onAnswer">
-        Ответить
-      </a>
+    <template v-if="isAnsweringState && isPromptPositionedInCardFooter">
+      <TrainingCardFooterTaskPrompt
+        :prompt="activeTask.prompt"
+        :value="value"
+        @input="updateValue"
+      />
     </template>
 
-    <template v-else-if="isAnsweringState && isButtonPrompt">
-      <a
-        v-for="option in activeTask.prompt.options"
-        :key="option"
-        class="card-footer-item has-text-primary"
-        @click="onAnswer(option)"
-      >
-        {{ option }}
+    <template v-else-if="isAnsweringState && !isPromptPositionedInCardFooter">
+      <a class="card-footer-item" @click="onAnswer">
+        Ответить
       </a>
     </template>
 
@@ -47,11 +44,17 @@
 </template>
 
 <script>
+import TrainingCardFooterTaskPrompt from '@/components/TrainingCardFooterTaskPrompt.vue';
 import Training from '@/models/training';
 
 export default {
   name: 'TrainingCardFooter',
+  components: { TrainingCardFooterTaskPrompt },
   props: {
+    value: {
+      type: undefined,
+      required: true,
+    },
     training: {
       type: Object,
       required: true,
@@ -69,7 +72,6 @@ export default {
     shouldOfferRepeat() {
       return this.training.config.offerRepeat;
     },
-
     isAnsweringState() {
       return this.activeState === Training.STATE_ANSWERING;
     },
@@ -79,20 +81,27 @@ export default {
     isFinishedState() {
       return this.activeState === Training.STATE_FINISHED;
     },
-
     activeTask() {
       return this.training.tasks[this.activeTaskIndex];
-    },
-    isButtonPrompt() {
-      return this.activeTask.prompt.constructor.type === 'button';
     },
     isLastTask() {
       return this.training.tasks.length === this.activeTaskIndex + 1;
     },
+    isPromptPositionedInCardFooter() {
+      const {
+        positionInCard,
+        POSITION_IN_CARD_FOOTER,
+      } = this.activeTask.prompt.constructor;
+
+      return positionInCard === POSITION_IN_CARD_FOOTER;
+    },
   },
   methods: {
-    onAnswer(userAnswer) {
-      this.$emit('answer', userAnswer);
+    updateValue(newValue) {
+      this.$emit('input', newValue);
+    },
+    onAnswer() {
+      this.$emit('answer');
     },
     onContinue() {
       this.$emit('continue');
