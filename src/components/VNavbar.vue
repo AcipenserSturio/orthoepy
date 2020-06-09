@@ -7,7 +7,7 @@
         </p>
       </b-navbar-item>
     </template>
-    <template slot="end" v-if="hasHomeButton">
+    <template v-if="hasHomeButton" slot="end">
       <b-navbar-item tag="div">
         <b-button
           class="is-primary is-light"

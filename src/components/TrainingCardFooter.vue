@@ -69,6 +69,7 @@ export default {
     shouldOfferRepeat() {
       return this.training.config.offerRepeat;
     },
+
     isAnsweringState() {
       return this.activeState === Training.STATE_ANSWERING;
     },
@@ -78,6 +79,7 @@ export default {
     isFinishedState() {
       return this.activeState === Training.STATE_FINISHED;
     },
+
     activeTask() {
       return this.training.tasks[this.activeTaskIndex];
     },

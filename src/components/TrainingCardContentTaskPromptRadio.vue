@@ -1,12 +1,10 @@
 <template>
   <div class="block">
-    <div class="field" v-for="radio in prompt.radios" :key="radio">
+    <div v-for="radio in prompt.radios" :key="radio" class="field">
       <b-radio
         :native-value="radio"
-
         :type="type"
         :disabled="disabled"
-
         :value="value"
         @input="updateValue"
       >

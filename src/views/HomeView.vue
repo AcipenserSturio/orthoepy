@@ -48,3 +48,6 @@ export default {
   components: { VNavbar },
 };
 </script>
+
+<style scoped>
+</style>

@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-collapse
-      class="card"
       v-for="(theory, i) of theories"
       :key="`theory-${i}`"
+      class="card"
       animation="slide"
       :open="openTheoryIndex === i"
       @open="openTheoryIndex = i"

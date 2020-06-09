@@ -1,12 +1,10 @@
 <template>
   <div class="block">
-    <div class="field" v-for="checkbox in prompt.checkboxes" :key="checkbox">
+    <div v-for="checkbox in prompt.checkboxes" :key="checkbox" class="field">
       <b-checkbox
         :native-value="checkbox"
-
         :type="type"
         :disabled="disabled"
-
         :value="value"
         @input="updateValue"
       >

@@ -1,33 +1,27 @@
 <template>
   <TrainingCardContentTaskPromptText
     v-if="isTextPrompt"
-
     :prompt="prompt"
     :type="type"
     :disabled="disabled"
-
     :value="value"
     @input="updateValue"
   />
 
   <TrainingCardContentTaskPromptCheckbox
     v-else-if="isCheckboxPrompt"
-
     :prompt="prompt"
     :type="type"
     :disabled="disabled"
-
     :value="value"
     @input="updateValue"
   />
 
   <TrainingCardContentTaskPromptRadio
     v-else-if="isRadioPrompt"
-
     :prompt="prompt"
     :type="type"
     :disabled="disabled"
-
     :value="value"
     @input="updateValue"
   />

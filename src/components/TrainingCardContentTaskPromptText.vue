@@ -3,10 +3,8 @@
     <b-input
       ref="input"
       autofocus
-
       :disabled="disabled"
       :placeholder="prompt.placeholder"
-
       :value="value"
       @input="updateValue"
     ></b-input>

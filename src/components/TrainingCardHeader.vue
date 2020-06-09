@@ -54,6 +54,7 @@ export default {
     shouldShowProgress() {
       return !this.training.config.hideProgress;
     },
+
     isAnsweringState() {
       return this.activeState === Training.STATE_ANSWERING;
     },
@@ -63,6 +64,7 @@ export default {
     isFinishedState() {
       return this.activeState === Training.STATE_FINISHED;
     },
+
     activeTaskNumber() {
       return this.activeTaskIndex + 1;
     },
