@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="display: contents">
     <a
       v-for="radioButton in prompt.radioButtons"
       :key="radioButton"
