@@ -76,13 +76,13 @@ export default {
   },
   computed: {
     isTextPrompt() {
-      return prompt instanceof TextPrompt;
+      return this.prompt instanceof TextPrompt;
     },
     isCheckboxPrompt() {
-      return prompt instanceof CheckboxPrompt;
+      return this.prompt instanceof CheckboxPrompt;
     },
     isRadioPrompt() {
-      return prompt instanceof RadioPrompt;
+      return this.prompt instanceof RadioPrompt;
     },
   },
   methods: {

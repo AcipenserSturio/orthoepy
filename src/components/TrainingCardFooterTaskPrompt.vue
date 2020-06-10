@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     isRadioButtonPrompt() {
-      return prompt instanceof RadioButtonPrompt;
+      return this.prompt instanceof RadioButtonPrompt;
     },
   },
   methods: {
