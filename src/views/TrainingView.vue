@@ -11,24 +11,24 @@
             <TrainingCardHeader
               :training="training"
               :active-task-index="activeTaskIndex"
-              :active-state="activeState"
+              :active-state="trainingState"
               @finish="onFinish"
             />
             <TrainingCardContent
               :training="training"
               :active-task-index="activeTaskIndex"
-              :active-state="activeState"
-              v-model="userAnswer"
+              :active-state="trainingState"
+              v-model="activeTaskUserAnswer"
             />
             <TrainingCardFooter
               :training="training"
               :active-task-index="activeTaskIndex"
-              :active-state="activeState"
+              :active-state="trainingState"
               @answer="onAnswer"
               @continue="onContinue"
               @repeat="onRepeat"
               @home="onHome"
-              v-model="userAnswer"
+              v-model="activeTaskUserAnswer"
             />
           </div>
 
@@ -47,10 +47,10 @@
 </template>
 
 <script>
-import VNavbar from '@/components/VNavbar.vue';
 import TrainingCardHeader from '@/components/TrainingCardHeader.vue';
 import TrainingCardContent from '@/components/TrainingCardContent.vue';
 import TrainingCardFooter from '@/components/TrainingCardFooter.vue';
+import VNavbar from '@/components/VNavbar.vue';
 import getTraining from '@/trainer';
 import Training from '@/models/training';
 
@@ -65,9 +65,9 @@ export default {
   data() {
     return {
       training: null,
+      trainingState: null,
       activeTaskIndex: null,
-      activeState: null,
-      userAnswer: null,
+      activeTaskUserAnswer: null,
     };
   },
   computed: {
@@ -77,12 +77,12 @@ export default {
   },
   watch: {
     training() {
+      this.trainingState = Training.STATE_ANSWERING;
       this.activeTaskIndex = 0;
-      this.activeState = Training.STATE_ANSWERING;
     },
     activeTaskIndex(oldTaskIndex, newTaskIndex) {
       const newTask = this.training.tasks[newTaskIndex];
-      this.userAnswer = newTask.prompt.constructor.defaultValue;
+      this.activeTaskUserAnswer = newTask.prompt.constructor.defaultValue;
     },
   },
   beforeRouteEnter(to, from, next) {
@@ -95,8 +95,8 @@ export default {
       this.training = training;
     },
     onAnswer() {
-      this.training.onUserAnswer(this.activeTaskIndex, this.userAnswer);
-      this.activeState = Training.STATE_CHECKING;
+      this.training.onUserAnswer(this.activeTaskIndex, this.activeTaskUserAnswer);
+      this.trainingState = Training.STATE_CHECKING;
     },
     onContinue() {
       if (this.isLastTask) {
@@ -105,10 +105,10 @@ export default {
       }
 
       this.activeTaskIndex += 1;
-      this.activeState = Training.STATE_ANSWERING;
+      this.trainingState = Training.STATE_ANSWERING;
     },
     onFinish() {
-      this.activeState = Training.STATE_FINISHED;
+      this.trainingState = Training.STATE_FINISHED;
     },
     onRepeat() {
       const loadingComponent = this.$buefy.loading.open({ container: null });
