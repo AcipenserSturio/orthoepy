@@ -52,7 +52,6 @@ import TrainingCardHeader from '@/components/TrainingCardHeader.vue';
 import TrainingCardContent from '@/components/TrainingCardContent.vue';
 import TrainingCardFooter from '@/components/TrainingCardFooter.vue';
 import getTraining from '@/trainer';
-import marked from 'marked';
 import Training from '@/models/training';
 
 export default {
@@ -63,36 +62,37 @@ export default {
     TrainingCardHeader,
     VNavbar,
   },
+  data() {
+    return {
+      training: null,
+      activeTaskIndex: null,
+      activeState: null,
+      userAnswer: null,
+    };
+  },
+  computed: {
+    isLastTask() {
+      return this.training.tasks.length === this.activeTaskIndex + 1;
+    },
+  },
+  watch: {
+    training() {
+      this.activeTaskIndex = 0;
+      this.activeState = Training.STATE_ANSWERING;
+    },
+    activeTaskIndex(oldTaskIndex, newTaskIndex) {
+      const newTask = this.training.tasks[newTaskIndex];
+      this.userAnswer = newTask.prompt.constructor.defaultValue;
+    },
+  },
   beforeRouteEnter(to, from, next) {
     getTraining(to.params.topic).then((training) => {
       next(vm => training && vm.setTraining(training));
     });
   },
-  data() {
-    return {
-      training: null,
-      activeTaskIndex: 0,
-      activeState: Training.STATE_ANSWERING,
-      userAnswer: null,
-    };
-  },
-  computed: {
-    activeTask() {
-      return this.training.tasks[this.activeTaskIndex];
-    },
-    isLastTask() {
-      return this.training.tasks.length === this.activeTaskIndex + 1;
-    },
-  },
   methods: {
-    marked(text) {
-      return marked(text);
-    },
     setTraining(training) {
       this.training = training;
-      this.activeTaskIndex = 0;
-      this.activeState = Training.STATE_ANSWERING;
-      this.userAnswer = null;
     },
     onAnswer() {
       this.training.onUserAnswer(this.activeTaskIndex, this.userAnswer);
@@ -104,7 +104,6 @@ export default {
         return;
       }
 
-      this.userAnswer = null;
       this.activeTaskIndex += 1;
       this.activeState = Training.STATE_ANSWERING;
     },
