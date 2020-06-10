@@ -7,7 +7,7 @@
     @answer="onAnswer"
   />
 
-  <p v-else class="is-italic">
+  <p v-else class="card-footer-item is-italic">
     Не удалось отобразить поле ввода ответа.
   </p>
 </template>
