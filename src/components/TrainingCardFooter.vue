@@ -5,6 +5,7 @@
         :prompt="activeTask.prompt"
         :value="value"
         @input="updateValue"
+        @answer="onAnswer"
       />
     </template>
 
