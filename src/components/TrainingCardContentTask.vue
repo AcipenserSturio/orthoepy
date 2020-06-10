@@ -6,7 +6,7 @@
       v-if="isPromptPositionedInCardContent"
       :prompt="activeTask.prompt"
       :disabled="isCheckingState"
-      type="is-primary"
+      :type="promptType"
       :value="value"
       @input="updateValue"
     />
@@ -71,6 +71,27 @@ export default {
       } = this.activeTask.prompt.constructor;
 
       return positionInCard === POSITION_IN_CARD_CONTENT;
+    },
+    isAnswerCorrect() {
+      return this.training.userAnswersIsCorrect[this.activeTaskIndex] === true;
+    },
+    isAnswerIncorrect() {
+      return this.training.userAnswersIsCorrect[this.activeTaskIndex] === false;
+    },
+    promptType() {
+      if (!this.isCheckingState) {
+        return '';
+      }
+
+      if (this.isAnswerCorrect) {
+        return 'is-success';
+      }
+
+      if (this.isAnswerIncorrect) {
+        return 'is-danger';
+      }
+
+      return '';
     },
   },
   methods: {
