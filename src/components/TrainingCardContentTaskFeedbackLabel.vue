@@ -1,20 +1,20 @@
 <template>
   <div>
-    <template v-if="isCorrectAnswer" class="label-correct-answer">
+    <template v-if="isAnswerCorrect" class="label-answer-correct">
       <p>
         <!-- https://stackoverflow.com/q/32915485 -->
         Правильно ✔&#xfe0e;
       </p>
     </template>
 
-    <template v-else-if="isIncorrectAnswer" class="label-incorrect-answer">
+    <template v-else-if="isAnswerIncorrect" class="label-answer-incorrect">
       <p>
         Неправильно ✘
       </p>
       <div class="is-size-7" v-html="marked('*Ответ:* ' + activeTask.correctAnswer)"></div>
     </template>
 
-    <template v-else-if="isNullAnswer" class="label-null-answer">
+    <template v-else-if="isAnswerNull" class="label-answer-null">
       <p>
         Без ответа ⧗
       </p>
@@ -49,13 +49,13 @@ export default {
     activeTask() {
       return this.training.tasks[this.activeTaskIndex];
     },
-    isCorrectAnswer() {
+    isAnswerCorrect() {
       return this.training.userAnswersIsCorrect[this.activeTaskIndex] === true;
     },
-    isIncorrectAnswer() {
+    isAnswerIncorrect() {
       return this.training.userAnswersIsCorrect[this.activeTaskIndex] === false;
     },
-    isNullAnswer() {
+    isAnswerNull() {
       return this.training.userAnswersIsCorrect[this.activeTaskIndex] === null;
     },
   },
@@ -68,13 +68,13 @@ export default {
 </script>
 
 <style scoped>
-.label-correct-answer {
+.label-answer-correct {
   color: green;
 }
-.label-incorrect-answer {
+.label-answer-incorrect {
   color: darkred;
 }
-.label-null-answer {
+.label-answer-null {
   color: slateblue;
 }
 </style>
