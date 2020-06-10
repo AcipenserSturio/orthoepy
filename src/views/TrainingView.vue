@@ -80,7 +80,7 @@ export default {
       this.trainingState = Training.STATE_ANSWERING;
       this.activeTaskIndex = 0;
     },
-    activeTaskIndex(oldTaskIndex, newTaskIndex) {
+    activeTaskIndex(newTaskIndex) {
       const newTask = this.training.tasks[newTaskIndex];
       this.activeTaskUserAnswer = newTask.prompt.constructor.defaultValue;
     },
