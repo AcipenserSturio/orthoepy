@@ -1,31 +1,29 @@
 <template>
-  <div>
-    <template v-if="isAnswerCorrect" class="label-answer-correct">
-      <p>
-        <!-- https://stackoverflow.com/q/32915485 -->
-        Правильно ✔&#xfe0e;
-      </p>
-    </template>
+  <div v-if="isAnswerCorrect" class="label-answer-correct">
+    <p>
+      <!-- https://stackoverflow.com/q/32915485 -->
+      Правильно ✔&#xfe0e;
+    </p>
+  </div>
 
-    <template v-else-if="isAnswerIncorrect" class="label-answer-incorrect">
-      <p>
-        Неправильно ✘
-      </p>
-      <div class="is-size-7" v-html="marked('*Ответ:* ' + activeTask.correctAnswer)"></div>
-    </template>
+  <div v-else-if="isAnswerIncorrect" class="label-answer-incorrect">
+    <p>
+      Неправильно ✘
+    </p>
+    <div class="is-size-7" v-html="marked('*Ответ:* ' + activeTask.correctAnswer)"></div>
+  </div>
 
-    <template v-else-if="isAnswerNull" class="label-answer-null">
-      <p>
-        Без ответа ⧗
-      </p>
-      <div class="is-size-7" v-html="marked('*Ответ:* ' + activeTask.correctAnswer)"></div>
-    </template>
+  <div v-else-if="isAnswerNull" class="label-answer-null">
+    <p>
+      Без ответа ⧗
+    </p>
+    <div class="is-size-7" v-html="marked('*Ответ:* ' + activeTask.correctAnswer)"></div>
+  </div>
 
-    <template v-else>
-      <p class="is-italic">
-        Не удалось отобразить результат проверки
-      </p>
-    </template>
+  <div v-else>
+    <p class="is-italic">
+      Не удалось отобразить результат проверки
+    </p>
   </div>
 </template>
 
