@@ -26,7 +26,7 @@ export default class Training {
   onUserAnswer(taskIndex, userAnswer) {
     const task = this.tasks[taskIndex];
 
-    const isCorrect = task.prompt.constructor.areEqualByContent(
+    const isCorrect = task.prompt.constructor.areValuesEqualByContent(
       userAnswer,
       task.correctAnswer,
     );
