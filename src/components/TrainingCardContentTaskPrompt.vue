@@ -66,7 +66,7 @@ export default {
     type: {
       type: String,
       required: false,
-      default: 'is-primary',
+      default: '',
     },
     disabled: {
       type: Boolean,
