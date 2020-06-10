@@ -10,20 +10,20 @@
           <div class="card" v-if="training">
             <TrainingCardHeader
               :training="training"
+              :training-state="trainingState"
               :active-task-index="activeTaskIndex"
-              :active-state="trainingState"
               @finish="onFinish"
             />
             <TrainingCardContent
               :training="training"
+              :training-state="trainingState"
               :active-task-index="activeTaskIndex"
-              :active-state="trainingState"
               v-model="activeTaskUserAnswer"
             />
             <TrainingCardFooter
               :training="training"
+              :training-state="trainingState"
               :active-task-index="activeTaskIndex"
-              :active-state="trainingState"
               @answer="onAnswer"
               @continue="onContinue"
               @repeat="onRepeat"

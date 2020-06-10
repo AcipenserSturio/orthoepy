@@ -18,24 +18,24 @@ export default {
       type: Training,
       required: true,
     },
-    activeTaskIndex: {
-      type: Number,
+    trainingState: {
+      type: undefined,
       required: true,
     },
-    activeState: {
-      type: undefined,
+    activeTaskIndex: {
+      type: Number,
       required: true,
     },
   },
   computed: {
     isAnsweringState() {
-      return this.activeState === Training.STATE_ANSWERING;
+      return this.trainingState === Training.STATE_ANSWERING;
     },
     isCheckingState() {
-      return this.activeState === Training.STATE_CHECKING;
+      return this.trainingState === Training.STATE_CHECKING;
     },
     isFinishedState() {
-      return this.activeState === Training.STATE_FINISHED;
+      return this.trainingState === Training.STATE_FINISHED;
     },
   },
   methods: {
