@@ -7,9 +7,8 @@
       aria-controls="explanation"
     >
       <b-icon size="is-small" :icon="!props.open ? 'caret-right' : 'caret-down'"></b-icon>
-      {{ !props.open ? 'Пояснение' : 'Пояснение' }}
+      Пояснение
     </p>
-
 
     <TrainingCardContentTaskFeedbackExplanationContentText
       v-if="isTextExplanation"
@@ -23,7 +22,7 @@
 
     <p v-else class="is-italic">
       Не удалось отобразить объяснение задания.
-  </p>
+    </p>
   </b-collapse>
 </template>
 
