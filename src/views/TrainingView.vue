@@ -76,11 +76,20 @@ export default {
     },
   },
   watch: {
-    training() {
+    training(newTraining) {
+      if (newTraining === null) {
+        this.trainingState = null;
+        this.activeTaskIndex = null;
+      }
+
       this.trainingState = Training.STATE_ANSWERING;
       this.activeTaskIndex = 0;
     },
     activeTaskIndex(newTaskIndex) {
+      if (newTaskIndex === null) {
+        this.activeTaskUserAnswer = null;
+      }
+
       const newTask = this.training.tasks[newTaskIndex];
       this.activeTaskUserAnswer = newTask.prompt.constructor.defaultValue;
     },
@@ -100,6 +109,7 @@ export default {
     },
     onContinue() {
       if (this.isLastTask) {
+        this.activeTaskIndex = null;
         this.onFinish();
         return;
       }
@@ -108,6 +118,18 @@ export default {
       this.trainingState = Training.STATE_ANSWERING;
     },
     onFinish() {
+      if (this.activeTaskIndex !== null) {
+        this.$buefy.dialog.confirm({
+          message: 'Вы уверены, что хотите <strong>преждевременно</strong> закончить тренировку?',
+          confirmText: 'Закончить',
+          cancelText: 'Отмена',
+          onConfirm: () => {
+            this.trainingState = Training.STATE_FINISHED;
+          },
+        });
+        return;
+      }
+
       this.trainingState = Training.STATE_FINISHED;
     },
     onRepeat() {
