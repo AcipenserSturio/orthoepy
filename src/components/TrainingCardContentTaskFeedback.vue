@@ -4,11 +4,14 @@
       :training="training"
       :active-task-index="activeTaskIndex"
     />
-    <TrainingCardContentTaskFeedbackExplanation
-      v-if="activeTask.explanation"
-      class="margin-top: 0.5rem"
-      :explanation="activeTask.explanation"
-    />
+
+    <div v-if="activeTask.explanation">
+      <div class="spacer"></div>
+
+      <TrainingCardContentTaskFeedbackExplanation
+        :explanation="activeTask.explanation"
+      />
+    </div>
   </div>
 </template>
 
@@ -42,4 +45,9 @@ export default {
 </script>
 
 <style scoped>
+.spacer {
+  font-size: 0;
+  height: 1rem;
+  line-height: 0;
+}
 </style>
