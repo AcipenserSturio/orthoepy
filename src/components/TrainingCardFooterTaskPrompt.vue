@@ -1,6 +1,16 @@
 <template>
   <TrainingCardFooterTaskPromptRadioButton
     v-if="isRadioButtonPrompt"
+    ref="radioButtonPrompt"
+    :prompt="prompt"
+    :value="value"
+    @input="updateValue"
+    @answer="onAnswer"
+  />
+
+  <TrainingCardFooterTaskPromptSelfCheck
+    v-else-if="isSelfCheckPrompt"
+    ref="selfCheckPrompt"
     :prompt="prompt"
     :value="value"
     @input="updateValue"
@@ -14,18 +24,22 @@
 
 <script>
 import TrainingCardFooterTaskPromptRadioButton from '@/components/TrainingCardFooterTaskPromptRadioButton.vue';
+import TrainingCardFooterTaskPromptSelfCheck from '@/components/TrainingCardFooterTaskPromptSelfCheck.vue';
 import {
   RadioButtonPrompt,
+  SelfCheckPrompt,
 } from '@/models/prompts';
 
 const supportedPrompts = [
   RadioButtonPrompt,
+  SelfCheckPrompt,
 ];
 
 export default {
   name: 'TrainingCardFooterTaskPrompt',
   components: {
     TrainingCardFooterTaskPromptRadioButton,
+    TrainingCardFooterTaskPromptSelfCheck,
   },
   props: {
     value: {
@@ -41,6 +55,9 @@ export default {
     isRadioButtonPrompt() {
       return this.prompt instanceof RadioButtonPrompt;
     },
+    isSelfCheckPrompt() {
+      return this.prompt instanceof SelfCheckPrompt;
+    },
   },
   methods: {
     updateValue(newValue) {
@@ -48,6 +65,13 @@ export default {
     },
     onAnswer() {
       this.$emit('answer');
+    },
+    onKeyup(event) {
+      if (this.isRadioButtonPrompt) {
+        this.$refs.radioButtonPrompt.onKeyup(event);
+      } else if (this.isSelfCheckPrompt) {
+        this.$refs.selfCheckPrompt.onKeyup(event);
+      }
     },
   },
 };

@@ -26,12 +26,6 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    window.addEventListener('keyup', this.onKeyup);
-  },
-  beforeDestroy() {
-    window.removeEventListener('keyup', this.onKeyup);
-  },
   computed: {
     radioButtonsCount() {
       return this.prompt.radioButtons.length;

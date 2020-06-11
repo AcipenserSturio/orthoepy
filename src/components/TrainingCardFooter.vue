@@ -2,6 +2,7 @@
   <div class="card-footer">
     <template v-if="isAnsweringState && isPromptPositionedInCardFooter">
       <TrainingCardFooterTaskPrompt
+        ref="prompt"
         :prompt="activeTask.prompt"
         :value="value"
         @input="updateValue"
@@ -120,6 +121,11 @@ export default {
       this.$emit('close');
     },
     onKeyup(event) {
+      if (this.isAnsweringState && this.isPromptPositionedInCardFooter) {
+        this.$refs.prompt.onKeyup(event);
+        return;
+      }
+
       switch (event.keyCode) {
       case 13:
         this.onKeyupEnter();
