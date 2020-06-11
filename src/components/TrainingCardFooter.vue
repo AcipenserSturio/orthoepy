@@ -97,6 +97,12 @@ export default {
       return positionInCard === POSITION_IN_CARD_FOOTER;
     },
   },
+  mounted() {
+    window.addEventListener('keyup', this.onKeyup);
+  },
+  beforeDestroy() {
+    window.removeEventListener('keyup', this.onKeyup);
+  },
   methods: {
     updateValue(newValue) {
       this.$emit('input', newValue);
@@ -112,6 +118,22 @@ export default {
     },
     onHome() {
       this.$emit('home');
+    },
+    onKeyup(event) {
+      switch (event.keyCode) {
+      case 13:
+        this.onKeyupEnter();
+        break;
+      default:
+        break;
+      }
+    },
+    onKeyupEnter() {
+      if (this.isAnsweringState && !this.isPromptPositionedInCardFooter) {
+        this.onAnswer();
+      } else if (this.isCheckingState) {
+        this.onContinue();
+      }
     },
   },
 };
