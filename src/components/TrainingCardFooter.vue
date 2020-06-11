@@ -31,8 +31,8 @@
       <a v-if="shouldOfferRepeat" class="card-footer-item" @click="onRepeat">
         Повторить
       </a>
-      <a class="card-footer-item" @click="onHome">
-        На главную
+      <a class="card-footer-item" @click="onClose">
+        Закрыть
       </a>
     </template>
 
@@ -116,8 +116,8 @@ export default {
     onRepeat() {
       this.$emit('repeat');
     },
-    onHome() {
-      this.$emit('home');
+    onClose() {
+      this.$emit('close');
     },
     onKeyup(event) {
       switch (event.keyCode) {

@@ -27,7 +27,7 @@
               @answer="onAnswer"
               @continue="onContinue"
               @repeat="onRepeat"
-              @home="onHome"
+              @close="onClose"
               v-model="activeTaskUserAnswer"
             />
           </div>
@@ -118,8 +118,8 @@ export default {
         loadingComponent.close();
       });
     },
-    onHome() {
-      this.$router.push({ name: 'home' });
+    onClose() {
+      this.$router.back();
     },
   },
 };
