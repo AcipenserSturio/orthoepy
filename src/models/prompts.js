@@ -14,6 +14,10 @@ function normalizeStringArray(stringArray) {
   return sortedStringArray;
 }
 
+function normalizeNull() {
+  return null;
+}
+
 //
 // Base Prompts
 //
@@ -33,6 +37,10 @@ export class BasePrompt {
 
   static get VALUE_TYPE_STRING_ARRAY() {
     return Array;
+  }
+
+  static get VALUE_TYPE_NULL() {
+    return null;
   }
 
   static get positionInCard() {
@@ -125,6 +133,24 @@ export class RadioButtonPrompt extends BaseStringPrompt {
     super();
 
     this.radioButtons = radioButtons;
+  }
+
+  static get positionInCard() {
+    return this.POSITION_IN_CARD_FOOTER;
+  }
+}
+
+export class SelfCheckPrompt extends BasePrompt {
+  static get valueType() {
+    return this.VALUE_TYPE_NULL;
+  }
+
+  static get defaultValue() {
+    return null;
+  }
+
+  static areValuesEqualByContent(lhs, rhs) {
+    return normalizeNull(lhs) === normalizeNull(rhs);
   }
 
   static get positionInCard() {
