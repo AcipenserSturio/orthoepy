@@ -228,3 +228,20 @@ export class SelfCheckPrompt extends BasePrompt {
     return new this();
   }
 }
+
+export function promptClass(className) {
+  switch (className) {
+  case 'TextPrompt':
+    return TextPrompt;
+  case 'CheckboxPrompt':
+    return CheckboxPrompt;
+  case 'RadioPrompt':
+    return RadioPrompt;
+  case 'RadioButtonPrompt':
+    return RadioButtonPrompt;
+  case 'SelfCheckPrompt':
+    return SelfCheckPrompt;
+  default:
+    return undefined;
+  }
+}
