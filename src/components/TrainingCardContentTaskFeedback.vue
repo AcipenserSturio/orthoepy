@@ -10,6 +10,7 @@
 
       <TrainingCardContentTaskFeedbackExplanation
         :explanation="activeTask.explanation"
+        :is-open-at-first="shouldAutomaticallyOpenExplanation"
       />
     </div>
   </div>
@@ -39,6 +40,9 @@ export default {
   computed: {
     activeTask() {
       return this.training.tasks[this.activeTaskIndex];
+    },
+    shouldAutomaticallyOpenExplanation() {
+      return this.training.config.automaticallyOpenExplanation;
     },
   },
 };

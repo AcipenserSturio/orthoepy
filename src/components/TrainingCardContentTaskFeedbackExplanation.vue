@@ -1,5 +1,5 @@
 <template>
-  <b-collapse :open="false" aria-id="explanation" animation="">
+  <b-collapse :open="isOpenAtFirst" aria-id="explanation" animation="">
     <p
       slot="trigger"
       slot-scope="props"
@@ -49,6 +49,11 @@ export default {
     explanation: {
       type: [...supportedExplanations],
       required: true,
+    },
+    isOpenAtFirst: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   computed: {

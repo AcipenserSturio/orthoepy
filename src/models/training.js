@@ -6,6 +6,7 @@ export default class Training {
       hideProgress = false,
       offerRepeat = false,
       showMistakesSummary = false,
+      automaticallyOpenExplanation = false,
     },
   ) {
     this.title = title;
@@ -15,6 +16,7 @@ export default class Training {
       hideProgress,
       offerRepeat,
       showMistakesSummary,
+      automaticallyOpenExplanation,
     };
 
     this.userAnswers = new Array(tasks.length).fill(null);
