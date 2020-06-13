@@ -2,6 +2,15 @@ export class BaseExplanation {
   static type() {
     throw new TypeError('Must override "type()"');
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  toJSON() {
+    throw new TypeError('Must override "type()"');
+  }
+
+  static fromJSON() {
+    throw new TypeError('Must override "type()"');
+  }
 }
 
 export class TextExplanation extends BaseExplanation {
@@ -11,20 +20,37 @@ export class TextExplanation extends BaseExplanation {
     this.text = text;
   }
 
-  static type() {
-    return 'text';
+  toJSON() {
+    const className = this.constructor.name;
+    const { text } = this;
+
+    return { className, text };
+  }
+
+  static fromJSON(obj) {
+    const { text } = obj;
+
+    return new this(text);
   }
 }
 
 export class RuleChainExplanation extends BaseExplanation {
-  constructor(ruleChain, result) {
+  constructor(ruleChain) {
     super();
 
     this.ruleChain = [...ruleChain];
-    this.result = result;
   }
 
-  static type() {
-    return 'rule_chain';
+  toJSON() {
+    const className = this.constructor.name;
+    const { ruleChain } = this;
+
+    return { className, ruleChain };
+  }
+
+  static fromJSON(obj) {
+    const { ruleChain } = obj;
+
+    return new this(ruleChain);
   }
 }
