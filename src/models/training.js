@@ -1,3 +1,5 @@
+import Task from '@/models/task';
+
 export default class Training {
   constructor(
     title,
@@ -56,5 +58,55 @@ export default class Training {
 
   static get STATE_FINISHED() {
     return 'finished';
+  }
+
+  toJSON() {
+    const className = this.constructor.name;
+    const {
+      title,
+      tasks,
+      config,
+      userAnswers,
+      userAnswersIsCorrect,
+      userAnswersTotalCount,
+      userAnswersCorrectCount,
+      userAnswersNullCount,
+    } = this;
+
+    return {
+      className,
+      title,
+      tasks,
+      config,
+      userAnswers,
+      userAnswersIsCorrect,
+      userAnswersTotalCount,
+      userAnswersCorrectCount,
+      userAnswersNullCount,
+    };
+  }
+
+  static fromJSON(obj) {
+    const {
+      title,
+      tasks: jsonTasks,
+      config,
+      userAnswers,
+      userAnswersIsCorrect,
+      userAnswersTotalCount,
+      userAnswersCorrectCount,
+      userAnswersNullCount,
+    } = obj;
+    const tasks = jsonTasks.map(jsonTask => Task.fromJSON(jsonTask));
+
+    const training = new this(title, tasks, config);
+
+    training.userAnswers = userAnswers;
+    training.userAnswersIsCorrect = userAnswersIsCorrect;
+    training.userAnswersTotalCount = userAnswersTotalCount;
+    training.userAnswersCorrectCount = userAnswersCorrectCount;
+    training.userAnswersNullCount = userAnswersNullCount;
+
+    return training;
   }
 }
