@@ -21,6 +21,7 @@ export default class Training {
     this.userAnswersIsCorrect = new Array(tasks.length).fill(null);
     this.userAnswersTotalCount = 0;
     this.userAnswersCorrectCount = 0;
+    this.userAnswersNullCount = 0;
   }
 
   onUserAnswer(taskIndex, userAnswer) {
@@ -33,6 +34,8 @@ export default class Training {
         userAnswer,
         task.correctAnswer,
       );
+    } else {
+      this.userAnswersNullCount += 1;
     }
 
     this.userAnswers[taskIndex] = userAnswer;

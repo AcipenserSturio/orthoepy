@@ -1,10 +1,18 @@
 <template>
-  <div>
+  <div v-if="hasNonNullAnswers">
     <p class="title has-text-centered">
-      {{ correctCount }} / {{ totalCount }}
+      {{ correctAnswersCount }} / {{ nonNullAnswersCount }}
     </p>
     <p class="subtitle is-6 has-text-centered">
       {{ verdict }}
+    </p>
+  </div>
+  <div v-else>
+    <p class="title has-text-centered">
+      —
+    </p>
+    <p class="subtitle is-6 has-text-centered">
+      Без ответов
     </p>
   </div>
 </template>
@@ -21,11 +29,14 @@ export default {
     },
   },
   computed: {
-    correctCount() {
+    hasNonNullAnswers() {
+      return this.nonNullAnswersCount > 0;
+    },
+    correctAnswersCount() {
       return this.training.userAnswersCorrectCount;
     },
-    totalCount() {
-      return this.training.userAnswersTotalCount;
+    nonNullAnswersCount() {
+      return this.training.userAnswersTotalCount - this.training.userAnswersNullCount;
     },
     verdict() {
       const correctness = this.correctCount / this.totalCount;
