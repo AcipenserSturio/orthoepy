@@ -1,5 +1,6 @@
 import Buefy from 'buefy';
 import Vue from 'vue';
+import VueCookie from 'vue-cookie';
 import DOMPurify from 'dompurify';
 import marked from 'marked';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -12,6 +13,7 @@ import store from './store';
 library.add(fas);
 Vue.component('vue-fontawesome', FontAwesomeIcon);
 Vue.use(Buefy, { defaultIconPack: 'fas' });
+Vue.use(VueCookie);
 
 marked.setOptions({
   sanitizer: DOMPurify.sanitize,
