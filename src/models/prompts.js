@@ -58,6 +58,15 @@ export class BasePrompt {
   static areValuesEqualByContent() {
     throw TypeError('This member must be overridden');
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  toJSON() {
+    throw new TypeError('Must override "type()"');
+  }
+
+  static fromJSON() {
+    throw new TypeError('Must override "type()"');
+  }
 }
 
 export class BaseStringArrayPrompt extends BasePrompt {
@@ -102,6 +111,19 @@ export class TextPrompt extends BaseStringPrompt {
   static get positionInCard() {
     return this.POSITION_IN_CARD_CONTENT;
   }
+
+  toJSON() {
+    const className = this.constructor.name;
+    const { placeholder } = this;
+
+    return { className, placeholder };
+  }
+
+  static fromJSON(obj) {
+    const { placeholder } = obj;
+
+    return new this(placeholder);
+  }
 }
 
 export class CheckboxPrompt extends BaseStringArrayPrompt {
@@ -113,6 +135,19 @@ export class CheckboxPrompt extends BaseStringArrayPrompt {
 
   static get positionInCard() {
     return this.POSITION_IN_CARD_CONTENT;
+  }
+
+  toJSON() {
+    const className = this.constructor.name;
+    const { checkboxes } = this;
+
+    return { className, checkboxes };
+  }
+
+  static fromJSON(obj) {
+    const { checkboxes } = obj;
+
+    return new this(checkboxes);
   }
 }
 
@@ -126,6 +161,19 @@ export class RadioPrompt extends BaseStringPrompt {
   static get positionInCard() {
     return this.POSITION_IN_CARD_CONTENT;
   }
+
+  toJSON() {
+    const className = this.constructor.name;
+    const { radios } = this;
+
+    return { className, radios };
+  }
+
+  static fromJSON(obj) {
+    const { radios } = obj;
+
+    return new this(radios);
+  }
 }
 
 export class RadioButtonPrompt extends BaseStringPrompt {
@@ -137,6 +185,19 @@ export class RadioButtonPrompt extends BaseStringPrompt {
 
   static get positionInCard() {
     return this.POSITION_IN_CARD_FOOTER;
+  }
+
+  toJSON() {
+    const className = this.constructor.name;
+    const { radioButtons } = this;
+
+    return { className, radioButtons };
+  }
+
+  static fromJSON(obj) {
+    const { radioButtons } = obj;
+
+    return new this(radioButtons);
   }
 }
 
@@ -155,5 +216,15 @@ export class SelfCheckPrompt extends BasePrompt {
 
   static get positionInCard() {
     return this.POSITION_IN_CARD_FOOTER;
+  }
+
+  toJSON() {
+    const className = this.constructor.name;
+
+    return { className };
+  }
+
+  static fromJSON() {
+    return new this();
   }
 }
