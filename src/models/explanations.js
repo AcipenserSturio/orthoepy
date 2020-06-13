@@ -54,3 +54,14 @@ export class RuleChainExplanation extends BaseExplanation {
     return new this(ruleChain);
   }
 }
+
+export function explanationClass(className) {
+  switch (className) {
+  case 'TextExplanation':
+    return TextExplanation;
+  case 'RuleChainExplanation':
+    return RuleChainExplanation;
+  default:
+    return undefined;
+  }
+}
