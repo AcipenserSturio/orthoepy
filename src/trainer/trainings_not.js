@@ -175,7 +175,6 @@ async function makeTrainingNotTasks() {
             }
             return `С частями речи: ${pos.toLowerCase()} — в любом другом случае пишем ${spelling.toLowerCase()}.`;
           }),
-          correctSpelling,
         );
 
         const task = new Task(
