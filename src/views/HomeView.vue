@@ -13,6 +13,9 @@
           <router-link :to="{ name: 'ege04-home' }" class="list-item">
             ЕГЭ. Задание 4. Постановка ударения
           </router-link>
+          <router-link :to="{ name: 'ege05-home' }" class="list-item">
+            ЕГЭ. Задание 5. Употребление паронимов
+          </router-link>
         </div>
         <div class="list is-hoverable">
           <router-link :to="{ name: 'ege11-home' }" class="list-item">

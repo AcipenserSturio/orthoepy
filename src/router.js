@@ -20,6 +20,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "ege04-home" */ './views/Ege04HomeView.vue'),
   },
   {
+    path: '/ege05',
+    name: 'ege05-home',
+    component: () => import(/* webpackChunkName: "ege05-home" */ './views/Ege05HomeView.vue'),
+  },
+  {
     path: '/ege11',
     name: 'ege11-home',
     component: () => import(/* webpackChunkName: "ege11-home" */ './views/Ege11HomeView.vue'),
