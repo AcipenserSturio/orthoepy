@@ -39,7 +39,7 @@ export default {
       return this.training.userAnswersTotalCount - this.training.userAnswersNullCount;
     },
     verdict() {
-      const correctness = this.correctCount / this.totalCount;
+      const correctness = this.correctAnswersCount / this.nonNullAnswersCount;
 
       if (correctness === 1.00) {
         return 'Отлично';
