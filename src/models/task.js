@@ -35,11 +35,18 @@ export default class Task {
       explanation: jsonExplanation,
     } = obj;
 
-    const { className: promptClassName } = jsonPrompt;
-    const { className: explanationClassName } = jsonExplanation;
+    let prompt = null;
+    let explanation = null;
 
-    const prompt = promptClass(promptClassName).fromJSON(jsonPrompt);
-    const explanation = explanationClass(explanationClassName).fromJSON(jsonExplanation);
+    if (jsonPrompt) {
+      const { className: promptClassName } = jsonPrompt;
+      prompt = promptClass(promptClassName).fromJSON(jsonPrompt);
+    }
+
+    if (jsonExplanation) {
+      const { className: explanationClassName } = jsonExplanation;
+      explanation = explanationClass(explanationClassName).fromJSON(jsonExplanation);
+    }
 
     return new this(question, correctAnswer, prompt, explanation);
   }
