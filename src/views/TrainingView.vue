@@ -118,7 +118,12 @@ export default {
       this.trainingState = Training.STATE_ANSWERING;
     },
     onFinish() {
-      if (this.activeTaskIndex !== null) {
+      const shouldExitWithoutWarning = (
+        this.activeTaskIndex === null
+        || (this.activeTaskIndex === 0 && this.trainingState === Training.STATE_ANSWERING)
+      );
+
+      if (!shouldExitWithoutWarning) {
         this.$buefy.dialog.confirm({
           message: 'Вы уверены, что хотите <strong>преждевременно</strong> закончить тренировку?',
           confirmText: 'Закончить',
