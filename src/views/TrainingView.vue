@@ -54,6 +54,10 @@ import VNavbar from '@/components/VNavbar.vue';
 import getTraining from '@/trainer';
 import Training from '@/models/training';
 
+function trainingSessionId(trainingTopic) {
+  return `training/${trainingTopic}`;
+}
+
 export default {
   name: 'TrainingView',
   components: {
@@ -64,10 +68,10 @@ export default {
   },
   data() {
     return {
-      training: null,
-      trainingState: null,
-      activeTaskIndex: null,
-      activeTaskUserAnswer: null,
+      training: undefined,
+      trainingState: undefined,
+      activeTaskIndex: undefined,
+      activeTaskUserAnswer: undefined,
     };
   },
   computed: {
@@ -75,33 +79,54 @@ export default {
       return this.training.tasks.length === this.activeTaskIndex + 1;
     },
   },
-  watch: {
-    training(newTraining) {
-      if (newTraining === null) {
-        this.trainingState = null;
-        this.activeTaskIndex = null;
-      }
-
-      this.trainingState = Training.STATE_ANSWERING;
-      this.activeTaskIndex = 0;
-    },
-    activeTaskIndex(newTaskIndex) {
-      if (newTaskIndex === null) {
-        this.activeTaskUserAnswer = null;
-      }
-
-      const newTask = this.training.tasks[newTaskIndex];
-      this.activeTaskUserAnswer = newTask.prompt.constructor.defaultValue;
-    },
-  },
   beforeRouteEnter(to, from, next) {
     getTraining(to.params.topic).then((training) => {
-      next(vm => training && vm.setTraining(training));
+      next((vm) => {
+        const sessionId = trainingSessionId(to.params.topic);
+
+        let savedSession = localStorage.getItem(sessionId) || '{}';
+        savedSession = JSON.parse(savedSession);
+
+        if (savedSession.savedTraining) {
+          savedSession.savedTraining = Training.fromJSON(savedSession.savedTraining);
+        }
+
+        vm.startTrainingSession(training, savedSession);
+      });
     });
   },
+  created() {
+    window.addEventListener('beforeunload', this.onUnload);
+  },
+  beforeDestroy() {
+    window.addEventListener('beforeunload', this.onUnload);
+  },
   methods: {
-    setTraining(training) {
+    initTraining(
+      training,
+      trainingState = Training.STATE_ANSWERING,
+      activeTaskIndex = 0,
+    ) {
+      if (training === null) {
+        this.training = null;
+        this.trainingState = null;
+        this.setActiveTaskIndex(null);
+        return;
+      }
+
       this.training = training;
+      this.trainingState = trainingState;
+      this.setActiveTaskIndex(activeTaskIndex);
+    },
+    setActiveTaskIndex(activeTaskIndex) {
+      if (activeTaskIndex === null) {
+        this.activeTaskIndex = null;
+        this.activeTaskUserAnswer = null;
+        return;
+      }
+
+      this.activeTaskIndex = activeTaskIndex;
+      this.activeTaskUserAnswer = this.training.tasks[activeTaskIndex].prompt.defaultValue;
     },
     onAnswer() {
       this.training.onUserAnswer(this.activeTaskIndex, this.activeTaskUserAnswer);
@@ -109,39 +134,97 @@ export default {
     },
     onContinue() {
       if (this.isLastTask) {
-        this.activeTaskIndex = null;
+        this.setActiveTaskIndex(null);
         this.onFinish();
         return;
       }
 
-      this.activeTaskIndex += 1;
+      this.setActiveTaskIndex(this.activeTaskIndex + 1);
       this.trainingState = Training.STATE_ANSWERING;
     },
     onFinish() {
-      if (this.activeTaskIndex !== null) {
+      const shouldExitWithoutWarning = (
+        this.activeTaskIndex === null
+        || (this.activeTaskIndex === 0 && this.trainingState === Training.STATE_ANSWERING)
+      );
+
+      if (!shouldExitWithoutWarning) {
         this.$buefy.dialog.confirm({
           message: 'Вы уверены, что хотите <strong>преждевременно</strong> закончить тренировку?',
           confirmText: 'Закончить',
           cancelText: 'Отмена',
           onConfirm: () => {
+            this.endTrainingSession();
             this.trainingState = Training.STATE_FINISHED;
           },
         });
         return;
       }
 
+      this.endTrainingSession();
       this.trainingState = Training.STATE_FINISHED;
     },
     onRepeat() {
       const loadingComponent = this.$buefy.loading.open({ container: null });
 
       getTraining(this.$route.params.topic).then((training) => {
-        this.setTraining(training || null);
+        this.endTrainingSession();
+        this.startTrainingSession(training || null);
         loadingComponent.close();
       });
     },
     onClose() {
       this.$router.back();
+    },
+    onUnload() {
+      this.endTrainingSession();
+    },
+    startTrainingSession(newTraining, {
+      savedTraining = null,
+      savedTrainingState = null,
+      savedActiveTaskIndex = null,
+    } = {}) {
+      if (savedTraining) {
+        this.initTraining(savedTraining, savedTrainingState, savedActiveTaskIndex);
+
+        this.$buefy.dialog.confirm({
+          message: 'Хотите продолжить свою последнюю тренировку?',
+          confirmText: 'Да',
+          cancelText: 'Нет',
+          onCancel: () => {
+            this.clearSessionLocalStorage();
+            this.initTraining(newTraining || null);
+          },
+        });
+        return;
+      }
+
+      this.initTraining(newTraining || null);
+    },
+    endTrainingSession() {
+      const sessionId = trainingSessionId(this.$route.params.topic);
+
+      if (this.activeTaskIndex === null) {
+        this.clearSessionLocalStorage();
+        return;
+      }
+
+      if (this.activeTaskIndex === 0 && this.trainingState === Training.STATE_ANSWERING) {
+        this.clearSessionLocalStorage();
+        return;
+      }
+
+      const trainingSession = {
+        savedTraining: this.training,
+        savedTrainingState: this.trainingState,
+        savedActiveTaskIndex: this.activeTaskIndex,
+      };
+
+      localStorage.setItem(sessionId, JSON.stringify(trainingSession));
+    },
+    clearSessionLocalStorage() {
+      const sessionId = trainingSessionId(this.$route.params.topic);
+      localStorage.setItem(sessionId, '{}');
     },
   },
 };
