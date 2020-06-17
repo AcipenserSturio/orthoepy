@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       how_to_html: marked('Каждое задание предлагает вам объяснить слова одного паронимического ряда. Проверить себя можно, прочитав пояснение.'),
-      theory_html: marked('- [Словарик паронимов от ФИПИ 2020](http://doc.fipi.ru/ege/demoversii-specifikacii-kodifikatory/2020/ru_ege_2020.zip)\n- [Словарь паронимов со значениями](https://bingoschool.ru/blog/199/)'),
+      theory_html: marked('- [Словарик паронимов от ФИПИ 2020](http://doc.fipi.ru/ege/demoversii-specifikacii-kodifikatory/2020/ru_ege_2020.zip)\n- [Статья про нормы употребления паронимов](https://5-ege.ru/leksicheskie-normy-paronimy/)\n- [Словарь паронимов со значениями и примерами](http://russkiy-na-5.ru/dictionary/paronyms)'),
       trainings_lists: [
         {
           title: 'По частям речи',
