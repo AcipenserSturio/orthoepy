@@ -30,7 +30,10 @@
             <p class="title is-5">
               Списки паронимов для закрепления
             </p>
-            <VListTraining :trainings="trainings"/>
+            <div v-for="(trainings, i) of trainings_lists" :key="i" style="margin-top: 1.5rem">
+              <p class="subtitle is-6">{{ trainings.title }}</p>
+              <VListTraining :trainings="trainings.list"/>
+            </div>
           </div>
         </section>
       </div>
@@ -50,10 +53,106 @@ export default {
     return {
       how_to_html: marked('Каждое задание предлагает вам объяснить слова одного паронимического ряда. Проверить себя можно, прочитав пояснение.'),
       theory_html: marked('- [Словарик паронимов от ФИПИ 2020](http://doc.fipi.ru/ege/demoversii-specifikacii-kodifikatory/2020/ru_ege_2020.zip)\n- [Словарь паронимов со значениями](https://bingoschool.ru/blog/199/)'),
-      trainings: [
+      trainings_lists: [
         {
-          title: 'Все паронимы',
-          topic: 'ege05-all',
+          title: 'По частям речи',
+          list: [
+            {
+              title: 'Все части речи',
+              topic: 'ege05-all',
+            },
+            {
+              title: 'Все глаголы',
+              topic: 'ege05-verbs',
+            },
+            {
+              title: 'Все существительные',
+              topic: 'ege05-nouns',
+            },
+            {
+              title: 'Все прилагательные',
+              topic: 'ege05-adjs',
+            },
+          ],
+        },
+        {
+          title: 'Глаголы',
+          list: [
+            {
+              title: 'Все глаголы',
+              topic: 'ege05-verbs',
+            },
+          ],
+        },
+        {
+          title: 'Существительные',
+          list: [
+            {
+              title: 'Все существительные',
+              topic: 'ege05-nouns',
+            },
+            {
+              title: 'Существительные на -ОСТЬ',
+              topic: 'ege05-nouns-ost',
+            },
+            {
+              title: 'Существительные с приставками',
+              topic: 'ege05-nouns-prefix',
+            },
+            {
+              title: 'Другие существительные',
+              topic: 'ege05-nouns-other',
+            },
+          ],
+        },
+        {
+          title: 'Прилагательные',
+          list: [
+            {
+              title: 'Все прилагательные',
+              topic: 'ege05-adjs',
+            },
+            {
+              title: 'Прилагательные с суффиксом -ИСТ-',
+              topic: 'ege05-adjs-ist',
+            },
+            {
+              title: 'Причастия и отглагольные прилагательные',
+              topic: 'ege05-adjs-verbal',
+            },
+            {
+              title: 'Прилагательные с суффиксами -ЕЛЬСК- и -ЕЛЬН-',
+              topic: 'ege05-adjs-sk-eln',
+            },
+            {
+              title: 'Прилагательные с суффиксами -ИЧЕСК- и -ИЧН',
+              topic: 'ege05-adjs-sk-ichn',
+            },
+            {
+              title: 'Другие прилагательные с суффиксами -СК- и -Н-',
+              topic: 'ege05-adjs-sk-mixed',
+            },
+            {
+              title: 'Другие прилагательные с суффиксом -ЕЛЬН-',
+              topic: 'ege05-adjs-other-eln',
+            },
+            {
+              title: 'Другие прилагательные с суффиксом -ЛИВ-',
+              topic: 'ege05-adjs-other-liv',
+            },
+            {
+              title: 'Другие прилагательные с суффиксом -СТВЕНН-',
+              topic: 'ege05-adjs-other-stvenn',
+            },
+            {
+              title: 'Прилагательные с несколькими паронимами',
+              topic: 'ege05-adjs-other-groups',
+            },
+            {
+              title: 'Другие прилагательные',
+              topic: 'ege05-adjs-other-mixed',
+            },
+          ],
         },
       ],
     };
