@@ -18,6 +18,9 @@
           </router-link>
         </div>
         <div class="list is-hoverable">
+          <router-link :to="{ name: 'ege10-home' }" class="list-item">
+            ЕГЭ. Задание 10. Правописание приставок
+          </router-link>
           <router-link :to="{ name: 'ege11-home' }" class="list-item">
             ЕГЭ. Задание 11. Правописание суффиксов (кроме -Н-/-НН-)
           </router-link>
