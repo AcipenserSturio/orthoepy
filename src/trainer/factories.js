@@ -22,7 +22,10 @@ export async function makeTrainingLetterInsertion(title, assetFilename) {
   ));
   shuffle(tasks);
 
-  return new Training(title, tasks, { offerRepeat: true });
+  return new Training(title, tasks, {
+    offerRepeat: true,
+    showMistakesSummary: true,
+  });
 }
 
 //
