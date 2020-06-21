@@ -40,7 +40,7 @@ export default {
   components: { VListTraining, VNavbar },
   data() {
     return {
-      theory_html: marked('*Появится позже*'),
+      theory_html: marked('- [Раздел правописания приставок в справочнике Д. Э. Розенталя](http://old-rozental.ru/orfografia.php?sid=32#pp32)\n- [Закономерности правописания приставок ПРЕ- и ПРИ-](https://slovari.ru/sprav.aspx?p=5625&par=38)'),
       trainings: [
         {
           title: 'Приставки ПРЕ- и ПРИ- (разные случаи с объяснениями)',
