@@ -53,7 +53,7 @@ export async function makeTrainingStressSelecting(title, assetFilename) {
 // Training Factory: paronym-explaining
 //
 
-export async function makeTrainingParonymExplaning(title, assetFilename) {
+export async function makeTrainingParonymExplaining(title, assetFilename) {
   const paronyms = (await import(`@/assets/trainings/${assetFilename}`)).default;
 
   const questionPrefix = '*Объясните каждое слово:*\n\n';
