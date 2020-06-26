@@ -159,8 +159,12 @@ export default {
               topic: 'ege11-verbs-before-l',
             },
             {
-              title: 'Гласные в неопределенных формах глаголов перед -ТЬ',
-              topic: 'ege11-verbs-infinitives',
+              title: 'Гласные в неопределенных формах глаголов перед -ТЬ (высокая сложность)',
+              topic: 'ege11-12-verbs-infinitives-hard',
+            },
+            {
+              title: 'Гласные в неопределенных формах глаголов перед -ТЬ (средняя сложность)',
+              topic: 'ege11-12-verbs-infinitives-medium',
             },
           ],
         },

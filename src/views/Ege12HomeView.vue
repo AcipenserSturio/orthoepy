@@ -10,9 +10,16 @@
         <div class="column">
           <div class="container">
             <div class="has-text-centered">
-              <b-button @click="openTaskGuide">
-                Прочитать теорию
-              </b-button>
+              <b-tooltip
+                label="Comedy Genius Award Winner"
+                position="is-bottom"
+                delay="1500"
+                type="is-light"
+              >
+                <button class="button" @click="openTaskGuide">
+                    Прочитать теорию
+                </button>
+              </b-tooltip>
             </div>
             <hr>
             <p class="title is-5">
@@ -34,10 +41,16 @@
             </p>
             <div class="list is-hoverable">
               <router-link
-                :to="{ name: 'training', params: { 'topic': 'ege12-verbs-infinitives' } }"
+                :to="{ name: 'training', params: { 'topic': 'ege11-12-verbs-infinitives-hard' } }"
                 class="list-item"
               >
-                Инфинитивы
+                Инфинитивы (высокая сложность)
+              </router-link>
+              <router-link
+                :to="{ name: 'training', params: { 'topic': 'ege11-12-verbs-infinitives-medium' } }"
+                class="list-item"
+              >
+                Инфинитивы (средняя сложность)
               </router-link>
             </div>
           </div>
