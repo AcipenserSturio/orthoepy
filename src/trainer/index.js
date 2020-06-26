@@ -4,6 +4,7 @@ import trainingsEge05 from '@/trainer/trainings_ege05';
 import trainingsEge10 from '@/trainer/trainings_ege10';
 import trainingsEge11 from '@/trainer/trainings_ege11';
 import trainingsEge12 from '@/trainer/trainings_ege12';
+import trainingsEge11n12 from '@/trainer/trainings_ege11_12';
 
 const asyncTrainingFactories = {
   ...trainingsNot.makeAsyncTrainingFactories(),
@@ -12,6 +13,7 @@ const asyncTrainingFactories = {
   ...trainingsEge10.makeAsyncTrainingFactories(),
   ...trainingsEge11.makeAsyncTrainingFactories(),
   ...trainingsEge12.makeAsyncTrainingFactories(),
+  ...trainingsEge11n12.makeAsyncTrainingFactories(),
 };
 
 export default async function getTraining(topic) {
