@@ -2,10 +2,14 @@ import json
 
 
 def make_letter_insertion_spec(word, letter, explanation):
+    formatted_word = word.replace('\\n', '\n')
+    formatted_letter = letter.replace('\\n', '\n')
+    formatted_explanation = explanation and explanation.replace('\\n', '\n')
+
     return {
-        'word': word,
-        'letter': letter,
-        'explanation': explanation or None,
+        'word': formatted_word,
+        'letter': formatted_letter,
+        'explanation': formatted_explanation or None,
     }
 
 
