@@ -50,6 +50,27 @@ export async function makeTrainingStressSelecting(title, assetFilename) {
 }
 
 //
+// Training Factory: n-nn-selecting
+//
+
+export async function makeTrainingNNnSelecting(title, assetFilename) {
+  const rawTasks = (await import(`@/assets/trainings/${assetFilename}`)).default;
+
+  const tasks = rawTasks.map(rawTask => new Task(
+    `*Что нужно вставить на место пропуска?*\n\n${rawTask.question}`,
+    rawTask.answer,
+    new RadioButtonPrompt(['н', 'нн']),
+    rawTask.explanation,
+  ));
+  shuffle(tasks);
+
+  return new Training(title, tasks, {
+    offerRepeat: true,
+    showMistakesSummary: true,
+  });
+}
+
+//
 // Training Factory: paronym-explaining
 //
 

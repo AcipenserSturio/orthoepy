@@ -40,6 +40,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "ege12-home" */ './views/Ege12HomeView.vue'),
   },
   {
+    path: '/ege15',
+    name: 'ege15-home',
+    component: () => import(/* webpackChunkName: "ege15-home" */ './views/Ege15HomeView.vue'),
+  },
+  {
     path: '/training/:topic',
     name: 'training',
     component: () => import(/* webpackChunkName: "training" */ './views/TrainingView.vue'),

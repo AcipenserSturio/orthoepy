@@ -28,6 +28,11 @@
             ЕГЭ. Задание 12. Правописание личных окончаний глаголов и суффиксов причастий
           </router-link>
         </div>
+        <div class="list is-hoverable">
+          <router-link :to="{ name: 'ege15-home' }" class="list-item">
+            ЕГЭ. Задание 15. Пра­во­пи­са­ние -Н- и -НН- в суффиксах
+          </router-link>
+        </div>
       </div>
     </section>
 
