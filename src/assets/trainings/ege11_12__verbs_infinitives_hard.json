@@ -60,6 +60,16 @@
         "explanation": null
     },
     {
+        "word": "бле…ть",
+        "letter": "я",
+        "explanation": null
+    },
+    {
+        "word": "ха…ть",
+        "letter": "я",
+        "explanation": null
+    },
+    {
         "word": "*Сначала выберите вариант написания, затем в поле ответа впишите гласную, стоящую перед -ТЬ.*\n\nзамес…ть ИЛИ замеш…ть (в преступлении)",
         "letter": "а",
         "explanation": null
@@ -120,6 +130,11 @@
         "explanation": null
     },
     {
+        "word": "плешив…ть",
+        "letter": "е",
+        "explanation": null
+    },
+    {
         "word": "*Сначала выберите вариант написания, затем в поле ответа впишите гласную, стоящую перед -ТЬ.*\n\nзамес…ть ИЛИ замеш…ть (тесто)",
         "letter": "и",
         "explanation": null
@@ -171,6 +186,31 @@
     },
     {
         "word": "успоко…ться",
+        "letter": "и",
+        "explanation": null
+    },
+    {
+        "word": "сто…ть",
+        "letter": "и",
+        "explanation": null
+    },
+    {
+        "word": "поко…ть",
+        "letter": "и",
+        "explanation": null
+    },
+    {
+        "word": "удво…ть",
+        "letter": "и",
+        "explanation": null
+    },
+    {
+        "word": "усво…ть",
+        "letter": "и",
+        "explanation": null
+    },
+    {
+        "word": "вял…ть",
         "letter": "и",
         "explanation": null
     },
