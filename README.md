@@ -6,7 +6,7 @@ A training tool for Russian grammar rules.
 
 The website is available at the following URL:
 
-> https://acipensersturio.github.io/russian/
+> https://suhary.github.io/russian/
 
 ## How to
 

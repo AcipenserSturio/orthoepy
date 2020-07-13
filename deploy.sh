@@ -13,7 +13,7 @@ cd dist
 git init
 git add -A
 git commit -m 'Deploy'
-git push -f git@github.com:AcipenserSturio/russian.git master:gh-pages
+git push -f git@github.com:suhary/russian.git master:gh-pages
 
 # Navigate back
 cd -
