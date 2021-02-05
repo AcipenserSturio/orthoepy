@@ -8,22 +8,17 @@ The website is available at the following URL:
 
 > https://suhary.github.io/russian/
 
-## How to
+## Setup
 
-### Add a new test
-
-Create a router link that opens your test.
-
-```vue
-<!-- you can also change 'training-card' to 'training-test' in case you need -->
-<!-- a regular test instead of a card one -->
-<router-link :to="{ name: 'training-card', params: { topic: 'YOUR-TEST-TOPIC' } }" class="list-item">
-    THE-LINK
-</router-link>
+```sh
+yarn install
 ```
 
-In `trainer` implement a test generator for `YOUR-TEST-TOPIC`. Don't forget
-to add it to `asyncTrainingGetters` object.
+### Compiles and hot-reloads for development
+
+```sh
+yarn serve
+```
 
 ## License
 
